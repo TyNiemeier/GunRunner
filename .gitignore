@@ -23,7 +23,7 @@ extension_api.json
 logs/
 
 # Visual Studio Code
-#.vscode/
+.vscode/
 *.code-workspace
 .history/
 
