@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://d34idi3tc1prb"]
+
+[ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/momonga_Dungeon (1).png" id="1_gff5g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q36ua"]
+atlas = ExtResource("1_gff5g")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37rnk"]
+atlas = ExtResource("1_gff5g")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohf4h"]
+atlas = ExtResource("1_gff5g")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkh2d"]
+atlas = ExtResource("1_gff5g")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjni8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q36ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37rnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohf4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkh2d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Player" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tjni8")
+frame_progress = 0.00849915
