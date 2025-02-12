@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d34idi3tc1prb"]
+[gd_scene load_steps=9 format=3 uid="uid://d34idi3tc1prb"]
 
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/momonga_Dungeon (1).png" id="1_gff5g"]
+[ext_resource type="Script" path="res://TestScene/scripts/character_body_2d.gd" id="1_xthcq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q36ua"]
 atlas = ExtResource("1_gff5g")
@@ -34,12 +35,22 @@ animations = [{
 "texture": SubResource("AtlasTexture_mkh2d")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 10.0
 }]
 
-[node name="Player" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7wml"]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(-1, -1)
+script = ExtResource("1_xthcq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tjni8")
-frame_progress = 0.00849915
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v7wml")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
