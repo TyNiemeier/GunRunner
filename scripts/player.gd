@@ -1,26 +1,43 @@
 extends CharacterBody2D
-class_name Player
+class_name player
 
-#Variables:
-var speed: int=10000
-var direction: Vector2 = Vector2.ZERO
-var isAttacking = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta) -> void:
-	#define direction
-	direction = Input.get_vector("p1_left","p1_right","p1_up","p1_down")
+const SPEED = 600.0
+@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+@export var playerId : int = 0
 
 func _physics_process(_delta):
-	if isAttacking == false:
-		velocity = direction * speed
-		move_and_slide()
-		if Input.is_action_pressed("sprint"):
-			speed = 150
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
+
+#put player id back in input.get_axis when setting up two player
+	var hDirection = Input.get_axis("p1_left", "p1_right")
+	if hDirection:
+		velocity.x = hDirection * SPEED
+		if hDirection < 0:
+			#left
+			sprite.play("walk")
+			sprite.flip_h = true
 		else:
-			speed = 100
+			#right
+			sprite.play("walk")
+			sprite.flip_h = false
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+
+	var vDirection = Input.get_axis("p1_up", "p1_down")
+	if vDirection:
+		velocity.y = vDirection * SPEED
+		if vDirection < 0:
+			#Up
+			sprite.play("walk")
+		else:
+			#down
+			sprite.play("walk")
+	else:
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+
+	move_and_slide()

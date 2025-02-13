@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d34idi3tc1prb"]
+[gd_scene load_steps=9 format=3 uid="uid://d34idi3tc1prb"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_5o80v"]
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/momonga_Dungeon (1).png" id="1_gff5g"]
-[ext_resource type="Script" path="res://TestScene/scripts/character_body_2d.gd" id="1_xthcq"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_m4slr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q36ua"]
 atlas = ExtResource("1_gff5g")
@@ -22,6 +21,11 @@ region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tjni8"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q36ua")
@@ -38,28 +42,21 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 10.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7wml"]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
-script = ExtResource("1_xthcq")
+script = ExtResource("1_m4slr")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_5o80v")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.998571, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
 animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_v7wml")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v7wml")

@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://br2v7w45amchx"]
+[gd_scene load_steps=3 format=3 uid="uid://br2v7w45amchx"]
 
 [ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="1_84kh8"]
+[ext_resource type="Texture2D" uid="uid://35uun4op55wb" path="res://assets/tilesets/RF_Catacombs_v1.0/spike_3.png" id="2_42tnd"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_84kh8")]
 position = Vector2(-1, -14)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(1, 14)
+[node name="Camera2D2" type="Camera2D" parent="."]
+
+[node name="Spike3" type="Sprite2D" parent="."]
+position = Vector2(-138, -48)
+scale = Vector2(1.23606, -3.66369)
+texture = ExtResource("2_42tnd")
