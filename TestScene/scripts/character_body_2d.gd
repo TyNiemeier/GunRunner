@@ -11,13 +11,19 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
+#Mason Here. I repurposed this code from Lemke's test scene to be possibly used for the player movement since you weren't here.
+#To revert the code, remove the H.flip lines, and change the sprite,play("----") back to the direction in the comment above them.
 	var hDirection = Input.get_axis("p%s_left" % playerId, "p%s_right" % playerId)
 	if hDirection:
 		velocity.x = hDirection * SPEED
 		if hDirection < 0:
-			sprite.play("left")
+			#left
+			sprite.play("walk")
+			sprite.flip_h = true
 		else:
-			sprite.play("right")
+			#right
+			sprite.play("walk")
+			sprite.flip_h = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -26,9 +32,11 @@ func _physics_process(_delta):
 	if vDirection:
 		velocity.y = vDirection * SPEED
 		if vDirection < 0:
-			sprite.play("up")
+			#Up
+			sprite.play("walk")
 		else:
-			sprite.play("down")
+			#down
+			sprite.play("walk")
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
