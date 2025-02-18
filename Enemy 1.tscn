@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlj48f1ewavae"]
+[gd_scene load_steps=14 format=3 uid="uid://dlj48f1ewavae"]
 
+[ext_resource type="Script" path="res://enemy_1.gd" id="1_0yvmx"]
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/momonga_Dungeon (1).png" id="1_k8pen"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4skb"]
@@ -80,6 +81,7 @@ radius = 191.669
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(789, 471)
+script = ExtResource("1_0yvmx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.6875, 2.6875)
