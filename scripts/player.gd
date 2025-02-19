@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name player
 
-const SPEED = 600.0
+const SPEED = 100
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @export var playerId : int = 0
 enum Directions {UP, DOWN, LEFT, RIGHT, RIGHTUP, LEFTUP, RIGHTDOWN, LEFTDOWN}
@@ -21,16 +21,16 @@ func _physics_process(_delta):
 
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	if direction.x < 0:
-		sprite.play("move_left")
+		sprite.play("p1_spearWalkUpLeft")
 		facing = Directions.LEFT
 	elif direction.x > 0:
-		sprite.play("move_right")
+		sprite.play("p1_spearWalkUpRight")
 		facing = Directions.RIGHT
 	elif direction.y > 0:
-		sprite.play("move_down")
+		sprite.play("p1_spearWalkDown")
 		facing = Directions.DOWN
 	elif direction.y < 0:
-		sprite.play("move_up")
+		sprite.play("p1_spearWalkUp")
 		facing = Directions.UP
 	elif direction.x == 0 && direction.y == 0:
 		# Player is idle, check facing direction and choose appropriate idle animation

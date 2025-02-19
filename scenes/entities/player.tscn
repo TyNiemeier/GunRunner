@@ -4069,7 +4069,7 @@ script = ExtResource("1_m4slr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_idleDown"
+animation = &"p1_spearWalkDown"
 autoplay = "p1_idleDown"
 
 [node name="Camera2D" type="Camera2D" parent="."]
