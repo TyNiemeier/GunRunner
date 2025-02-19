@@ -7,9 +7,11 @@ const SPEED = 600.0
 enum Directions {UP, DOWN, LEFT, RIGHT, RIGHTUP, LEFTUP, RIGHTDOWN, LEFTDOWN}
 var facing : Directions = Directions.DOWN
 var direction: Vector2 = Vector2.ZERO
+
+
+
+
 func _physics_process(_delta):
-
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if Input.is_action_just_pressed("quit"):
@@ -40,6 +42,7 @@ func _physics_process(_delta):
 			sprite.play("idle_down")
 		elif facing == Directions.UP:
 			sprite.play("idle_up")
+	velocity = direction * SPEED
 
 #put player id back in input.get_axis when setting up two player
 	# var hDirection = Input.get_axis("p1_left", "p1_right")
