@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://mrdr2l0p61gp" path="res://TestScene/textures/buttonTexture2.tres" id="2_i0yjq"]
 [ext_resource type="Script" path="res://TestScene/scripts/buttonPressTest.gd" id="2_vc7d3"]
 [ext_resource type="Texture2D" uid="uid://detrtffyvjwss" path="res://TestScene/assets/monster_raptor2.png" id="3_pn3ca"]
-[ext_resource type="Script" path="res://TestScene/scripts/character_body_2d.gd" id="3_wdjgu"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_wdjgu"]
 [ext_resource type="Texture2D" uid="uid://c25byj3dsynob" path="res://TestScene/textures/buttonTexture4.tres" id="5_jx8qi"]
 [ext_resource type="Texture2D" uid="uid://cgnc8uulr8fo8" path="res://TestScene/textures/buttonTexture5.tres" id="6_stdkr"]
 [ext_resource type="Texture2D" uid="uid://cl8tarjpalyvf" path="res://TestScene/assets/monster_raptor1.png" id="10_h721g"]
@@ -2012,7 +2012,6 @@ position = Vector2(-334, 1)
 scale = Vector2(2, 2)
 motion_mode = 1
 script = ExtResource("3_wdjgu")
-playerId = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player1"]
 position = Vector2(1, -12)
