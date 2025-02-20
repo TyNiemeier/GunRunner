@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtj6cnwn1j2ij"]
+
+[ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/momonga_Dungeon (1).png" id="1_eqr7f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3axv"]
+atlas = ExtResource("1_eqr7f")
+region = Rect2(271, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hthr"]
+atlas = ExtResource("1_eqr7f")
+region = Rect2(303, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3scbd"]
+atlas = ExtResource("1_eqr7f")
+region = Rect2(335, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxppl"]
+atlas = ExtResource("1_eqr7f")
+region = Rect2(367, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4obj"]
+atlas = ExtResource("1_eqr7f")
+region = Rect2(271, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04kj2"]
+atlas = ExtResource("1_eqr7f")
+region = Rect2(303, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pilri"]
+atlas = ExtResource("1_eqr7f")
+region = Rect2(335, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkeaw"]
+atlas = ExtResource("1_eqr7f")
+region = Rect2(367, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bfhi5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3axv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hthr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3scbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxppl")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4obj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04kj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pilri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkeaw")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r0gh2"]
+radius = 3.0
+height = 14.0
+
+[node name="Enemy2" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bfhi5")
+animation = &"Idle"
+frame_progress = 0.671276
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_r0gh2")
+one_way_collision_margin = 0.0
