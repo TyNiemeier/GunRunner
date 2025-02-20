@@ -4065,6 +4065,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
 script = ExtResource("1_m4slr")
+playerId = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.999, 1)
@@ -4078,3 +4079,7 @@ zoom = Vector2(5, 5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_v7wml")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

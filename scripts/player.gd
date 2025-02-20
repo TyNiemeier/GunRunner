@@ -1,15 +1,15 @@
 extends CharacterBody2D
 class_name player
 
-const SPEED = 600.0
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @export var playerId : int = 0
 enum Directions {UP, DOWN, LEFT, RIGHT, RIGHTUP, LEFTUP, RIGHTDOWN, LEFTDOWN}
 var facing : Directions = Directions.DOWN
 var direction: Vector2 = Vector2.ZERO
-
-
-
+var SPEED: int = 150.0
+var dash_speed = 350.0
+var collision = true
+var timer
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -43,6 +43,19 @@ func _physics_process(_delta):
 		elif facing == Directions.UP:
 			sprite.play("idle_up")
 	velocity = direction * SPEED
+	if Input.is_action_pressed("dash"):
+		if Input.is_action_just_pressed("dash"):
+			timer.start()
+		collision = false
+		sprite.play("p1_spearDashDownRight")
+		velocity = direction * dash_speed
+	else:
+		velocity = direction * SPEED
+		collision = true
+		
+		
+	
+	
 
 #put player id back in input.get_axis when setting up two player
 	# var hDirection = Input.get_axis("p1_left", "p1_right")
