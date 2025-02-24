@@ -4065,7 +4065,6 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
 script = ExtResource("1_m4slr")
-playerId = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.999, 1)
@@ -4080,6 +4079,12 @@ zoom = Vector2(5, 5)
 visible = false
 shape = SubResource("RectangleShape2D_v7wml")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.4
 one_shot = true
+
+[node name="DashCoolDown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
+[connection signal="timeout" from="DashCoolDown" to="." method="_on_dash_cool_down_timeout"]

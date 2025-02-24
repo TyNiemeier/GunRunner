@@ -3,13 +3,31 @@ class_name player
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @export var playerId : int = 0
+@onready var dash_duration_timer = $DashDuration
+@onready var dash_cool_down_timer = $DashCoolDown
 enum Directions {UP, DOWN, LEFT, RIGHT, RIGHTUP, LEFTUP, RIGHTDOWN, LEFTDOWN}
 var facing : Directions = Directions.DOWN
 var direction: Vector2 = Vector2.ZERO
 var SPEED: int = 150.0
+var is_dashing = false
 var dash_speed = 350.0
+var can_dash = true
 var collision = true
-var timer
+
+func dash():
+	if (Input.is_action_just_pressed("dash") and can_dash):
+		print("dash pressed")
+		is_dashing = true
+		can_dash = false
+		dash_duration_timer.start()
+		dash_cool_down_timer.start()
+	if is_dashing:
+		collision = false
+func _on_dash_duration_timeout():
+	is_dashing = false
+	collision = true
+func _on_dash_cool_down_timeout():
+	can_dash = true
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -42,16 +60,12 @@ func _physics_process(_delta):
 			sprite.play("idle_down")
 		elif facing == Directions.UP:
 			sprite.play("idle_up")
-	velocity = direction * SPEED
-	if Input.is_action_pressed("dash"):
-		if Input.is_action_just_pressed("dash"):
-			timer.start()
-		collision = false
-		sprite.play("p1_spearDashDownRight")
+	if is_dashing:
 		velocity = direction * dash_speed
 	else:
 		velocity = direction * SPEED
-		collision = true
+	
+
 		
 		
 	
@@ -88,3 +102,4 @@ func _physics_process(_delta):
 	# 	velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
+	dash()
