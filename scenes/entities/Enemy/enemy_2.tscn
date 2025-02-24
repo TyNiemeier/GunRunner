@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtj6cnwn1j2ij"]
+[gd_scene load_steps=14 format=3 uid="uid://dtj6cnwn1j2ij"]
 
-[ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/momonga_Dungeon (1).png" id="1_eqr7f"]
+[ext_resource type="Script" path="res://scripts/enemy_2.gd" id="1_54j25"]
+[ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/other/momonga_Dungeon (1).png" id="1_eqr7f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3axv"]
 atlas = ExtResource("1_eqr7f")
@@ -75,15 +76,30 @@ animations = [{
 radius = 3.0
 height = 14.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovjw4"]
+radius = 101.119
+
 [node name="Enemy2" type="CharacterBody2D"]
+script = ExtResource("1_54j25")
+speed = 1
+health = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bfhi5")
 animation = &"Idle"
-frame_progress = 0.671276
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 16)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_r0gh2")
 one_way_collision_margin = 0.0
+
+[node name="detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_ovjw4")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_dectection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
