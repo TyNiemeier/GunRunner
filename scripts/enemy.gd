@@ -20,7 +20,9 @@ func _physics_process(delta):
 			position += (Player.position - position) / speed
 			sprite.play("Moving")
 			if Player.position < position:
-				sprite.filp_h = true
+				sprite.flip_h = true
+			if Player.position > position:
+				sprite.flip_h = false
 		else:
 			sprite.play("Idle")
 
