@@ -4075,3 +4075,5 @@ tile_set = SubResource("TileSet_3iu38")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMapLayer2"]
 tile_set = SubResource("TileSet_q6drf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
