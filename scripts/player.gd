@@ -12,6 +12,22 @@ var SPEED: int = 150
 var currentWeapon = 0
 var isAttacking = false
 
+
+
+func _set_animation():
+	if isSprinting:
+		if facing == Directions.LEFT:
+			sprite.play("p1_gunRunDownLeft")
+		elif facing == Directions.RIGHT:
+			sprite.play("p1_gunRunDownRight")
+		elif facing == Directions.DOWN:
+			sprite.play("p1_gunRunDown")
+		elif facing == Directions.UP:
+			sprite.play("p1_gunRunUp")
+
+
+
+
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -81,18 +97,18 @@ func _physics_process(_delta):
 		sprite.play("p1_gunWalkUp")
 		facing = Directions.UP
 	#Sprint with spear Animation
-	elif direction.x < 0 && isSprinting == true && currentWeapon == 1 && isAttacking == false:
-		sprite.play("p1_gunRunDownLeft")
-		facing = Directions.LEFT
-	elif direction.x > 0 && isSprinting == true && currentWeapon == 1 && isAttacking == false:
-		sprite.play("p1_gunRunDownRight")
-		facing = Directions.RIGHT
-	elif direction.y > 0 && isSprinting == true && currentWeapon == 1 && isAttacking == false:
-		sprite.play("p1_gunRunDown")
-		facing = Directions.DOWN
-	elif direction.y < 0 && isSprinting == true && currentWeapon == 1 && isAttacking == false:
-		sprite.play("p1_gunRunUp")
-		facing = Directions.UP
+	# elif direction.x < 0 && isSprinting == true && currentWeapon == 1 && isAttacking == false:
+	# 	sprite.play("p1_gunRunDownLeft")
+	# 	facing = Directions.LEFT
+	# elif direction.x > 0 && isSprinting == true && currentWeapon == 1 && isAttacking == false:
+	# 	sprite.play("p1_gunRunDownRight")
+	# 	facing = Directions.RIGHT
+	# elif direction.y > 0 && isSprinting == true && currentWeapon == 1 && isAttacking == false:
+	# 	sprite.play("p1_gunRunDown")
+	# 	facing = Directions.DOWN
+	# elif direction.y < 0 && isSprinting == true && currentWeapon == 1 && isAttacking == false:
+	# 	sprite.play("p1_gunRunUp")
+	# 	facing = Directions.UP
 	#idle with spear Animation
 	elif direction.x == 0 && direction.y == 0 && currentWeapon == 1 && isAttacking == false:
 		# Player is idle, check facing direction and choose appropriate idle animation
@@ -111,8 +127,11 @@ func _physics_process(_delta):
 	else:
 		SPEED = 150
 		isSprinting = false
-
-
+	if Input.is_action_pressed("p1_l1"):
+		print("boom")
+		isAttacking = true
+		if facing == Directions.DOWN && isAttacking == true:
+			sprite.play("p1_spearDown")
 
 
 
