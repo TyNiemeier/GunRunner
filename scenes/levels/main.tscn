@@ -1556,6 +1556,7 @@ texture = ExtResource("1_m3oxv")
 16:12/0 = 0
 30:12/0 = 0
 31:12/0 = 0
+31:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.25, 8, 2.125, 8, 8, -8, 8)
 32:12/0 = 0
 33:12/0 = 0
 34:12/0 = 0
@@ -2899,6 +2900,7 @@ texture = ExtResource("4_24p5n")
 5:20/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_3iu38"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_12hbp")
 sources/1 = SubResource("TileSetAtlasSource_ddt35")
 sources/2 = SubResource("TileSetAtlasSource_qfiwc")
@@ -4075,5 +4077,3 @@ tile_set = SubResource("TileSet_3iu38")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMapLayer2"]
 tile_set = SubResource("TileSet_q6drf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
