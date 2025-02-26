@@ -3689,12 +3689,13 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
 script = ExtResource("1_m4slr")
+playerId = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_spearDown"
-frame_progress = 0.897681
+animation = &"p1_spearRunDownRight"
+frame_progress = 0.107442
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)

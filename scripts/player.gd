@@ -16,14 +16,17 @@ var isAttacking = false
 
 func _set_animation():
 	if isSprinting:
-		if facing == Directions.LEFT:
-			sprite.play("p1_gunRunDownLeft")
-		elif facing == Directions.RIGHT:
-			sprite.play("p1_gunRunDownRight")
-		elif facing == Directions.DOWN:
-			sprite.play("p1_gunRunDown")
-		elif facing == Directions.UP:
-			sprite.play("p1_gunRunUp")
+		if sprite.frame > 0:
+			if facing == Directions.LEFT:
+				if (sprite.animation != "p1_gunRunDownLeft"):
+					sprite.play("p1_gunRunDownLeft")
+			elif facing == Directions.RIGHT:
+				sprite.play("p1_gunRunDownRight")
+			elif facing == Directions.DOWN:
+				if (sprite.animation != "p1_gunRunDown"):
+					sprite.play("p1_gunRunDown")
+			elif facing == Directions.UP:
+				sprite.play("p1_gunRunUp")
 
 
 
@@ -58,18 +61,18 @@ func _physics_process(_delta):
 		sprite.play("p1_spearWalkUp")
 		facing = Directions.UP
 	#Sprint with spear Animation
-	elif direction.x < 0 && isSprinting == true && currentWeapon == 0 && isAttacking == false:
-		sprite.play("p1_spearRunDownLeft")
-		facing = Directions.LEFT
-	elif direction.x > 0 && isSprinting == true && currentWeapon == 0 && isAttacking == false:
-		sprite.play("p1_spearRunDownRight")
-		facing = Directions.RIGHT
-	elif direction.y > 0 && isSprinting == true && currentWeapon == 0 && isAttacking == false:
-		sprite.play("p1_spearRunDown")
-		facing = Directions.DOWN
-	elif direction.y < 0 && isSprinting == true && currentWeapon == 0 && isAttacking == false:
-		sprite.play("p1_spearRunUp")
-		facing = Directions.UP
+	# elif direction.x < 0 && isSprinting == true && currentWeapon == 0 && isAttacking == false:
+	# 	sprite.play("p1_spearRunDownLeft")
+	# 	facing = Directions.LEFT
+	# elif direction.x > 0 && isSprinting == true && currentWeapon == 0 && isAttacking == false:
+	# 	sprite.play("p1_spearRunDownRight")
+	# 	facing = Directions.RIGHT
+	# elif direction.y > 0 && isSprinting == true && currentWeapon == 0 && isAttacking == false:
+	# 	sprite.play("p1_spearRunDown")
+	# 	facing = Directions.DOWN
+	# elif direction.y < 0 && isSprinting == true && currentWeapon == 0 && isAttacking == false:
+	# 	sprite.play("p1_spearRunUp")
+	# 	facing = Directions.UP
 	#idle with spear Animation
 	elif direction.x == 0 && direction.y == 0 && currentWeapon == 0 && isAttacking == false:
 		# Player is idle, check facing direction and choose appropriate idle animation
@@ -127,11 +130,11 @@ func _physics_process(_delta):
 	else:
 		SPEED = 150
 		isSprinting = false
-	if Input.is_action_pressed("p1_l1"):
-		print("boom")
-		isAttacking = true
-		if facing == Directions.DOWN && isAttacking == true:
-			sprite.play("p1_spearDown")
+	# if Input.is_action_pressed("p1_l1"):
+	# 	print("boom")
+	# 	isAttacking = true
+	# 	if facing == Directions.DOWN && isAttacking == true:
+	# 		sprite.play("p1_spearDown")
 
 
 
@@ -141,36 +144,5 @@ func _physics_process(_delta):
 
 
 
-
-
-#put player id back in input.get_axis when setting up two player
-	# var hDirection = Input.get_axis("p1_left", "p1_right")
-	# if hDirection:
-	# 	velocity.x = hDirection * SPEED
-	# 	if hDirection < 0:
-	# 		#left
-	# 		sprite.play("walk")
-	# 		sprite.flip_h = true
-	# 		facing = Directions.LEFT
-	# 	else:
-	# 		#right
-	# 		sprite.play("walk")
-	# 		sprite.flip_h = false
-	# 		facing = Directions.RIGHT
-	# else:
-	# 	velocity.x = move_toward(velocity.x, 0, SPEED)
-
-
-	# var vDirection = Input.get_axis("p1_up", "p1_down")
-	# if vDirection:
-	# 	velocity.y = vDirection * SPEED
-	# 	if vDirection < 0:
-	# 		#Up
-	# 		sprite.play("walk")
-	# 	else:
-	# 		#down
-	# 		sprite.play("walk")
-	# else:
-	# 	velocity.y = move_toward(velocity.y, 0, SPEED)
-
+	_set_animation()
 	move_and_slide()
