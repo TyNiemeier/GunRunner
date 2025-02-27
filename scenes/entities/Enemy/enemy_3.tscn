@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ckruignmo2wsb"]
+[gd_scene load_steps=15 format=3 uid="uid://ckruignmo2wsb"]
 
 [ext_resource type="Script" path="res://scripts/enemy_3.gd" id="1_7opxr"]
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/other/momonga_Dungeon (1).png" id="1_7xkjs"]
@@ -77,7 +77,9 @@ radius = 4.0
 height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u4tbn"]
-radius = 76.0
+radius = 142.506
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5b6s1"]
 
 [node name="Enemy3" type="CharacterBody2D"]
 script = ExtResource("1_7opxr")
@@ -97,6 +99,11 @@ shape = SubResource("CapsuleShape2D_cp5od")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_u4tbn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5b6s1")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_dectection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

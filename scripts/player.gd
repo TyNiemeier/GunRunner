@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name player
+class_name Player
 
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
@@ -66,7 +66,7 @@ func _physics_process(_delta):
 		elif facing == Directions.UP:
 			sprite.play("p1_idleSpearUp")
 	#Spear attack animations
-	
+
 	#Walk with gun
 	if direction.x < 0 && isSprinting == false && currentWeapon == 1 && isAttacking == false:
 		sprite.play("p1_gunWalkDownLeft")

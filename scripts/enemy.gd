@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name enemy
+class_name Enemy
 
 @export var speed = 50
 
@@ -7,7 +7,8 @@ class_name enemy
 var damage
 var dead = false
 var player_in_area = false
-var Player
+var player
+var direction
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 
@@ -17,29 +18,32 @@ func _ready():
 func _physics_process(delta):
 	if !dead:
 		if player_in_area:
-			position += (Player.position - position) / speed
+			direction = player.position - position
+			direction = direction.normalized() * speed
+			velocity = direction
 			sprite.play("Moving")
-			if Player.position < position:
+			if player.position < position:
 				sprite.flip_h = true
-			if Player.position > position:
+			if player.position > position:
 				sprite.flip_h = false
 		else:
+			velocity = Vector2.ZERO
 			sprite.play("Idle")
+	move_and_slide()
 
 	if dead:
 		$detection_area/CollisionShape2D.disabled = true
 
 func _on_dectection_area_body_entered(body):
-	if body is player:
+	if body is Player:
 		player_in_area = true
-		Player = body
+		player = body
 
 func _on_detection_area_body_exited(body):
-	if body is player:
+	if body is Player:
 		player_in_area = false
 
 func take_damage(damage):
-
 	health = health - damage
 	if health <= 0 and !dead:
 		death()
