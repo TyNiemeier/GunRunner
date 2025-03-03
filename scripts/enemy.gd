@@ -9,6 +9,7 @@ var dead = false
 var player_in_area = false
 var player
 var direction
+var in_range = false
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 
@@ -17,7 +18,7 @@ func _ready():
 
 func _physics_process(delta):
 	if !dead:
-		if player_in_area:
+		if player_in_area && in_range == false:
 			direction = player.position - position
 			direction = direction.normalized() * speed
 			velocity = direction

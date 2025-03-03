@@ -22,15 +22,22 @@ texture = ExtResource("2_42tnd")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_a5s2w")]
 position = Vector2(-114, 25)
+speed = null
+health = null
 
 [node name="Enemy2" parent="." instance=ExtResource("4_qaov4")]
 position = Vector2(-118, -44)
+health = null
 
 [node name="Enemy3" parent="." instance=ExtResource("5_x5ixv")]
-position = Vector2(-166, -2)
+position = Vector2(136, -72)
 
 [node name="Enemy4" parent="." instance=ExtResource("6_i13no")]
 position = Vector2(-115, -90)
+speed = null
+health = null
 
 [node name="Enemy1 alt" parent="." instance=ExtResource("7_n0alf")]
-position = Vector2(-110, -78)
+position = Vector2(-87, -144)
+speed = null
+health = null

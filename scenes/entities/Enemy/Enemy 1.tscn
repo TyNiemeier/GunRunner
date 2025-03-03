@@ -81,6 +81,8 @@ radius = 84.0
 
 [node name="Enemy1" type="CharacterBody2D"]
 script = ExtResource("1_0yvmx")
+speed = null
+health = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_podfv")

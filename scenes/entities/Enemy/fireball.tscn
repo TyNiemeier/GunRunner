@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://7r5dxqr3hy2g"]
+
+[ext_resource type="Texture2D" uid="uid://c1tsbiwv8pmwq" path="res://assets/sprites/FireballPixelart/PixelartFireBall-7.png" id="1_b50ol"]
+[ext_resource type="Texture2D" uid="uid://dape48rad1m2a" path="res://assets/sprites/FireballPixelart/PixelartFireBall-8.png" id="2_mw8ut"]
+[ext_resource type="Texture2D" uid="uid://cglv7md415uah" path="res://assets/sprites/FireballPixelart/PixelartFireBall-10.png" id="3_tneak"]
+[ext_resource type="Texture2D" uid="uid://ckyff01ikmmq2" path="res://assets/sprites/FireballPixelart/PixelartFireBall-11.png" id="4_e1mgj"]
+[ext_resource type="Texture2D" uid="uid://c4hkroax4l2df" path="res://assets/sprites/FireballPixelart/PixelartFireBall-12.png" id="5_1kd10"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tfevc"]
+radius = 21.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7dptu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b50ol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mw8ut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tneak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e1mgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1kd10")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="fireball" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tfevc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.76837e-07, 5.96046e-08)
+scale = Vector2(0.513514, 0.538462)
+sprite_frames = SubResource("SpriteFrames_7dptu")
+autoplay = "default"
+frame = 2
+frame_progress = 0.0805533
