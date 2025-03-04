@@ -20,7 +20,6 @@ var isAttacking = false
 
 func dash():
 	if (Input.is_action_just_pressed("dash") and can_dash):
-		print("dash pressed")
 		is_dashing = true
 		can_dash = false
 		dash_duration_timer.start()
