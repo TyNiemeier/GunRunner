@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://8cutsyyxijq6"]
 
-[ext_resource type="PackedScene" uid="uid://br2v7w45amchx" path="res://scenes/levels/room_1.tscn" id="1_3kybc"]
+[ext_resource type="PackedScene" uid="uid://cn1wsnuj8rqh8" path="res://scenes/levels/room_4.tscn" id="1_3tr3q"]
 [ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="1_isj1s"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Room 1" parent="." instance=ExtResource("1_3kybc")]
-position = Vector2(295, 182)
+[node name="Background" parent="." instance=ExtResource("1_3tr3q")]
+position = Vector2(570.272, 7.97991)
 
-[node name="Player" parent="Room 1" instance=ExtResource("1_isj1s")]
-position = Vector2(151, 188)
+[node name="Player" parent="Background" instance=ExtResource("1_isj1s")]
+position = Vector2(148.728, 212.02)
