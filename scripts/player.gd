@@ -4,11 +4,17 @@ class_name player
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @export var playerId : int = 0
+@onready var dash_duration_timer = $DashDuration
+@onready var dash_cool_down_timer = $DashCoolDown
 enum Directions {UP, DOWN, LEFT, RIGHT}
 var facing : Directions = Directions.DOWN
 var direction: Vector2 = Vector2.ZERO
+var SPEED: int = 150.0
+var is_dashing = false
+var dash_speed = 350.0
+var can_dash = true
+var collision = true
 var isSprinting = false
-var SPEED: int = 150
 var currentWeapon = 0
 var isAttacking = false
 var isIdle = false
@@ -132,6 +138,19 @@ func _set_animation():
 					sprite.play("p1_gunWalkUp")
 
 
+func dash():
+	if (Input.is_action_just_pressed("dash") and can_dash):
+		is_dashing = true
+		can_dash = false
+		dash_duration_timer.start()
+		dash_cool_down_timer.start()
+	if is_dashing:
+		collision = false
+func _on_dash_duration_timeout():
+	is_dashing = false
+	collision = true
+func _on_dash_cool_down_timeout():
+	can_dash = true
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -139,19 +158,14 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
-
 	if Input.is_action_just_pressed("p1_x"):
 		currentWeapon += 1
 	if currentWeapon >= 2:
 		currentWeapon = 0
 
-
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
-	velocity = direction * SPEED
-	
-	
-		
+	velocity = direction * SPEED	
 	#Sprint
 	if Input.is_action_pressed("p1_a") && isIdle == false:
 		SPEED = 200
@@ -159,25 +173,19 @@ func _physics_process(_delta):
 	else:
 		SPEED = 150
 		isSprinting = false
+	#Dash
+	if is_dashing:
+		velocity = direction * dash_speed
+	else:
+		velocity = direction * SPEED
+	#Attack
 	# if Input.is_action_pressed("p1_l1"):
 	# 	print("boom")
 	# 	isAttacking = true
 	# 	if facing == Directions.DOWN && isAttacking == true:
 	# 		sprite.play("p1_spearDown")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 	_set_direction()
 	_set_animation()
 	move_and_slide()
+	dash()
