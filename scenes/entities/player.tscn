@@ -3695,8 +3695,7 @@ script = ExtResource("1_m4slr")
 position = Vector2(1, 1)
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_gunRunDown"
-frame_progress = 0.422629
+animation = &"p1_gunWalkUpRight"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
