@@ -13,6 +13,7 @@ var currentWeapon = 0
 var isAttacking = false
 var isIdle = false
 var isWalking = false
+var isDashing = false
 #updates facing based on the direction
 #used for animations 
 func _set_direction():
@@ -107,7 +108,28 @@ func _set_animation():
 			elif facing == Directions.UP:
 				sprite.play("p1_gunWalkUp")
 
-
+	elif isDashing:
+			#dashing for spear
+			
+			if currentWeapon == 0:
+				if facing == Directions.LEFT:
+					sprite.play("p1_spearWalkDownLeft")
+				elif facing == Directions.RIGHT:
+					sprite.play("p1_spearWalkDownRight")
+				elif facing == Directions.DOWN:
+					sprite.play("p1_spearWalkDown")
+				elif facing == Directions.UP:
+					sprite.play("p1_spearWalkUp")
+			#dashing for gun
+			else:
+				if facing == Directions.LEFT:
+					sprite.play("p1_gunWalkDownLeft")
+				elif facing == Directions.RIGHT:
+					sprite.play("p1_gunWalkDownRight")
+				elif facing == Directions.DOWN:
+					sprite.play("p1_gunWalkDown")
+				elif facing == Directions.UP:
+					sprite.play("p1_gunWalkUp")
 
 
 
@@ -127,32 +149,7 @@ func _physics_process(_delta):
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
 	velocity = direction * SPEED
-	#Walk with spear Aniamtion
-	# if direction.x < 0 && isSprinting == false && currentWeapon == 0 && isAttacking == false:
-	# 	sprite.play("p1_spearWalkDownLeft")
-	# 	facing = Directions.LEFT
-	# elif direction.x > 0 && isSprinting == false && currentWeapon == 0 && isAttacking == false:
-	# 	sprite.play("p1_spearWalkDownRight")
-	# 	facing = Directions.RIGHT
-	# elif direction.y > 0 && isSprinting == false && currentWeapon == 0 && isAttacking == false:
-	# 	sprite.play("p1_spearWalkDown")
-	# 	facing = Directions.DOWN
-	# elif direction.y < 0 && isSprinting == false && currentWeapon == 0 && isAttacking == false:
-	# 	sprite.play("p1_spearWalkUp")
-	# 	facing = Directions.UP
-	# #Walk with gun
-	# if direction.x < 0 && isSprinting == false && currentWeapon == 1 && isAttacking == false:
-	# 	sprite.play("p1_gunWalkDownLeft")
-	# 	facing = Directions.LEFT
-	# elif direction.x > 0 && isSprinting == false && currentWeapon == 1 && isAttacking == false:
-	# 	sprite.play("p1_gunWalkDownRight")
-	# 	facing = Directions.RIGHT
-	# elif direction.y > 0 && isSprinting == false && currentWeapon == 1 && isAttacking == false:
-	# 	sprite.play("p1_gunWalkDown")
-	# 	facing = Directions.DOWN
-	# elif direction.y < 0 && isSprinting == false && currentWeapon == 1 && isAttacking == false:
-	# 	sprite.play("p1_gunWalkUp")
-	# 	facing = Directions.UP
+	
 	
 		
 	#Sprint
