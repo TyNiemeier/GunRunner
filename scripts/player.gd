@@ -9,10 +9,9 @@ class_name player
 enum Directions {UP, DOWN, LEFT, RIGHT}
 var facing : Directions = Directions.DOWN
 var direction: Vector2 = Vector2.ZERO
-var SPEED: int = 150.0
-var is_dashing = false
-var dash_speed = 350.0
-var can_dash = true
+var SPEED = 150.0
+var dashSpeed = 350.0
+var canDash = true
 var collision = true
 var isSprinting = false
 var currentWeapon = 0
@@ -40,6 +39,7 @@ func _set_direction():
 		isWalking = false
 	else:
 		isIdle = false
+
 #sets animations for sprinting idle walk dash, etc
 func _set_animation():
 	#changes sprinting 
@@ -119,38 +119,38 @@ func _set_animation():
 			
 			if currentWeapon == 0:
 				if facing == Directions.LEFT:
-					sprite.play("p1_spearWalkDownLeft")
+					sprite.play("p1_spearDashDownLeft")
 				elif facing == Directions.RIGHT:
-					sprite.play("p1_spearWalkDownRight")
+					sprite.play("p1_spearDashDownRight")
 				elif facing == Directions.DOWN:
-					sprite.play("p1_spearWalkDown")
+					sprite.play("p1_spearDashDown")
 				elif facing == Directions.UP:
-					sprite.play("p1_spearWalkUp")
+					sprite.play("p1_spearDashUp")
 			#dashing for gun
 			else:
 				if facing == Directions.LEFT:
-					sprite.play("p1_gunWalkDownLeft")
+					sprite.play("p1_gunDashDownLeft")
 				elif facing == Directions.RIGHT:
-					sprite.play("p1_gunWalkDownRight")
+					sprite.play("p1_gunDashDownRight")
 				elif facing == Directions.DOWN:
-					sprite.play("p1_gunWalkDown")
+					sprite.play("p1_gunDashDown")
 				elif facing == Directions.UP:
-					sprite.play("p1_gunWalkUp")
+					sprite.play("p1_gunDashUp")
 
-
+#ISWALKING IS OVERIDING THE SPRINT POSSIBLY REWRITE SETTING WALKING TO TRUE
 func dash():
-	if (Input.is_action_just_pressed("dash") and can_dash):
-		is_dashing = true
-		can_dash = false
+	if (Input.is_action_just_pressed("dash") and canDash):
+		isDashing = true
+		canDash = false
 		dash_duration_timer.start()
 		dash_cool_down_timer.start()
-	if is_dashing:
+	if isDashing:
 		collision = false
 func _on_dash_duration_timeout():
-	is_dashing = false
+	isDashing = false
 	collision = true
 func _on_dash_cool_down_timeout():
-	can_dash = true
+	canDash = true
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -174,8 +174,8 @@ func _physics_process(_delta):
 		SPEED = 150
 		isSprinting = false
 	#Dash
-	if is_dashing:
-		velocity = direction * dash_speed
+	if isDashing:
+		velocity = direction * dashSpeed
 	else:
 		velocity = direction * SPEED
 	#Attack
