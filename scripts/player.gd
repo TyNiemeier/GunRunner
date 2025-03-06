@@ -19,6 +19,7 @@ var currentWeapon = 0
 var isAttacking = false
 var isIdle = false
 var isWalking = false
+var isDropping = false
 
 #updates facing based on the direction
 #used for animations 
@@ -160,6 +161,12 @@ func _physics_process(_delta):
 	# 	isAttacking = true
 	# 	if facing == Directions.DOWN && isAttacking == true:
 	# 		sprite.play("p1_spearDown")
+	
+	#Dropping da bomb
+	if Input.is_action_pressed("Bomb"):
+		print ("it dropped")
+		isDropping = true
+		
 
 	_set_direction()
 	_set_animation()
