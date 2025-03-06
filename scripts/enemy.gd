@@ -30,7 +30,7 @@ func _physics_process(delta):
 		else:
 			velocity = Vector2.ZERO
 			sprite.play("Idle")
-	move_and_slide()
+	move_and_collide(velocity * delta)
 
 	if dead:
 		$detection_area/CollisionShape2D.disabled = true

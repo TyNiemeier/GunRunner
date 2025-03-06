@@ -3684,8 +3684,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7wml"]
-size = Vector2(14, 24)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_um5pu"]
+radius = 7.0
+height = 24.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
@@ -3702,7 +3703,7 @@ zoom = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_v7wml")
+shape = SubResource("CapsuleShape2D_um5pu")
 
 [node name="DashDuration" type="Timer" parent="."]
 wait_time = 0.4

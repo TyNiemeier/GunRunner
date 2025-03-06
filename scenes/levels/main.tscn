@@ -22,8 +22,6 @@ texture = ExtResource("2_42tnd")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_a5s2w")]
 position = Vector2(-114, 25)
-speed = 50
-health = 100
 
 [node name="Enemy2" parent="." instance=ExtResource("4_qaov4")]
 position = Vector2(-118, -44)
