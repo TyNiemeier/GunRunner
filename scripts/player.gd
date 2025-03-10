@@ -183,9 +183,15 @@ func _on_dash_duration_timeout():
 func _on_dash_cool_down_timeout():
 	canDash = true
 
+func _on_animated_sprite_2d_animation_finished():
+	if sprite.animation in ["p1_spearAttackDownLeft", "p1_spearAttackDownRight", "p1_spearAttackDown", "p1_spearAttackUp"]:
+		isAttacking = false
+
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	if isAttacking == false:
+		print("false")
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
@@ -193,7 +199,7 @@ func _physics_process(_delta):
 		currentWeapon += 1
 	if currentWeapon >= 2:
 		currentWeapon = 0
-
+	
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
 	velocity = direction * SPEED	
@@ -212,11 +218,13 @@ func _physics_process(_delta):
 	#Attack
 	if Input.is_action_pressed("p1_l1"):
 		isAttacking = true
-
-
-		
+		print("boom")
+	else:
+		isAttacking = false
 
 	_set_direction()
 	_set_animation()
 	move_and_slide()
 	dash()
+
+
