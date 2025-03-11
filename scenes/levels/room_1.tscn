@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://br2v7w45amchx"]
+[gd_scene load_steps=18 format=4 uid="uid://br2v7w45amchx"]
 
 [ext_resource type="Texture2D" uid="uid://x744p3vjeqc1" path="res://assets/tilesets/RF_Catacombs_v1.0/mainlevbuild.png" id="1_m3oxv"]
 [ext_resource type="Texture2D" uid="uid://bwjyj4t1h0bi1" path="res://assets/tilesets/RF_Catacombs_v1.0/decorative.png" id="1_nb8jf"]
+[ext_resource type="Texture2D" uid="uid://b2v8brl5e6nd2" path="res://TestScene/assets/RA_Ground_Tiles.png" id="3_8hjps"]
 [ext_resource type="Texture2D" uid="uid://bpp6fwh1mcvew" path="res://assets/tilesets/sewer_1.png" id="3_a6sxj"]
 [ext_resource type="Texture2D" uid="uid://bri3rxx4jycb3" path="res://assets/tilesets/cave.png" id="4_24p5n"]
 
@@ -1178,10 +1179,14 @@ texture = ExtResource("1_m3oxv")
 13:33/0 = 0
 14:33/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcsbe"]
+texture = ExtResource("3_8hjps")
+
 [sub_resource type="TileSet" id="TileSet_do67i"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ug0ff")
 sources/1 = SubResource("TileSetAtlasSource_d6ewa")
+sources/2 = SubResource("TileSetAtlasSource_rcsbe")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_12hbp"]
 texture = ExtResource("1_m3oxv")
