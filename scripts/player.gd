@@ -6,9 +6,10 @@ class_name player
 @export var playerId : int = 0
 @onready var dash_duration_timer = $DashDuration
 @onready var dash_cool_down_timer = $DashCoolDown
-enum Action {IDLE, WALK, SPRINT, DASH}
+enum Action {IDLE, WALK, SPRINT, DASH, ATTACK}
 enum Directions {UP, DOWN, LEFT, RIGHT}
 var facing : Directions = Directions.DOWN
+var action : Action = Action.IDLE
 var direction: Vector2 = Vector2.ZERO
 var SPEED = 150.0
 var dashSpeed = 350.0
@@ -24,7 +25,7 @@ var isDashing = false
 #used for animations 
 func _set_direction():
 	if isAttacking == false:
-		if isDashing == false:
+		if action == Action.DASH:
 			if direction.x < 0:
 				facing = Directions.LEFT
 				isWalking = true
@@ -47,20 +48,31 @@ func _set_direction():
 		isSprinting = false
 
 
+func _direction_suffix():
+	Directions.LEFT:
+		return "DownLeft"
+	Directions.RIGHT:
+		return "DownRight"
+	Directions.DOWN:
+		return "Down"
+	Directions.UP:
+		return "Up"	
+
 #sets animations for sprinting idle walk dash, etc
 func _set_animation():
 	#changes sprinting 
 	if isSprinting:
 		#sprinting for spear
 		if currentWeapon == 0:
-			if facing == Directions.LEFT:
-				sprite.play("p1_spearRunDownLeft")
-			elif facing == Directions.RIGHT:
-				sprite.play("p1_spearRunDownRight")
-			elif facing == Directions.DOWN:
-				sprite.play("p1_spearRunDown")
-			elif facing == Directions.UP:
-				sprite.play("p1_spearRunUp")
+			sprite.play("p1_spearRun" + _direction_suffix())
+			# if facing == Directions.LEFT:
+			# 	sprite.play("p1_spearRunDownLeft")
+			# elif facing == Directions.RIGHT:
+			# 	sprite.play("p1_spearRunDownRight")
+			# elif facing == Directions.DOWN:
+			# 	sprite.play("p1_spearRunDown")
+			# elif facing == Directions.UP:
+			# 	sprite.play("p1_spearRunUp")
 		#sprinting for gun
 		else:
 			if facing == Directions.LEFT:
@@ -144,7 +156,7 @@ func _set_animation():
 				elif facing == Directions.UP:
 					sprite.play("p1_gunDashUp")
 	
-	elif isAttacking:
+	if isAttacking:
 			#attack for spear
 
 			if currentWeapon == 0:
@@ -184,8 +196,9 @@ func _on_dash_cool_down_timeout():
 	canDash = true
 
 func _on_animated_sprite_2d_animation_finished():
-	if sprite.animation in ["p1_spearAttackDownLeft", "p1_spearAttackDownRight", "p1_spearAttackDown", "p1_spearAttackUp"]:
-		isAttacking = false
+	print(sprite.animation)
+	if sprite.animation == "p1_spearAttackDownLeft":
+		isAttacking = false	
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -216,11 +229,10 @@ func _physics_process(_delta):
 	else:
 		velocity = direction * SPEED
 	#Attack
-	if Input.is_action_pressed("p1_l1"):
+	if Input.is_action_just_pressed("p1_l1"):
 		isAttacking = true
 		print("boom")
-	else:
-		isAttacking = false
+
 
 	_set_direction()
 	_set_animation()

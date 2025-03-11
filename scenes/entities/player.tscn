@@ -3326,7 +3326,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fk4p5")
 }],
-"loop": true,
+"loop": false,
 "name": &"p1_spearAttackDown",
 "speed": 5.0
 }, {
@@ -3355,7 +3355,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d1fq2")
 }],
-"loop": true,
+"loop": false,
 "name": &"p1_spearAttackDownLeft",
 "speed": 5.0
 }, {
@@ -3384,7 +3384,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_buxs8")
 }],
-"loop": true,
+"loop": false,
 "name": &"p1_spearAttackDownRight",
 "speed": 5.0
 }, {
@@ -3413,7 +3413,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hvavd")
 }],
-"loop": true,
+"loop": false,
 "name": &"p1_spearAttackLeft",
 "speed": 5.0
 }, {
@@ -3442,7 +3442,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ottri")
 }],
-"loop": true,
+"loop": false,
 "name": &"p1_spearAttackRight",
 "speed": 5.0
 }, {
@@ -3471,7 +3471,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h1h87")
 }],
-"loop": true,
+"loop": false,
 "name": &"p1_spearAttackUp",
 "speed": 5.0
 }, {
@@ -4061,12 +4061,12 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
 script = ExtResource("1_m4slr")
+playerId = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_spearAttackDownLeft"
-frame_progress = 0.934306
+animation = &"p1_idleSpearUp"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
