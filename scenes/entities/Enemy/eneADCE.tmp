@@ -80,7 +80,7 @@ height = 14.0
 radius = 115.004
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5b6s1"]
-radius = 72.0
+radius = 61.0328
 
 [node name="Enemy3" type="CharacterBody2D"]
 script = ExtResource("1_7opxr")
@@ -106,6 +106,7 @@ shape = SubResource("CircleShape2D_u4tbn")
 shape = SubResource("CircleShape2D_5b6s1")
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 10.0
 
 [node name="Rotater" type="Node2D" parent="."]
 
