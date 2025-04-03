@@ -4066,7 +4066,8 @@ playerId = null
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_idleSpearUp"
+animation = &"p1_spearDashDownRight"
+frame_progress = 0.465916
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
