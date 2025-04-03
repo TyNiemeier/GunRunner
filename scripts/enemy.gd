@@ -4,7 +4,7 @@ class_name Enemy
 @export var speed = 50
 
 @export var health = 100
-var damage
+@export var damage = 15
 var dead = false
 var player_in_area = false
 var player
@@ -44,8 +44,8 @@ func _on_detection_area_body_exited(body):
 	if body is Player:
 		player_in_area = false
 
-func take_damage(damage):
-	health = health - damage
+func enemy_hit():
+	health = health
 	if health <= 0 and !dead:
 		death()
 

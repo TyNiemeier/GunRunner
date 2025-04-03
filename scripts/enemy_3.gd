@@ -4,7 +4,7 @@ const fireball_scene = preload("res://scenes/entities/Enemy/fireball.tscn")
 @onready var shoot_timer = $ShootTimer
 @onready var rotater = $Rotater
 
-const rotate_speed = 0
+const rotate_speed = 22.5
 const shooter_timer_wait_time = 1
 const spawn_point_count = 8
 const radius = 20

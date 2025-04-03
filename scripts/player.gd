@@ -19,6 +19,11 @@ var currentWeapon = 0
 var isAttacking = false
 var isIdle = false
 var isWalking = false
+var enemy_inattack_range = false
+var allow_damage = true
+var health = 100
+var take_damage
+var player_alive = true
 
 #updates facing based on the direction
 #used for animations 
@@ -165,3 +170,25 @@ func _physics_process(_delta):
 	_set_animation()
 	move_and_slide()
 	dash()
+
+
+func _on_player_hitbox_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		enemy_inattack_range = true
+		player_hit(body.damage)
+
+
+func _on_player_hitbox_body_exited(body: Node2D) -> void:
+	if body is Enemy or Projectile:
+		enemy_inattack_range = false
+
+func player_hit(take_damage):
+	if enemy_inattack_range and allow_damage:
+		health -= take_damage
+		allow_damage = false
+		$allow_damage.start()
+		print(health)
+
+
+func _on_allow_damage_timeout() -> void:
+	allow_damage = true # Replace with function body.
