@@ -1,3 +1,43 @@
-[gd_scene format=3 uid="uid://b57a47v8nvabp"]
+[gd_scene load_steps=9 format=3 uid="uid://b57a47v8nvabp"]
+
+[ext_resource type="Texture2D" uid="uid://cxd61ryypupas" path="res://assets/ui/GUI.png" id="1_wp23g"]
+[ext_resource type="Texture2D" uid="uid://d27jcrua273lm" path="res://assets/sprites/1-BOMB/2-Bomb On/1.png" id="2_8ymhc"]
+[ext_resource type="Texture2D" uid="uid://o10rmmjhri24" path="res://assets/ui/BombBarUnder.png" id="3_n2n53"]
+[ext_resource type="Texture2D" uid="uid://ch3jngnx454g0" path="res://assets/ui/BombBarOver.png" id="4_wqjtg"]
+[ext_resource type="Texture2D" uid="uid://beg5jg00n6nr3" path="res://assets/ui/BombBarProgress.png" id="5_4yp0v"]
+[ext_resource type="Texture2D" uid="uid://bf3h5gfsa7apl" path="res://assets/ui/HealthBarUnder.png" id="6_c61ok"]
+[ext_resource type="Texture2D" uid="uid://dt70vpe2vuwgl" path="res://assets/ui/HealthBarOver.png" id="7_j334m"]
+[ext_resource type="Texture2D" uid="uid://dang0xgn8mxuc" path="res://assets/ui/HealthBarProgress.png" id="8_ei8jk"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80.75, 81)
+scale = Vector2(3.40217, 3.45652)
+texture = ExtResource("1_wp23g")
+region_enabled = true
+region_rect = Rect2(1.5, 33, 45, 45)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0.0734787, -4.62894)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8ymhc")
+
+[node name="BombCoolDown" type="TextureProgressBar" parent="."]
+offset_top = 159.0
+offset_right = 56.0
+offset_bottom = 169.0
+scale = Vector2(3, 3)
+texture_under = ExtResource("3_n2n53")
+texture_over = ExtResource("4_wqjtg")
+texture_progress = ExtResource("5_4yp0v")
+
+[node name="Health" type="TextureProgressBar" parent="."]
+offset_left = 169.0
+offset_top = 17.0
+offset_right = 229.0
+offset_bottom = 30.0
+scale = Vector2(3, 3)
+texture_under = ExtResource("6_c61ok")
+texture_over = ExtResource("7_j334m")
+texture_progress = ExtResource("8_ei8jk")

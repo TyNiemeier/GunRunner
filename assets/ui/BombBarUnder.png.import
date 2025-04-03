@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxd61ryypupas"
-path="res://.godot/imported/GUI.png-3e4eee6046fe22127d1ac6bb3b82f897.ctex"
+uid="uid://o10rmmjhri24"
+path="res://.godot/imported/BombBarUnder.png-b2f2cdb785b8d346b82dc98d2e3ae266.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/GUI.png"
-dest_files=["res://.godot/imported/GUI.png-3e4eee6046fe22127d1ac6bb3b82f897.ctex"]
+source_file="res://assets/ui/BombBarUnder.png"
+dest_files=["res://.godot/imported/BombBarUnder.png-b2f2cdb785b8d346b82dc98d2e3ae266.ctex"]
 
 [params]
 
