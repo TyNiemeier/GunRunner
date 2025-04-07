@@ -173,14 +173,22 @@ func _physics_process(_delta):
 
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
-	if body is Enemy:
+	if body is Enemy or body is Projectile:
 		enemy_inattack_range = true
-		player_hit(body.damage)
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
+	if body is Projectile:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
+		body.queue_free()
+	
 
 
 func _on_player_hitbox_body_exited(body: Node2D) -> void:
-	if body is Enemy or Projectile:
+	if body is Enemy:
 		enemy_inattack_range = false
+		$PlayerHitbox/Hitboxtimer.stop()
 
 func player_hit(take_damage):
 	if enemy_inattack_range and allow_damage:
@@ -192,3 +200,7 @@ func player_hit(take_damage):
 
 func _on_allow_damage_timeout() -> void:
 	allow_damage = true # Replace with function body.
+
+
+func _on_hitboxtimer_timeout() -> void:
+	player_hit(take_damage)

@@ -3,6 +3,7 @@ extends Enemy
 const fireball_scene = preload("res://scenes/entities/Enemy/fireball.tscn")
 @onready var shoot_timer = $ShootTimer
 @onready var rotater = $Rotater
+var damage = 10
 
 const rotate_speed = 22.5
 const shooter_timer_wait_time = 1

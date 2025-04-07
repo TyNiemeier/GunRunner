@@ -2,9 +2,8 @@ extends CharacterBody2D
 class_name Enemy
 
 @export var speed = 50
-
 @export var health = 100
-@export var damage = 15
+
 var dead = false
 var player_in_area = false
 var player
