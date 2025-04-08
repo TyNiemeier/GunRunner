@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o10rmmjhri24"
-path="res://.godot/imported/BombBarUnder.png-b2f2cdb785b8d346b82dc98d2e3ae266.ctex"
+uid="uid://bmkbe0vd0ffx3"
+path="res://.godot/imported/EmptyHealthBar.png-4627b5d6e99fa5baec7410e08a5403ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/BombBarUnder.png"
-dest_files=["res://.godot/imported/BombBarUnder.png-b2f2cdb785b8d346b82dc98d2e3ae266.ctex"]
+source_file="res://assets/ui/CrimsonFantasyGUI/EmptyHealthBar.png"
+dest_files=["res://.godot/imported/EmptyHealthBar.png-4627b5d6e99fa5baec7410e08a5403ed.ctex"]
 
 [params]
 
