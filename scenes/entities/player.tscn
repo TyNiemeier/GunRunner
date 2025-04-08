@@ -1,4 +1,4 @@
-[gd_scene load_steps=557 format=3 uid="uid://d34idi3tc1prb"]
+[gd_scene load_steps=545 format=3 uid="uid://d34idi3tc1prb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_m4slr"]
 [ext_resource type="Texture2D" uid="uid://bep1k2t6ep7cj" path="res://assets/sprites/Female player/Run/Gun/Run_Gun.png" id="2_hfkws"]
@@ -123,38 +123,6 @@ region = Rect2(288, 0, 48, 64)
 atlas = ExtResource("8_hvjjq")
 region = Rect2(336, 0, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rlrph"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(0, 320, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gdlef"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(48, 320, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r6agx"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(96, 320, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uclnf"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(144, 320, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l6ta7"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(192, 320, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sxs0f"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(240, 320, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ij630"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(288, 320, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ba7ej"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(336, 320, 48, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_44117"]
 atlas = ExtResource("9_3xb5r")
 region = Rect2(0, 384, 48, 64)
@@ -163,29 +131,13 @@ region = Rect2(0, 384, 48, 64)
 atlas = ExtResource("9_3xb5r")
 region = Rect2(48, 384, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rwcrv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlrph"]
 atlas = ExtResource("9_3xb5r")
-region = Rect2(96, 384, 48, 64)
+region = Rect2(0, 320, 48, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pw3po"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdlef"]
 atlas = ExtResource("9_3xb5r")
-region = Rect2(144, 384, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pip7i"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(192, 384, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1mvd8"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(240, 384, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ir5o1"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(288, 384, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bhpt0"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(336, 384, 48, 64)
+region = Rect2(48, 320, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5g45"]
 atlas = ExtResource("9_3xb5r")
@@ -2166,7 +2118,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_46aeq")
 }],
-"loop": true,
+"loop": false,
 "name": &"p1_gunAttackDown",
 "speed": 5.0
 }, {
@@ -2195,7 +2147,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_87tpu")
 }],
-"loop": true,
+"loop": false,
 "name": &"p1_gunAttackDownLeft",
 "speed": 5.0
 }, {
@@ -2230,60 +2182,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rlrph")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gdlef")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r6agx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uclnf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l6ta7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sxs0f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ij630")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ba7ej")
-}],
-"loop": true,
-"name": &"p1_gunAttackDownRight!",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_44117")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s1srt")
+}],
+"loop": false,
+"name": &"p1_gunAttackDownRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlrph")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rwcrv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pw3po")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pip7i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1mvd8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ir5o1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bhpt0")
+"texture": SubResource("AtlasTexture_gdlef")
 }],
 "loop": true,
-"name": &"p1_gunAttackDownRight_1",
+"name": &"p1_gunAttackDownRight!",
 "speed": 5.0
 }, {
 "frames": [{
@@ -2311,7 +2227,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_os2bj")
 }],
-"loop": true,
+"loop": false,
 "name": &"p1_gunAttackUp",
 "speed": 5.0
 }, {
@@ -4066,7 +3982,7 @@ playerId = null
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_gunAttackDownLeft"
+animation = &"p1_gunAttackDown"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)

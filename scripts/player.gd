@@ -6,7 +6,7 @@ class_name player
 @export var playerId : int = 0
 @onready var dash_duration_timer = $DashDuration
 @onready var dash_cool_down_timer = $DashCoolDown
-enum Action {IDLE, WALK, SPRINT, DASH, ATTACK}
+# enum Action {IDLE, WALK, SPRINT, DASH, ATTACK}
 enum Directions {UP, DOWN, LEFT, RIGHT}
 var facing : Directions = Directions.DOWN
 var direction: Vector2 = Vector2.ZERO
@@ -17,7 +17,7 @@ var collision = true
 var isSprinting = false
 var currentWeapon = 0
 
-var action : Action = Action.IDLE
+# var action : Action = Action.IDLE
 
 
 var isAttacking = false
@@ -117,7 +117,7 @@ func _set_animation():
 #ISWALKING IS OVERIDING THE SPRINT POSSIBLY REWRITE SETTING WALKING TO TRUE
 func dash():
 	if (Input.is_action_just_pressed("dash") and canDash):
-		action = Action.DASH
+		isDashing = true
 		canDash = false
 		dash_duration_timer.start()
 		dash_cool_down_timer.start()
@@ -132,7 +132,7 @@ func _on_dash_cool_down_timeout():
 
 func _on_animated_sprite_2d_animation_finished():
 	print(sprite.animation)
-	if sprite.animation == "p1_spearAttack" + _direction_suffix():
+	if sprite.animation == "p1_spearAttack" or "p1_gunAttack" + _direction_suffix():
 		isAttacking = false	
 
 func _physics_process(_delta):
@@ -152,7 +152,7 @@ func _physics_process(_delta):
 	#Sprint
 	if Input.is_action_pressed("p1_a"):
 		SPEED = 200
-		action = Action.SPRINT
+		isSprinting = true
 		#print(action)
 	else:
 		SPEED = 150
