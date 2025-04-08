@@ -2,9 +2,8 @@ extends CharacterBody2D
 class_name Enemy
 
 @export var speed = 50
-
 @export var health = 100
-var damage
+
 var dead = false
 var player_in_area = false
 var player
@@ -31,6 +30,7 @@ func _physics_process(delta):
 			velocity = Vector2.ZERO
 			sprite.play("Idle")
 	move_and_collide(velocity * delta)
+	
 
 	if dead:
 		$detection_area/CollisionShape2D.disabled = true
@@ -44,8 +44,8 @@ func _on_detection_area_body_exited(body):
 	if body is Player:
 		player_in_area = false
 
-func take_damage(damage):
-	health = health - damage
+func enemy_hit():
+	health = health
 	if health <= 0 and !dead:
 		death()
 
