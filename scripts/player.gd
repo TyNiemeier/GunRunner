@@ -26,7 +26,7 @@ var take_damage
 var player_alive = true
 
 #updates facing based on the direction
-#used for animations 
+#used for animations
 func _set_direction():
 	if direction.x < 0:
 		facing = Directions.LEFT
@@ -47,7 +47,7 @@ func _set_direction():
 		isIdle = false
 #sets animations for sprinting idle walk dash, etc
 func _set_animation():
-	#changes sprinting 
+	#changes sprinting
 	if isSprinting:
 		#sprinting for spear
 		if currentWeapon == 0:
@@ -74,7 +74,7 @@ func _set_animation():
 	#changes idle animations
 	elif isIdle:
 		#idle for spear
-		
+
 		if currentWeapon == 0:
 			if facing == Directions.LEFT:
 				sprite.play("p1_idleSpearDownLeft")
@@ -94,11 +94,11 @@ func _set_animation():
 				sprite.play("p1_idleGunDown")
 			elif facing == Directions.UP:
 				sprite.play("p1_idleGunUp")
-	
+
 
 	elif isWalking:
 		#walking for spear
-		
+
 		if currentWeapon == 0:
 			if facing == Directions.LEFT:
 				sprite.play("p1_spearWalkDownLeft")
@@ -146,7 +146,7 @@ func _physics_process(_delta):
 
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
-	velocity = direction * SPEED	
+	velocity = direction * SPEED
 	#Sprint
 	if Input.is_action_pressed("p1_a") && isIdle == false:
 		SPEED = 200
@@ -166,30 +166,37 @@ func _physics_process(_delta):
 	# 	if facing == Directions.DOWN && isAttacking == true:
 	# 		sprite.play("p1_spearDown")
 
+	#health doesnt go above health
+	if health > 100:
+		health = 100
+		print(health)
+
 	_set_direction()
 	_set_animation()
 	move_and_slide()
 	dash()
 
 
+#enemy or projectile hits player
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		enemy_inattack_range = true
 		take_damage = body.damage
 		$PlayerHitbox/Hitboxtimer.start()
 	if body is Projectile:
-		enemy_inattack_range = true
-		health -= body.damage
+		if is_dashing == false:
+			enemy_inattack_range = true
+			health -= body.damage
+			print(health)
 		body.queue_free()
-		print(health)
-	
 
-
+#enemy leaves player's hitbox
 func _on_player_hitbox_body_exited(body: Node2D) -> void:
 	if body is Enemy:
 		enemy_inattack_range = false
 		$PlayerHitbox/Hitboxtimer.stop()
 
+#player takes damage
 func player_hit(take_damage):
 	if enemy_inattack_range and allow_damage:
 		health -= take_damage
@@ -197,10 +204,19 @@ func player_hit(take_damage):
 		$allow_damage.start()
 		print(health)
 
-
+#invisable / how long it takes until player is allowed to get damage
 func _on_allow_damage_timeout() -> void:
 	allow_damage = true # Replace with function body.
 
-
+#how fast they attack
 func _on_hitboxtimer_timeout() -> void:
-	player_hit(take_damage)
+	if is_dashing == false:
+		player_hit(take_damage)
+
+#player picks up health item
+func _on_player_hitbox_area_entered(area: Area2D) -> void:
+	if area is Healing:
+		if health < 100:
+			health += area.heal
+			area.queue_free()
+			print(health)
