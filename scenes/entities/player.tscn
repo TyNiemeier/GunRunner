@@ -1,4 +1,4 @@
-[gd_scene load_steps=545 format=3 uid="uid://d34idi3tc1prb"]
+[gd_scene load_steps=504 format=3 uid="uid://d34idi3tc1prb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_m4slr"]
 [ext_resource type="Texture2D" uid="uid://bep1k2t6ep7cj" path="res://assets/sprites/Female player/Run/Gun/Run_Gun.png" id="2_hfkws"]
@@ -3968,13 +3968,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7wml"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_um5pu"]
+radius = 7.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kptqb"]
+radius = 8.0
+height = 26.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
 script = ExtResource("1_m4slr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 1)
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
 animation = &"p1_gunAttackRunDown"
@@ -3983,7 +3990,8 @@ animation = &"p1_gunAttackRunDown"
 zoom = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_v7wml")
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_um5pu")
 
 [node name="DashDuration" type="Timer" parent="."]
 wait_time = 0.4
@@ -3993,5 +4001,21 @@ one_shot = true
 one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="PlayerHitbox" type="Area2D" parent="."]
+
+[node name="Hitboxtimer" type="Timer" parent="PlayerHitbox"]
+wait_time = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_kptqb")
+
+[node name="allow_damage" type="Timer" parent="."]
+
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="DashCoolDown" to="." method="_on_dash_cool_down_timeout"]
+[connection signal="area_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_area_entered"]
+[connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="PlayerHitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="PlayerHitbox/Hitboxtimer" to="." method="_on_hitboxtimer_timeout"]
+[connection signal="timeout" from="allow_damage" to="." method="_on_allow_damage_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://br2v7w45amchx"]
+[gd_scene load_steps=8 format=3 uid="uid://br2v7w45amchx"]
 
 [ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="1_84kh8"]
 [ext_resource type="Texture2D" uid="uid://35uun4op55wb" path="res://assets/tilesets/RF_Catacombs_v1.0/spike_3.png" id="2_42tnd"]
@@ -7,15 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="5_x5ixv"]
 [ext_resource type="PackedScene" uid="uid://bkv8yre8oo6jg" path="res://scenes/entities/Enemy/enemy_4.tscn" id="6_i13no"]
 [ext_resource type="PackedScene" uid="uid://codiy2tw25pnh" path="res://scenes/entities/Enemy/enemy_1_alt.tscn" id="7_n0alf"]
-[ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://apple.tscn" id="8_8fb1x"]
-[ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://chicken.tscn" id="9_2nndi"]
-[ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://pie.tscn" id="10_2h453"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_84kh8")]
 position = Vector2(-1, -14)
-playerId = 0
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 
@@ -31,43 +27,10 @@ position = Vector2(-114, 25)
 position = Vector2(-118, -44)
 
 [node name="Enemy3" parent="." instance=ExtResource("5_x5ixv")]
-position = Vector2(136, -72)
+position = Vector2(-166, -2)
 
 [node name="Enemy4" parent="." instance=ExtResource("6_i13no")]
 position = Vector2(-115, -90)
 
 [node name="Enemy1 alt" parent="." instance=ExtResource("7_n0alf")]
-position = Vector2(-87, -144)
-
-[node name="Apple" parent="." instance=ExtResource("8_8fb1x")]
-position = Vector2(3, 26)
-
-[node name="Apple2" parent="." instance=ExtResource("8_8fb1x")]
-position = Vector2(28, 26)
-
-[node name="Apple3" parent="." instance=ExtResource("8_8fb1x")]
-position = Vector2(-17, 46)
-
-[node name="Apple4" parent="." instance=ExtResource("8_8fb1x")]
-position = Vector2(18, 49)
-
-[node name="Apple5" parent="." instance=ExtResource("8_8fb1x")]
-position = Vector2(-16, 21)
-
-[node name="Chicken" parent="." instance=ExtResource("9_2nndi")]
-position = Vector2(27, 5)
-
-[node name="Chicken2" parent="." instance=ExtResource("9_2nndi")]
-position = Vector2(53, 51)
-
-[node name="Chicken3" parent="." instance=ExtResource("9_2nndi")]
-position = Vector2(3, 76)
-
-[node name="Pie" parent="." instance=ExtResource("10_2h453")]
-position = Vector2(54, 28)
-
-[node name="Pie2" parent="." instance=ExtResource("10_2h453")]
-position = Vector2(97, 68)
-
-[node name="Pie3" parent="." instance=ExtResource("10_2h453")]
-position = Vector2(79, 86)
+position = Vector2(-110, -78)

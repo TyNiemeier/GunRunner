@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name player
+class_name Player
 
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
@@ -24,11 +24,15 @@ var isAttacking = false
 var isIdle = false
 var isWalking = false
 var isDashing = false
-
+var enemy_inattack_range = false
+var allow_damage = true
+var health = 100
+var take_damage
+var player_alive = true
 
 
 #updates facing based on the direction
-#used for animations 
+#used for animations
 func _set_direction():
 	if isAttacking == false:
 		if isDashing == false:
@@ -67,6 +71,7 @@ func _direction_suffix():
 
 #sets animations for sprinting idle walk dash, etc
 func _set_animation():
+
 	#changes sprinting 
 	if isSprinting && isAttacking == false:
 		#sprinting for spear
@@ -80,17 +85,19 @@ func _set_animation():
 	#changes idle animations
 	elif isIdle:
 		#idle for spear
-		
+
 		if currentWeapon == 0:
 			sprite.play("p1_idleSpear" + _direction_suffix())
 		#idle for gun
 		else:
+
 			sprite.play("p1_idleGun" + _direction_suffix())
 	
 
+
 	elif isWalking:
 		#walking for spear
-		
+
 		if currentWeapon == 0:
 			sprite.play("p1_spearWalk" + _direction_suffix())
 		#walking for gun
@@ -154,6 +161,7 @@ func _physics_process(_delta):
 	#Movement
 	
 	velocity = direction * SPEED	
+
 	#Sprint
 	if Input.is_action_pressed("p1_a"):
 		SPEED = 200
@@ -175,7 +183,57 @@ func _physics_process(_delta):
 
 
 
+	#health doesnt go above health
+	if health > 100:
+		health = 100
+		print(health)
+
 	_set_direction()
 	_set_animation()
 	move_and_slide()
 	dash()
+
+
+#enemy or projectile hits player
+func _on_player_hitbox_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
+	if body is Projectile:
+		if is_dashing == false:
+			enemy_inattack_range = true
+			health -= body.damage
+			print(health)
+		body.queue_free()
+
+#enemy leaves player's hitbox
+func _on_player_hitbox_body_exited(body: Node2D) -> void:
+	if body is Enemy:
+		enemy_inattack_range = false
+		$PlayerHitbox/Hitboxtimer.stop()
+
+#player takes damage
+func player_hit(take_damage):
+	if enemy_inattack_range and allow_damage:
+		health -= take_damage
+		allow_damage = false
+		$allow_damage.start()
+		print(health)
+
+#invisable / how long it takes until player is allowed to get damage
+func _on_allow_damage_timeout() -> void:
+	allow_damage = true # Replace with function body.
+
+#how fast they attack
+func _on_hitboxtimer_timeout() -> void:
+	if is_dashing == false:
+		player_hit(take_damage)
+
+#player picks up health item
+func _on_player_hitbox_area_entered(area: Area2D) -> void:
+	if area is Healing:
+		if health < 100:
+			health += area.heal
+			area.queue_free()
+			print(health)
