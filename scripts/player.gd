@@ -51,7 +51,7 @@ func _set_direction():
 				isIdle = false
 	else:
 		isWalking = false
-		isSprinting = false
+		isIdle = false
 
 
 func _direction_suffix():
@@ -67,7 +67,7 @@ func _direction_suffix():
 #sets animations for sprinting idle walk dash, etc
 func _set_animation():
 	#changes sprinting 
-	if isSprinting:
+	if isSprinting && isAttacking == false:
 		#sprinting for spear
 		if currentWeapon == 0:
 			sprite.play("p1_spearRun" + _direction_suffix())
@@ -111,7 +111,10 @@ func _set_animation():
 			sprite.play("p1_spearAttack" + _direction_suffix())
 			#attack for gun
 		else:
-			sprite.play("p1_gunAttack" + _direction_suffix())
+			if isSprinting:
+				sprite.play("p1_gunAttackRun" + _direction_suffix())
+			else:
+				sprite.play("p1_gunAttack" + _direction_suffix())
 			
 
 #ISWALKING IS OVERIDING THE SPRINT POSSIBLY REWRITE SETTING WALKING TO TRUE
@@ -132,7 +135,7 @@ func _on_dash_cool_down_timeout():
 
 func _on_animated_sprite_2d_animation_finished():
 	print(sprite.animation)
-	if sprite.animation == "p1_spearAttack" or "p1_gunAttack" + _direction_suffix():
+	if sprite.animation == "p1_spearAttack" or "p1_gunAttack "or "p1_gunAttackRun" + _direction_suffix():
 		isAttacking = false	
 
 func _physics_process(_delta):
@@ -148,6 +151,7 @@ func _physics_process(_delta):
 		currentWeapon = 0
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
+	
 	velocity = direction * SPEED	
 	#Sprint
 	if Input.is_action_pressed("p1_a"):
@@ -162,6 +166,7 @@ func _physics_process(_delta):
 		velocity = direction * dashSpeed
 	else:
 		velocity = direction * SPEED
+
 	#Attack
 	if Input.is_action_just_pressed("p1_l1"):
 		isAttacking = true
