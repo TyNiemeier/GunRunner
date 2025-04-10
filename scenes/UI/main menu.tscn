@@ -1,9 +1,46 @@
-[gd_scene format=3 uid="uid://cyhxfb3rtr2fl"]
+[gd_scene load_steps=5 format=3 uid="uid://cyhxfb3rtr2fl"]
 
-[node name="Control" type="Control"]
+[ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_g4a2t"]
+[ext_resource type="Texture2D" uid="uid://j7mfkvqb0tgj" path="res://assets/ui/GUI_2.png" id="2_7sfnu"]
+[ext_resource type="Texture2D" uid="uid://xg7wqqe7ysd4" path="res://assets/ui/ButtonTexture.png" id="2_21qin"]
+[ext_resource type="Texture2D" uid="uid://c13lkg0t5kry4" path="res://assets/ui/ButtonPressedTexture.png" id="3_mfyff"]
+
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_g4a2t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_7sfnu")
+texture_pressed = ExtResource("3_mfyff")
+stretch_mode = 3
+
+[node name="OptionsButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_21qin")
+texture_pressed = ExtResource("3_mfyff")
+stretch_mode = 3
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_21qin")
+texture_pressed = ExtResource("3_mfyff")
+stretch_mode = 3
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
