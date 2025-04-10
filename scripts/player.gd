@@ -47,6 +47,7 @@ func _set_direction():
 			if direction.x == 0 && direction.y == 0:
 				isIdle = true
 				isWalking = false
+				isSprinting = false
 			else:
 				isIdle = false
 	else:
