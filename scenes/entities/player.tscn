@@ -1,4 +1,4 @@
-[gd_scene load_steps=504 format=3 uid="uid://d34idi3tc1prb"]
+[gd_scene load_steps=540 format=3 uid="uid://d34idi3tc1prb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_m4slr"]
 [ext_resource type="Texture2D" uid="uid://bep1k2t6ep7cj" path="res://assets/sprites/Female player/Run/Gun/Run_Gun.png" id="2_hfkws"]
@@ -94,30 +94,6 @@ region = Rect2(0, 192, 48, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqt1f"]
 atlas = ExtResource("9_3xb5r")
 region = Rect2(48, 192, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_op5cj"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(96, 192, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n2gop"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(144, 192, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d6a27"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(192, 192, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dmwx1"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(240, 192, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kd6ik"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(288, 192, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_os2bj"]
-atlas = ExtResource("9_3xb5r")
-region = Rect2(336, 192, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwtug"]
 atlas = ExtResource("2_ndk2r")
@@ -2164,24 +2140,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wqt1f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_op5cj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n2gop")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d6a27")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dmwx1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kd6ik")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_os2bj")
 }],
 "loop": false,
 "name": &"p1_gunAttackUp",
@@ -3979,12 +3937,13 @@ height = 26.0
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
 script = ExtResource("1_m4slr")
+playerId = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 1)
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_gunAttackRunDown"
+animation = &"p1_gunAttackUp"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
@@ -4000,7 +3959,6 @@ one_shot = true
 [node name="DashCoolDown" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [node name="PlayerHitbox" type="Area2D" parent="."]
 
 [node name="Hitboxtimer" type="Timer" parent="PlayerHitbox"]
@@ -4012,6 +3970,7 @@ shape = SubResource("CapsuleShape2D_kptqb")
 
 [node name="allow_damage" type="Timer" parent="."]
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="DashCoolDown" to="." method="_on_dash_cool_down_timeout"]
 [connection signal="area_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_area_entered"]

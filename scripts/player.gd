@@ -17,7 +17,6 @@ var collision = true
 var isSprinting = false
 var currentWeapon = 0
 
-# var action : Action = Action.IDLE
 
 
 var isAttacking = false
@@ -54,9 +53,14 @@ func _set_direction():
 				isSprinting = false
 			else:
 				isIdle = false
+		else:
+			isSprinting = false
+			isWalking = false
+			isIdle = false
 	else:
 		isWalking = false
 		isIdle = false
+
 
 
 func _direction_suffix():
@@ -201,7 +205,7 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 		take_damage = body.damage
 		$PlayerHitbox/Hitboxtimer.start()
 	if body is Projectile:
-		if is_dashing == false:
+		if isDashing == false:
 			enemy_inattack_range = true
 			health -= body.damage
 			print(health)
@@ -227,7 +231,7 @@ func _on_allow_damage_timeout() -> void:
 
 #how fast they attack
 func _on_hitboxtimer_timeout() -> void:
-	if is_dashing == false:
+	if isDashing == false:
 		player_hit(take_damage)
 
 #player picks up health item
