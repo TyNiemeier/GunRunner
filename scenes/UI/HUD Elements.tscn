@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cxd61ryypupas" path="res://assets/ui/GUI.png" id="1_wp23g"]
 [ext_resource type="Texture2D" uid="uid://d27jcrua273lm" path="res://assets/sprites/1-BOMB/2-Bomb On/1.png" id="2_8ymhc"]
-[ext_resource type="Texture2D" uid="uid://dor1wtyagk117" path="res://assets/ui/BombBarEmpty.png" id="3_4ih2p"]
-[ext_resource type="Texture2D" uid="uid://d3jseoy03mc27" path="res://assets/ui/FullBombBar.png" id="4_sgnl7"]
-[ext_resource type="Texture2D" uid="uid://dl7vmmyx4e0k3" path="res://assets/ui/EmptyHealthBar.png" id="5_my21y"]
-[ext_resource type="Texture2D" uid="uid://laofuuyajsy0" path="res://assets/ui/HealthBarFull.png" id="6_lmhqf"]
+[ext_resource type="Texture2D" path="res://assets/ui/BombBarEmpty.png" id="3_4ih2p"]
+[ext_resource type="Texture2D" path="res://assets/ui/FullBombBar.png" id="4_sgnl7"]
+[ext_resource type="Texture2D" path="res://assets/ui/EmptyHealthBar.png" id="5_my21y"]
+[ext_resource type="Texture2D" path="res://assets/ui/HealthBarFull.png" id="6_lmhqf"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
