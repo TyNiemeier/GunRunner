@@ -1,0 +1,113 @@
+[gd_scene load_steps=23 format=3 uid="uid://dpvh5bvc1qqe1"]
+
+[ext_resource type="Script" path="res://scenes/entities/bomb.gd" id="1_4bfmp"]
+[ext_resource type="Texture2D" uid="uid://d27jcrua273lm" path="res://assets/sprites/1-BOMB/2-Bomb On/1.png" id="1_qqtee"]
+[ext_resource type="Texture2D" uid="uid://b3h013qfay0yq" path="res://assets/sprites/1-BOMB/2-Bomb On/2.png" id="2_dsho0"]
+[ext_resource type="Texture2D" uid="uid://by0gec2574vsm" path="res://assets/sprites/1-BOMB/2-Bomb On/3.png" id="3_augl2"]
+[ext_resource type="Texture2D" uid="uid://d0a0r2nxv7fcc" path="res://assets/sprites/1-BOMB/2-Bomb On/4.png" id="4_0hexf"]
+[ext_resource type="Texture2D" uid="uid://dv6rlr2dyx3up" path="res://assets/sprites/1-BOMB/2-Bomb On/5.png" id="5_kq6hh"]
+[ext_resource type="Texture2D" uid="uid://bl8vyveti8u1m" path="res://assets/sprites/1-BOMB/2-Bomb On/6.png" id="6_4gabw"]
+[ext_resource type="Texture2D" uid="uid://d2ewj4p6raa23" path="res://assets/sprites/1-BOMB/2-Bomb On/7.png" id="7_0gefw"]
+[ext_resource type="Texture2D" uid="uid://mmmqgsevherd" path="res://assets/sprites/1-BOMB/2-Bomb On/8.png" id="8_pn5om"]
+[ext_resource type="Texture2D" uid="uid://byn7qsfmf8n8d" path="res://assets/sprites/1-BOMB/2-Bomb On/9.png" id="9_8cxya"]
+[ext_resource type="Texture2D" uid="uid://5le4japes6vu" path="res://assets/sprites/1-BOMB/2-Bomb On/10.png" id="10_usrd4"]
+[ext_resource type="Texture2D" uid="uid://d0t1nf0qkt3uk" path="res://assets/sprites/1-BOMB/3-Explotion/1.png" id="11_wvp2c"]
+[ext_resource type="Texture2D" uid="uid://2jg1al6l37aw" path="res://assets/sprites/1-BOMB/3-Explotion/2.png" id="12_kkbqp"]
+[ext_resource type="Texture2D" uid="uid://bm47evsfb2i5f" path="res://assets/sprites/1-BOMB/3-Explotion/3.png" id="13_8c8ya"]
+[ext_resource type="Texture2D" uid="uid://dtnguetfppoff" path="res://assets/sprites/1-BOMB/3-Explotion/4.png" id="14_kwvfn"]
+[ext_resource type="Texture2D" uid="uid://bt1h56ll8xqlv" path="res://assets/sprites/1-BOMB/3-Explotion/5.png" id="15_kap2f"]
+[ext_resource type="Texture2D" uid="uid://cyj2to3iwj64y" path="res://assets/sprites/1-BOMB/3-Explotion/6.png" id="16_7x2dc"]
+[ext_resource type="Texture2D" uid="uid://c37dc8p3rc02o" path="res://assets/sprites/1-BOMB/3-Explotion/7.png" id="17_b0r3r"]
+[ext_resource type="Texture2D" uid="uid://b2x5t0fiqfcrn" path="res://assets/sprites/1-BOMB/3-Explotion/8.png" id="18_1sxp3"]
+[ext_resource type="Texture2D" uid="uid://c3m87l4tpurfj" path="res://assets/sprites/1-BOMB/3-Explotion/9.png" id="19_fuk5c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdpfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qqtee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dsho0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_augl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0hexf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kq6hh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4gabw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0gefw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pn5om")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8cxya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_usrd4")
+}],
+"loop": true,
+"name": &"Bomb",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wvp2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kkbqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8c8ya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kwvfn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kap2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_7x2dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_b0r3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_1sxp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_fuk5c")
+}],
+"loop": false,
+"name": &"Explotion",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wd3iw"]
+radius = 57.0351
+
+[node name="Bomb" type="Area2D"]
+script = ExtResource("1_4bfmp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(0.442708, 0.4375)
+sprite_frames = SubResource("SpriteFrames_sdpfn")
+animation = &"Bomb"
+autoplay = "Bomb"
+
+[node name="Explosion_radius" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_wd3iw")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

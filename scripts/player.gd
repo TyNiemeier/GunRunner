@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-
+const bomb_scene = preload("res://scenes/entities/bomb.tscn")
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @export var playerId : int = 0
 @onready var dash_duration_timer = $DashDuration
@@ -170,6 +170,11 @@ func _physics_process(_delta):
 	if health > 100:
 		health = 100
 		print(health)
+
+	if Input.is_action_just_pressed("p1_bomb"):
+		var bomb = bomb_scene.instantiate()
+		get_tree().root.add_child(bomb)
+
 
 	_set_direction()
 	_set_animation()

@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="5_x5ixv"]
 [ext_resource type="PackedScene" uid="uid://bkv8yre8oo6jg" path="res://scenes/entities/Enemy/enemy_4.tscn" id="6_i13no"]
 [ext_resource type="PackedScene" uid="uid://codiy2tw25pnh" path="res://scenes/entities/Enemy/enemy_1_alt.tscn" id="7_n0alf"]
-[ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://apple.tscn" id="8_8fb1x"]
-[ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://chicken.tscn" id="9_2nndi"]
-[ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://pie.tscn" id="10_2h453"]
+[ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://scenes/Healing/apple.tscn" id="8_8fb1x"]
+[ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://scenes/Healing/chicken.tscn" id="9_2nndi"]
+[ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://scenes/Healing/pie.tscn" id="10_2h453"]
 
 [node name="Main" type="Node2D"]
 
