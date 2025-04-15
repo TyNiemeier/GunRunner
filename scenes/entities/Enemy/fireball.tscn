@@ -48,7 +48,7 @@ autoplay = "default"
 frame_progress = 0.960617
 
 [node name="KillTimer" type="Timer" parent="."]
-wait_time = 2.0
+autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 0)

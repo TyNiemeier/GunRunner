@@ -87,7 +87,7 @@ animations = [{
 "texture": ExtResource("19_fuk5c")
 }],
 "loop": false,
-"name": &"Explotion",
+"name": &"Explosion",
 "speed": 7.0
 }]
 
@@ -109,5 +109,6 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_wd3iw")
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

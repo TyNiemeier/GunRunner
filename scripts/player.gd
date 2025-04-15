@@ -24,6 +24,7 @@ var allow_damage = true
 var health = 100
 var take_damage
 var player_alive = true
+var drop_bomb = true
 
 #updates facing based on the direction
 #used for animations
@@ -172,8 +173,12 @@ func _physics_process(_delta):
 		print(health)
 
 	if Input.is_action_just_pressed("p1_bomb"):
-		var bomb = bomb_scene.instantiate()
-		get_tree().root.add_child(bomb)
+		if drop_bomb == true:
+			var bomb = bomb_scene.instantiate()
+			get_tree().root.add_child(bomb)
+			bomb.global_position = self.global_position
+			drop_bomb = false
+			$BombCoolDown.start()
 
 
 	_set_direction()
@@ -200,7 +205,7 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 	if body is Enemy:
 		enemy_inattack_range = false
 		$PlayerHitbox/Hitboxtimer.stop()
-
+		
 #player takes damage
 func player_hit(take_damage):
 	if enemy_inattack_range and allow_damage:
@@ -225,3 +230,8 @@ func _on_player_hitbox_area_entered(area: Area2D) -> void:
 			health += area.heal
 			area.queue_free()
 			print(health)
+
+
+func _on_bomb_cool_down_timeout() -> void:
+	drop_bomb = true
+	$BombCoolDown.stop()
