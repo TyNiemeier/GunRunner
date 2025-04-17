@@ -6,19 +6,23 @@ const bomb_scene = preload("res://scenes/entities/bomb.tscn")
 @export var playerId : int = 0
 @onready var dash_duration_timer = $DashDuration
 @onready var dash_cool_down_timer = $DashCoolDown
+# enum Action {IDLE, WALK, SPRINT, DASH, ATTACK}
 enum Directions {UP, DOWN, LEFT, RIGHT}
 var facing : Directions = Directions.DOWN
 var direction: Vector2 = Vector2.ZERO
-var SPEED: int = 150.0
-var is_dashing = false
-var dash_speed = 350.0
-var can_dash = true
+var SPEED = 150.0
+var dashSpeed = 350.0
+var canDash = true
 var collision = true
 var isSprinting = false
 var currentWeapon = 0
+
+
+
 var isAttacking = false
 var isIdle = false
 var isWalking = false
+var isDashing = false
 var enemy_inattack_range = false
 var allow_damage = true
 var health = 100
@@ -26,50 +30,61 @@ var take_damage
 var player_alive = true
 var drop_bomb = true
 
+
 #updates facing based on the direction
 #used for animations
 func _set_direction():
-	if direction.x < 0:
-		facing = Directions.LEFT
-		isWalking = true
-	elif direction.x > 0:
-		facing = Directions.RIGHT
-		isWalking = true
-	elif direction.y > 0:
-		facing = Directions.DOWN
-		isWalking = true
-	elif direction.y < 0:
-		facing = Directions.UP
-		isWalking = true
-	if direction.x == 0 && direction.y == 0:
-		isIdle = true
-		isWalking = false
+	if isAttacking == false:
+		if isDashing == false:
+			if direction.x < 0:
+				facing = Directions.LEFT
+				isWalking = true
+			elif direction.x > 0:
+				facing = Directions.RIGHT
+				isWalking = true
+			elif direction.y > 0:
+				facing = Directions.DOWN
+				isWalking = true
+			elif direction.y < 0:
+				facing = Directions.UP
+				isWalking = true
+			if direction.x == 0 && direction.y == 0:
+				isIdle = true
+				isWalking = false
+				isSprinting = false
+			else:
+				isIdle = false
+		else:
+			isSprinting = false
+			isWalking = false
+			isIdle = false
 	else:
+		isWalking = false
 		isIdle = false
+
+
+
+func _direction_suffix():
+	if facing == Directions.LEFT:
+		return "DownLeft"
+	elif facing == Directions.RIGHT:
+		return "DownRight"
+	elif facing == Directions.DOWN:
+		return "Down"
+	elif facing == Directions.UP:
+		return "Up"	
+
 #sets animations for sprinting idle walk dash, etc
 func _set_animation():
-	#changes sprinting
-	if isSprinting:
+
+	#changes sprinting 
+	if isSprinting && isAttacking == false:
 		#sprinting for spear
 		if currentWeapon == 0:
-			if facing == Directions.LEFT:
-				sprite.play("p1_spearRunDownLeft")
-			elif facing == Directions.RIGHT:
-				sprite.play("p1_spearRunDownRight")
-			elif facing == Directions.DOWN:
-				sprite.play("p1_spearRunDown")
-			elif facing == Directions.UP:
-				sprite.play("p1_spearRunUp")
+			sprite.play("p1_spearRun" + _direction_suffix())
 		#sprinting for gun
 		else:
-			if facing == Directions.LEFT:
-				sprite.play("p1_gunRunDownLeft")
-			elif facing == Directions.RIGHT:
-				sprite.play("p1_gunRunDownRight")
-			elif facing == Directions.DOWN:
-				sprite.play("p1_gunRunDown")
-			elif facing == Directions.UP:
-				sprite.play("p1_gunRunUp")
+			sprite.play("p1_gunRun" + _direction_suffix())
 
 
 	#changes idle animations
@@ -77,66 +92,69 @@ func _set_animation():
 		#idle for spear
 
 		if currentWeapon == 0:
-			if facing == Directions.LEFT:
-				sprite.play("p1_idleSpearDownLeft")
-			elif facing == Directions.RIGHT:
-				sprite.play("p1_idleSpearDownRight")
-			elif facing == Directions.DOWN:
-				sprite.play("p1_idleSpearDown")
-			elif facing == Directions.UP:
-				sprite.play("p1_idleSpearUp")
+			sprite.play("p1_idleSpear" + _direction_suffix())
 		#idle for gun
 		else:
-			if facing == Directions.LEFT:
-				sprite.play("p1_idleGunDownLeft")
-			elif facing == Directions.RIGHT:
-				sprite.play("p1_idleGunDownRight")
-			elif facing == Directions.DOWN:
-				sprite.play("p1_idleGunDown")
-			elif facing == Directions.UP:
-				sprite.play("p1_idleGunUp")
+
+			sprite.play("p1_idleGun" + _direction_suffix())
+	
 
 
 	elif isWalking:
 		#walking for spear
 
 		if currentWeapon == 0:
-			if facing == Directions.LEFT:
-				sprite.play("p1_spearWalkDownLeft")
-			elif facing == Directions.RIGHT:
-				sprite.play("p1_spearWalkDownRight")
-			elif facing == Directions.DOWN:
-				sprite.play("p1_spearWalkDown")
-			elif facing == Directions.UP:
-				sprite.play("p1_spearWalkUp")
+			sprite.play("p1_spearWalk" + _direction_suffix())
 		#walking for gun
 		else:
-			if facing == Directions.LEFT:
-				sprite.play("p1_gunWalkDownLeft")
-			elif facing == Directions.RIGHT:
-				sprite.play("p1_gunWalkDownRight")
-			elif facing == Directions.DOWN:
-				sprite.play("p1_gunWalkDown")
-			elif facing == Directions.UP:
-				sprite.play("p1_gunWalkUp")
+			sprite.play("p1_gunWalk" + _direction_suffix())
 
+	elif isDashing:
+			#dashing for spear
+
+			if currentWeapon == 0:
+				sprite.play("p1_spearDash" + _direction_suffix())
+			#dashing for gun
+			else:
+				sprite.play("p1_gunDash" + _direction_suffix())
+	
+	if isAttacking:
+			#attack for spear
+		if currentWeapon == 0:
+			sprite.play("p1_spearAttack" + _direction_suffix())
+			#attack for gun
+		else:
+			if isSprinting:
+				sprite.play("p1_gunAttackRun" + _direction_suffix())
+			else:
+				sprite.play("p1_gunAttack" + _direction_suffix())
+			
+
+#ISWALKING IS OVERIDING THE SPRINT POSSIBLY REWRITE SETTING WALKING TO TRUE
 func dash():
-	if (Input.is_action_just_pressed("dash") and can_dash):
-		is_dashing = true
-		can_dash = false
+	if (Input.is_action_just_pressed("dash") and canDash):
+		isDashing = true
+		canDash = false
 		dash_duration_timer.start()
 		dash_cool_down_timer.start()
-	if is_dashing:
+
+	if isDashing:
 		collision = false
 func _on_dash_duration_timeout():
-	is_dashing = false
+	isDashing = false
 	collision = true
 func _on_dash_cool_down_timeout():
-	can_dash = true
+	canDash = true
+
+func _on_animated_sprite_2d_animation_finished():
+	print(sprite.animation)
+	if sprite.animation == "p1_spearAttack" or "p1_gunAttack "or "p1_gunAttackRun" + _direction_suffix():
+		isAttacking = false	
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
@@ -144,28 +162,31 @@ func _physics_process(_delta):
 		currentWeapon += 1
 	if currentWeapon >= 2:
 		currentWeapon = 0
-
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
-	velocity = direction * SPEED
+	
+	velocity = direction * SPEED	
+
 	#Sprint
-	if Input.is_action_pressed("p1_a") && isIdle == false:
+	if Input.is_action_pressed("p1_a"):
 		SPEED = 200
 		isSprinting = true
+		#print(action)
 	else:
 		SPEED = 150
 		isSprinting = false
 	#Dash
-	if is_dashing:
-		velocity = direction * dash_speed
+	if isDashing:
+		velocity = direction * dashSpeed
 	else:
 		velocity = direction * SPEED
+
 	#Attack
-	# if Input.is_action_pressed("p1_l1"):
-	# 	print("boom")
-	# 	isAttacking = true
-	# 	if facing == Directions.DOWN && isAttacking == true:
-	# 		sprite.play("p1_spearDown")
+	if Input.is_action_just_pressed("p1_l1"):
+		isAttacking = true
+
+
+
 
 	#health doesnt go above health
 	if health > 100:
@@ -194,7 +215,7 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 		take_damage = body.damage
 		$PlayerHitbox/Hitboxtimer.start()
 	if body is Projectile:
-		if is_dashing == false:
+		if isDashing == false:
 			enemy_inattack_range = true
 			health -= body.damage
 			print(health)
@@ -220,7 +241,7 @@ func _on_allow_damage_timeout() -> void:
 
 #how fast they attack
 func _on_hitboxtimer_timeout() -> void:
-	if is_dashing == false:
+	if isDashing == false:
 		player_hit(take_damage)
 
 #player picks up health item
