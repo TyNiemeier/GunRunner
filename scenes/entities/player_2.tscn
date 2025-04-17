@@ -1245,7 +1245,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xi3gc")
 }],
 "loop": false,
-"name": &"p1_gunAttackDown",
+"name": &"p2_gunAttackDown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1256,7 +1256,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_3wa1x")
 }],
 "loop": false,
-"name": &"p1_gunAttackDownLeft",
+"name": &"p2_gunAttackDownLeft",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1267,7 +1267,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_sib4v")
 }],
 "loop": false,
-"name": &"p1_gunAttackDownRight",
+"name": &"p2_gunAttackDownRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1278,7 +1278,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8a00h")
 }],
 "loop": false,
-"name": &"p1_gunAttackRunDown",
+"name": &"p2_gunAttackRunDown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1289,7 +1289,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_nembu")
 }],
 "loop": false,
-"name": &"p1_gunAttackRunDownLeft",
+"name": &"p2_gunAttackRunDownLeft",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1300,7 +1300,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_i1h80")
 }],
 "loop": false,
-"name": &"p1_gunAttackRunDownRight",
+"name": &"p2_gunAttackRunDownRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1311,7 +1311,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_d25vt")
 }],
 "loop": false,
-"name": &"p1_gunAttackRunUp",
+"name": &"p2_gunAttackRunUp",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1322,7 +1322,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_11n27")
 }],
 "loop": false,
-"name": &"p1_gunAttackUp",
+"name": &"p2_gunAttackUp",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1351,7 +1351,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_0y4r3")
 }],
 "loop": true,
-"name": &"p1_gunDashDown",
+"name": &"p2_gunDashDown",
 "speed": 10.0
 }, {
 "frames": [{
@@ -1380,7 +1380,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_u3ajm")
 }],
 "loop": true,
-"name": &"p1_gunDashDownLeft",
+"name": &"p2_gunDashDownLeft",
 "speed": 11.0
 }, {
 "frames": [{
@@ -1409,7 +1409,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_cg183")
 }],
 "loop": true,
-"name": &"p1_gunDashDownRight",
+"name": &"p2_gunDashDownRight",
 "speed": 11.0
 }, {
 "frames": [{
@@ -1438,7 +1438,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jsrvp")
 }],
 "loop": true,
-"name": &"p1_gunDashUp",
+"name": &"p2_gunDashUp",
 "speed": 11.0
 }, {
 "frames": [{
@@ -1467,7 +1467,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_k607u")
 }],
 "loop": true,
-"name": &"p1_gunRunDown",
+"name": &"p2_gunRunDown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1496,7 +1496,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vlf14")
 }],
 "loop": true,
-"name": &"p1_gunRunDownLeft",
+"name": &"p2_gunRunDownLeft",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1525,7 +1525,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_353l3")
 }],
 "loop": true,
-"name": &"p1_gunRunDownRight",
+"name": &"p2_gunRunDownRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1554,7 +1554,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_aleq2")
 }],
 "loop": true,
-"name": &"p1_gunRunUp",
+"name": &"p2_gunRunUp",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1583,7 +1583,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_e7lsy")
 }],
 "loop": true,
-"name": &"p1_gunWalkDown",
+"name": &"p2_gunWalkDown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1612,7 +1612,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1hd5v")
 }],
 "loop": true,
-"name": &"p1_gunWalkDownLeft",
+"name": &"p2_gunWalkDownLeft",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1641,7 +1641,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xct0n")
 }],
 "loop": true,
-"name": &"p1_gunWalkDownRight",
+"name": &"p2_gunWalkDownRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1670,17 +1670,17 @@ animations = [{
 "texture": SubResource("AtlasTexture_v6ehe")
 }],
 "loop": true,
-"name": &"p1_gunWalkUp",
+"name": &"p2_gunWalkUp",
 "speed": 5.0
 }, {
 "frames": [],
 "loop": true,
-"name": &"p1_gunWalkUpLeft",
+"name": &"p2_gunWalkUpLeft",
 "speed": 5.0
 }, {
 "frames": [],
 "loop": true,
-"name": &"p1_gunWalkUpRight",
+"name": &"p2_gunWalkUpRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1709,7 +1709,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_gg7xy")
 }],
 "loop": true,
-"name": &"p1_idleGunDown",
+"name": &"p2_idleGunDown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1738,7 +1738,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8jhdt")
 }],
 "loop": true,
-"name": &"p1_idleGunDownLeft",
+"name": &"p2_idleGunDownLeft",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1767,7 +1767,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_4kn4t")
 }],
 "loop": true,
-"name": &"p1_idleGunDownRight",
+"name": &"p2_idleGunDownRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1796,17 +1796,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6d0pl")
 }],
 "loop": true,
-"name": &"p1_idleGunUp",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"p1_idleGunUpLeft",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"p1_idleGunUpRight",
+"name": &"p2_idleGunUp",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1835,7 +1825,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_4alqe")
 }],
 "loop": true,
-"name": &"p1_idleSpearDown",
+"name": &"p2_idleSpearDown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1864,7 +1854,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ns0yx")
 }],
 "loop": true,
-"name": &"p1_idleSpearDownLeft",
+"name": &"p2_idleSpearDownLeft",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1893,7 +1883,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_0m17e")
 }],
 "loop": true,
-"name": &"p1_idleSpearDownRight",
+"name": &"p2_idleSpearDownRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1922,17 +1912,12 @@ animations = [{
 "texture": SubResource("AtlasTexture_rv4w6")
 }],
 "loop": true,
-"name": &"p1_idleSpearUp",
+"name": &"p2_idleSpearUp",
 "speed": 5.0
 }, {
 "frames": [],
 "loop": true,
-"name": &"p1_idleSpearUpLeft",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"p1_idleSpearUpRight",
+"name": &"p2_idleSpearUpRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1961,7 +1946,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_02aha")
 }],
 "loop": false,
-"name": &"p1_spearAttackDown",
+"name": &"p2_spearAttackDown",
 "speed": 10.0
 }, {
 "frames": [{
@@ -1990,13 +1975,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_klgre")
 }],
 "loop": false,
-"name": &"p1_spearAttackDownLeft",
+"name": &"p2_spearAttackDownLeft",
 "speed": 10.0
-}, {
-"frames": [],
-"loop": false,
-"name": &"p1_spearAttackDownLeft!",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -2024,7 +2004,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_18npl")
 }],
 "loop": false,
-"name": &"p1_spearAttackDownRight",
+"name": &"p2_spearAttackDownRight",
 "speed": 10.0
 }, {
 "frames": [{
@@ -2053,7 +2033,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_lnpsf")
 }],
 "loop": false,
-"name": &"p1_spearAttackUp",
+"name": &"p2_spearAttackUp",
 "speed": 10.0
 }, {
 "frames": [{
@@ -2082,7 +2062,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_lasgj")
 }],
 "loop": true,
-"name": &"p1_spearDashDown",
+"name": &"p2_spearDashDown",
 "speed": 11.0
 }, {
 "frames": [{
@@ -2111,7 +2091,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_e0uu7")
 }],
 "loop": true,
-"name": &"p1_spearDashDownLeft",
+"name": &"p2_spearDashDownLeft",
 "speed": 11.0
 }, {
 "frames": [{
@@ -2140,7 +2120,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_13cbp")
 }],
 "loop": true,
-"name": &"p1_spearDashDownRight",
+"name": &"p2_spearDashDownRight",
 "speed": 11.0
 }, {
 "frames": [{
@@ -2169,17 +2149,17 @@ animations = [{
 "texture": SubResource("AtlasTexture_o16ad")
 }],
 "loop": true,
-"name": &"p1_spearDashUp",
+"name": &"p2_spearDashUp",
 "speed": 11.0
 }, {
 "frames": [],
 "loop": true,
-"name": &"p1_spearDashUpLeft",
+"name": &"p2_spearDashUpLeft",
 "speed": 11.0
 }, {
 "frames": [],
 "loop": true,
-"name": &"p1_spearDashUpRight",
+"name": &"p2_spearDashUpRight",
 "speed": 11.0
 }, {
 "frames": [{
@@ -2208,7 +2188,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_yeopl")
 }],
 "loop": true,
-"name": &"p1_spearRunDown",
+"name": &"p2_spearRunDown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -2237,7 +2217,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8i2s3")
 }],
 "loop": true,
-"name": &"p1_spearRunDownLeft",
+"name": &"p2_spearRunDownLeft",
 "speed": 5.0
 }, {
 "frames": [{
@@ -2266,7 +2246,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_kdbd6")
 }],
 "loop": true,
-"name": &"p1_spearRunDownRight",
+"name": &"p2_spearRunDownRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -2295,27 +2275,17 @@ animations = [{
 "texture": SubResource("AtlasTexture_u3lp1")
 }],
 "loop": true,
-"name": &"p1_spearRunUp",
+"name": &"p2_spearRunUp",
 "speed": 5.0
 }, {
 "frames": [],
 "loop": true,
-"name": &"p1_spearRunUpLeft",
+"name": &"p2_spearRunUpLeft",
 "speed": 5.0
 }, {
 "frames": [],
 "loop": true,
-"name": &"p1_spearRunUpRight",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"p1_spearUpLeft",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"p1_spearUpRight",
+"name": &"p2_spearRunUpRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -2344,7 +2314,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_sqa2v")
 }],
 "loop": true,
-"name": &"p1_spearWalkDown",
+"name": &"p2_spearWalkDown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -2373,7 +2343,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7uwt1")
 }],
 "loop": true,
-"name": &"p1_spearWalkDownLeft",
+"name": &"p2_spearWalkDownLeft",
 "speed": 5.0
 }, {
 "frames": [{
@@ -2402,7 +2372,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_bkd4x")
 }],
 "loop": true,
-"name": &"p1_spearWalkDownRight",
+"name": &"p2_spearWalkDownRight",
 "speed": 5.0
 }, {
 "frames": [{
@@ -2431,17 +2401,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_kcxth")
 }],
 "loop": true,
-"name": &"p1_spearWalkUp",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"p1_spearWalkUpLeft",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"p1_spearWalkUpRight",
+"name": &"p2_spearWalkUp",
 "speed": 5.0
 }]
 
@@ -2461,7 +2421,7 @@ script = ExtResource("1_lpie1")
 position = Vector2(1, 1)
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_8ei2q")
-animation = &"p1_spearWalkUpLeft"
+animation = &"p2_spearAttackDown"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
@@ -2488,6 +2448,7 @@ shape = SubResource("CapsuleShape2D_kptqb")
 
 [node name="allow_damage" type="Timer" parent="."]
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="DashCoolDown" to="." method="_on_dash_cool_down_timeout"]
 [connection signal="area_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_area_entered"]
