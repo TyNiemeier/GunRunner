@@ -4,11 +4,13 @@ class_name Enemy
 @export var speed = 50
 @export var health = 100
 
+
 var dead = false
 var player_in_area = false
 var player
 var direction
 var in_range = false
+var take_health
 
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 
@@ -30,7 +32,8 @@ func _physics_process(delta):
 			velocity = Vector2.ZERO
 			sprite.play("Idle")
 	move_and_collide(velocity * delta)
-	
+	death()
+
 
 	if dead:
 		$detection_area/CollisionShape2D.disabled = true
@@ -46,11 +49,12 @@ func _on_detection_area_body_exited(body):
 	if body is Player:
 		player_in_area = false
 
-#enemy gets hit by player
-func enemy_hit():
+
+#enemy gets hit by playera
+func enemy_hit(take_health):
 	pass
 
 #enemy dies
 func death():
-	dead = true
-	queue_free()
+	if health <= 0:
+		queue_free()

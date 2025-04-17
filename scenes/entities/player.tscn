@@ -1,4 +1,4 @@
-[gd_scene load_steps=540 format=3 uid="uid://d34idi3tc1prb"]
+[gd_scene load_steps=544 format=3 uid="uid://d34idi3tc1prb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_m4slr"]
 [ext_resource type="Texture2D" uid="uid://bep1k2t6ep7cj" path="res://assets/sprites/Female player/Run/Gun/Run_Gun.png" id="2_hfkws"]
@@ -3934,16 +3934,25 @@ height = 24.0
 radius = 8.0
 height = 26.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajunk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4a25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8mir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nau1l"]
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
 script = ExtResource("1_m4slr")
-playerId = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 1)
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_gunAttackUp"
+animation = &"p1_spearAttackUp"
+frame = 7
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
@@ -3971,6 +3980,32 @@ shape = SubResource("CapsuleShape2D_kptqb")
 [node name="allow_damage" type="Timer" parent="."]
 
 [node name="BombCoolDown" type="Timer" parent="."]
+
+[node name="Upattack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upattack"]
+position = Vector2(0, -19)
+shape = SubResource("RectangleShape2D_ajunk")
+
+[node name="Rightattack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rightattack"]
+position = Vector2(19, 1)
+shape = SubResource("RectangleShape2D_i4a25")
+
+[node name="Downattack" type="Area2D" parent="."]
+position = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Downattack"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_f8mir")
+
+[node name="Leftattack" type="Area2D" parent="."]
+position = Vector2(-3, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leftattack"]
+position = Vector2(-14, 4)
+shape = SubResource("RectangleShape2D_nau1l")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]

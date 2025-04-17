@@ -6,7 +6,7 @@ const bomb_scene = preload("res://scenes/entities/bomb.tscn")
 @export var playerId : int = 0
 @onready var dash_duration_timer = $DashDuration
 @onready var dash_cool_down_timer = $DashCoolDown
-# enum Action {IDLE, WALK, SPRINT, DASH, ATTACK}
+# endum Action {IDLE, WALK, SPRINT, DASH, ATTACK}
 enum Directions {UP, DOWN, LEFT, RIGHT}
 var facing : Directions = Directions.DOWN
 var direction: Vector2 = Vector2.ZERO
@@ -29,6 +29,8 @@ var health = 100
 var take_damage
 var player_alive = true
 var drop_bomb = true
+var spear_attack = false
+var gun_attack = false
 
 
 #updates facing based on the direction
@@ -226,7 +228,7 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 	if body is Enemy:
 		enemy_inattack_range = false
 		$PlayerHitbox/Hitboxtimer.stop()
-		
+
 #player takes damage
 func player_hit(take_damage):
 	if enemy_inattack_range and allow_damage:
@@ -239,7 +241,7 @@ func player_hit(take_damage):
 func _on_allow_damage_timeout() -> void:
 	allow_damage = true # Replace with function body.
 
-#how fast they attack
+
 func _on_hitboxtimer_timeout() -> void:
 	if isDashing == false:
 		player_hit(take_damage)
