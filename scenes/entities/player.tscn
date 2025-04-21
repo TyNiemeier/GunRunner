@@ -3935,12 +3935,16 @@ radius = 8.0
 height = 26.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajunk"]
+size = Vector2(27, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4a25"]
+size = Vector2(29, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8mir"]
+size = Vector2(28, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nau1l"]
+size = Vector2(29.5, 26)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
@@ -3950,7 +3954,7 @@ script = ExtResource("1_m4slr")
 position = Vector2(1, 1)
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_spearAttackUp"
+animation = &"p1_spearAttackDownRight"
 frame = 7
 frame_progress = 1.0
 
@@ -3984,27 +3988,27 @@ shape = SubResource("CapsuleShape2D_kptqb")
 [node name="Upattack" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Upattack"]
-position = Vector2(0, -19)
+position = Vector2(1, -25)
 shape = SubResource("RectangleShape2D_ajunk")
 
 [node name="Rightattack" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rightattack"]
-position = Vector2(19, 1)
+position = Vector2(23.5, 1)
 shape = SubResource("RectangleShape2D_i4a25")
 
 [node name="Downattack" type="Area2D" parent="."]
 position = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Downattack"]
-position = Vector2(0, 20)
+position = Vector2(0, 25.5)
 shape = SubResource("RectangleShape2D_f8mir")
 
 [node name="Leftattack" type="Area2D" parent="."]
 position = Vector2(-3, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leftattack"]
-position = Vector2(-14, 4)
+position = Vector2(-18, 4)
 shape = SubResource("RectangleShape2D_nau1l")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

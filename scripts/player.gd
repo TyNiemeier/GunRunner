@@ -29,8 +29,7 @@ var health = 100
 var take_damage
 var player_alive = true
 var drop_bomb = true
-var spear_attack = false
-var gun_attack = false
+var spear_damage = 20
 
 
 #updates facing based on the direction
@@ -186,8 +185,10 @@ func _physics_process(_delta):
 	#Attack
 	if Input.is_action_just_pressed("p1_l1"):
 		isAttacking = true
-
-
+		if currentWeapon == 0:
+			spear_attack()
+		if currentWeapon == 1:
+			gun_attack()
 
 
 	#health doesnt go above health
@@ -253,6 +254,36 @@ func _on_player_hitbox_area_entered(area: Area2D) -> void:
 			health += area.heal
 			area.queue_free()
 			print(health)
+			
+func spear_attack():
+	if isAttacking and currentWeapon == 0:
+		if Directions.RIGHT:
+			var bodies = $Rightattack.get_overlapping_bodies()
+			for body in bodies:
+				if body is Enemy:
+					body.health -= spear_damage
+					print("right spear hit")
+		if Directions.LEFT:
+			var bodies = $Leftattack.get_overlapping_bodies()
+			for body in bodies:
+				if body is Enemy:
+					body.health -= spear_damage
+					print("left spear hit")
+		if Directions.UP:
+			var bodies = $Upattack.get_overlapping_bodies()
+			for body in bodies:
+				if body is Enemy:
+					body.health -= spear_damage
+					print("up spear hit")
+		if Directions.DOWN:
+			var bodies = $Downattack.get_overlapping_bodies()
+			for body in bodies:
+				if body is Enemy:
+					body.health -= spear_damage
+					print("down spear hit")
+
+func gun_attack():
+	pass
 
 
 func _on_bomb_cool_down_timeout() -> void:

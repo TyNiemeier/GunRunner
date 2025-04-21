@@ -15,7 +15,6 @@
 
 [node name="Player" parent="." instance=ExtResource("1_84kh8")]
 position = Vector2(-1, -14)
-playerId = 0
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 
