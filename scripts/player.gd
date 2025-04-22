@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+const bulletPath = preload("res://scenes/entities/bullet.tscn")
 const bomb_scene = preload("res://scenes/entities/bomb.tscn")
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @export var playerId : int = 0
@@ -188,7 +189,8 @@ func _physics_process(_delta):
 		if currentWeapon == 0:
 			spear_attack()
 		if currentWeapon == 1:
-			gun_attack()
+			shoot()
+	$Node2D.look_at((get_global_mouse_position()))
 
 
 	#health doesnt go above health
@@ -262,28 +264,29 @@ func spear_attack():
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print("right spear hit")
 		if Directions.LEFT:
 			var bodies = $Leftattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print("left spear hit")
 		if Directions.UP:
 			var bodies = $Upattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print("up spear hit")
 		if Directions.DOWN:
 			var bodies = $Downattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print("down spear hit")
 
-func gun_attack():
-	pass
+func shoot():
+	if isAttacking and currentWeapon == 1:
+		var bullet = bulletPath.instantiate()
+		get_parent().add_child(bullet)
+		bullet.position = $Node2D/Marker2D.global_position
+		bullet.velocity = get_global_mouse_position() - bullet.position
+		print("im shooting")
 
 
 func _on_bomb_cool_down_timeout() -> void:

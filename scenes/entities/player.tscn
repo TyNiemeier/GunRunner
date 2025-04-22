@@ -4011,6 +4011,11 @@ position = Vector2(-3, -3)
 position = Vector2(-18, 4)
 shape = SubResource("RectangleShape2D_nau1l")
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(33, 1)
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="DashCoolDown" to="." method="_on_dash_cool_down_timeout"]
