@@ -1,0 +1,71 @@
+# Reflection - [Ty]
+
+## 🗓️ Sprint 1
+
+### What I did
+- During this sprint I added all assets needed for the project and began importing aniamtions
+
+
+### Difficulties
+- Some of the sprites didn't fully work as we wanted (not the animations we wanted or the free version didn't include the specifc sprites we wanted) so we decided to buy some new player sprites. and ice spice
+
+### Surprises
+- The sprites we bought didn't have just normal left and right animations but we found a fine work around by using the down left animations.
+
+### Lessons Learned
+- I learned that I should look more into the sprites we use to make sure their exactly what we want.
+
+
+
+## 🗓️ Sprint 2
+
+### What I did
+- For this sprint I started working on our player movement animations and changing them based on facing directions
+
+### Difficulties
+- This sprint I heavily focused on movement animations and struggled sometimes with making the animation change based on the directrion the player was facing. Throughout this sprint I went ahead and added almost all of the animations we'll need to the animated sprite 2D and also named them all properly based on direction player and action.
+
+### Surprises
+- I was supprised about how I was able to really get going on code and focus.
+
+### Lessons Learned
+- I learned in this sprint how player animations may be a long task then I originally thought but I was also really happy with the sprites we used.
+
+
+## 🗓️ Sprint 3
+
+### What I did
+- This sprint I spent a long while rewriting the code made in the last sprint to condense it and prevent animations from overiding each other.
+
+### Difficulties
+- I struggled a lot with rewriting the code. THe code I originally made was extremely long, complicated, and unorganized. However I kept pushing through and ended with code Im really happy with
+
+### Surprises
+- I was supprised at how I was actually able to condense the code as much as I did.
+
+### Lessons Learned
+- This sprint I learned a lot about code and how to develop my code a lot better and more clear.
+
+
+## 🗓️ Sprint 4
+
+### Difficulties
+-
+
+### Surprises
+-
+
+### Lessons Learned
+-
+
+
+## 🗓️ Sprint 5
+
+### Difficulties
+-
+
+### Surprises
+-
+
+### Lessons Learned
+-
