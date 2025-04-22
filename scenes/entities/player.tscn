@@ -1,4 +1,4 @@
-[gd_scene load_steps=503 format=3 uid="uid://d34idi3tc1prb"]
+[gd_scene load_steps=504 format=3 uid="uid://d34idi3tc1prb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_m4slr"]
 [ext_resource type="Texture2D" uid="uid://bep1k2t6ep7cj" path="res://assets/sprites/Female player/Run/Gun/Run_Gun.png" id="2_hfkws"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://iqgqe10fdjsv" path="res://assets/sprites/Female player/Dash - NEW/Spear/Dash_Spear_Up.png" id="18_0w1wb"]
 [ext_resource type="Texture2D" uid="uid://bn6kxndngln2k" path="res://assets/sprites/Female player/Run/Spear/Run_Spear_Right_Down.png" id="18_jvm70"]
 [ext_resource type="Texture2D" uid="uid://c5plow3vvlau3" path="res://assets/sprites/Female player/Run/Spear/Run_Spear_Right_Up.png" id="19_jlpmx"]
+[ext_resource type="PackedScene" uid="uid://b57a47v8nvabp" path="res://scenes/UI/HUD Elements.tscn" id="21_qjgj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mfdw"]
 atlas = ExtResource("2_hfkws")
@@ -3700,6 +3701,8 @@ animation = &"p1_gunWalkUpRight"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
+
+[node name="CanvasLayer" parent="Camera2D" instance=ExtResource("21_qjgj4")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
