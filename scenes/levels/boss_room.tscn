@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://q0jfnml0gd5j"]
+
+[node name="BOSS ROOM_13" type="TileMapLayer"]
+
+[node name="Background" type="TileMapLayer" parent="."]
+
+[node name="assets" type="TileMapLayer" parent="Background"]
