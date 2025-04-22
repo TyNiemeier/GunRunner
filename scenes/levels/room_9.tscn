@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b35ssuelcb6jq"]
+[gd_scene load_steps=9 format=4 uid="uid://c073fg3072pwe"]
 
 [ext_resource type="Texture2D" uid="uid://bwjyj4t1h0bi1" path="res://assets/tilesets/RF_Catacombs_v1.0/decorative.png" id="1_bdvxl"]
 [ext_resource type="Texture2D" uid="uid://x744p3vjeqc1" path="res://assets/tilesets/RF_Catacombs_v1.0/mainlevbuild.png" id="2_dlrxn"]
