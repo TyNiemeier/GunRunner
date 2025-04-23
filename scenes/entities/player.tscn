@@ -3702,8 +3702,6 @@ animation = &"p1_gunWalkUpRight"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
-[node name="CanvasLayer" parent="Camera2D" instance=ExtResource("21_qjgj4")]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_um5pu")
@@ -3714,6 +3712,8 @@ one_shot = true
 
 [node name="DashCoolDown" type="Timer" parent="."]
 one_shot = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource("21_qjgj4")]
 
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="DashCoolDown" to="." method="_on_dash_cool_down_timeout"]
