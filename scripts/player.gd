@@ -28,38 +28,47 @@ var allow_damage = true
 var health = 100
 var take_damage
 var player_alive = true
-
+var isDead = false
 
 #updates facing based on the direction
 #used for animations
 func _set_direction():
-	if isAttacking == false:
-		if isDashing == false:
-			if direction.x < 0:
-				facing = Directions.LEFT
-				isWalking = true
-			elif direction.x > 0:
-				facing = Directions.RIGHT
-				isWalking = true
-			elif direction.y > 0:
-				facing = Directions.DOWN
-				isWalking = true
-			elif direction.y < 0:
-				facing = Directions.UP
-				isWalking = true
-			if direction.x == 0 && direction.y == 0:
-				isIdle = true
-				isWalking = false
-				isSprinting = false
+	if isDead == false:
+		if isAttacking == false:
+			if isDashing == false:
+				if direction.x < 0:
+					facing = Directions.LEFT
+					isWalking = true
+				elif direction.x > 0:
+					facing = Directions.RIGHT
+					isWalking = true
+				elif direction.y > 0:
+					facing = Directions.DOWN
+					isWalking = true
+				elif direction.y < 0:
+					facing = Directions.UP
+					isWalking = true
+				if direction.x == 0 && direction.y == 0:
+					isIdle = true
+					isWalking = false
+					isSprinting = false
+				else:
+					isIdle = false
 			else:
+				isSprinting = false
+				isWalking = false
 				isIdle = false
 		else:
-			isSprinting = false
 			isWalking = false
 			isIdle = false
 	else:
-		isWalking = false
+		isAttacking = false
 		isIdle = false
+		isWalking = false
+		isDashing = false
+		isSprinting = false
+		direction.x = 0
+		direction.y = 0
 
 
 
@@ -127,6 +136,10 @@ func _set_animation():
 				sprite.play("p1_gunAttackRun" + _direction_suffix())
 			else:
 				sprite.play("p1_gunAttack" + _direction_suffix())
+
+
+	if isDead:
+		sprite.play("p1_death" + _direction_suffix())
 			
 
 #ISWALKING IS OVERIDING THE SPRINT POSSIBLY REWRITE SETTING WALKING TO TRUE
@@ -191,6 +204,10 @@ func _physics_process(_delta):
 	if health > 100:
 		health = 100
 		print(health)
+
+	if health < 0:
+		isDead = true
+		
 
 	_set_direction()
 	_set_animation()
