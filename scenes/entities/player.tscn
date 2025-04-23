@@ -3935,16 +3935,16 @@ radius = 8.0
 height = 26.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajunk"]
-size = Vector2(27, 26)
+size = Vector2(22, 22.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4a25"]
-size = Vector2(29, 26)
+size = Vector2(21.5, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8mir"]
-size = Vector2(28, 25)
+size = Vector2(22, 21.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nau1l"]
-size = Vector2(29.5, 26)
+size = Vector2(21.5, 26)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
@@ -3965,13 +3965,6 @@ zoom = Vector2(5, 5)
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_um5pu")
 
-[node name="DashDuration" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-
-[node name="DashCoolDown" type="Timer" parent="."]
-one_shot = true
-
 [node name="PlayerHitbox" type="Area2D" parent="."]
 
 [node name="Hitboxtimer" type="Timer" parent="PlayerHitbox"]
@@ -3981,47 +3974,55 @@ wait_time = 0.1
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_kptqb")
 
-[node name="allow_damage" type="Timer" parent="."]
-
-[node name="BombCoolDown" type="Timer" parent="."]
-
 [node name="Upattack" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Upattack"]
-position = Vector2(1, -25)
+position = Vector2(1, -23.25)
 shape = SubResource("RectangleShape2D_ajunk")
 
 [node name="Rightattack" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rightattack"]
-position = Vector2(23.5, 1)
+position = Vector2(20, 1)
 shape = SubResource("RectangleShape2D_i4a25")
 
 [node name="Downattack" type="Area2D" parent="."]
 position = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Downattack"]
-position = Vector2(0, 25.5)
+position = Vector2(0, 23.75)
 shape = SubResource("RectangleShape2D_f8mir")
 
 [node name="Leftattack" type="Area2D" parent="."]
 position = Vector2(-3, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leftattack"]
-position = Vector2(-18, 4)
+position = Vector2(-15, 4)
 shape = SubResource("RectangleShape2D_nau1l")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(33, 1)
+[node name="Aim" type="Node2D" parent="."]
+position = Vector2(1, 1)
 
-[node name="Marker2D" type="Marker2D" parent="Node2D"]
+[node name="Marker2D" type="Marker2D" parent="Aim"]
+position = Vector2(25, 0)
+
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="DashCoolDown" type="Timer" parent="."]
+one_shot = true
+
+[node name="allow_damage" type="Timer" parent="."]
+
+[node name="BombCoolDown" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
-[connection signal="timeout" from="DashCoolDown" to="." method="_on_dash_cool_down_timeout"]
 [connection signal="area_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="PlayerHitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="PlayerHitbox/Hitboxtimer" to="." method="_on_hitboxtimer_timeout"]
+[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
+[connection signal="timeout" from="DashCoolDown" to="." method="_on_dash_cool_down_timeout"]
 [connection signal="timeout" from="allow_damage" to="." method="_on_allow_damage_timeout"]
 [connection signal="timeout" from="BombCoolDown" to="." method="_on_bomb_cool_down_timeout"]

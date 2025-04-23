@@ -9,7 +9,9 @@ const bomb_scene = preload("res://scenes/entities/bomb.tscn")
 @onready var dash_cool_down_timer = $DashCoolDown
 # endum Action {IDLE, WALK, SPRINT, DASH, ATTACK}
 enum Directions {UP, DOWN, LEFT, RIGHT}
+enum attack_Directions {UP, DOWN, LEFT, RIGHT}
 var facing : Directions = Directions.DOWN
+var attackfacing
 var direction: Vector2 = Vector2.ZERO
 var SPEED = 150.0
 var dashSpeed = 350.0
@@ -60,6 +62,21 @@ func _set_direction():
 			isSprinting = false
 			isWalking = false
 			isIdle = false
+	if isAttacking == true:
+		if isDashing == false:
+			var mouse = get_global_mouse_position()
+			if mouse.x < mouse:
+				attackfacing = attack_Directions.LEFT
+				isWalking = true
+			elif mouse.x > mouse:
+				attackfacing = attack_Directions.RIGHT
+				isWalking = true
+			elif direction.y > 0:
+				attackfacing = attack_Directions.DOWN
+				isWalking = true
+			elif direction.y < 0:
+				attackfacing = attack_Directions.UP
+				isWalking = true
 	else:
 		isWalking = false
 		isIdle = false
@@ -190,13 +207,12 @@ func _physics_process(_delta):
 			spear_attack()
 		if currentWeapon == 1:
 			shoot()
-	$Node2D.look_at((get_global_mouse_position()))
+	$Aim.look_at((get_global_mouse_position()))
 
 
 	#health doesnt go above health
 	if health > 100:
 		health = 100
-		print(health)
 
 	if Input.is_action_just_pressed("p1_bomb"):
 		if drop_bomb == true:
@@ -223,7 +239,6 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 		if isDashing == false:
 			enemy_inattack_range = true
 			health -= body.damage
-			print(health)
 		body.queue_free()
 
 #enemy leaves player's hitbox
@@ -238,7 +253,6 @@ func player_hit(take_damage):
 		health -= take_damage
 		allow_damage = false
 		$allow_damage.start()
-		print(health)
 
 #invisable / how long it takes until player is allowed to get damage
 func _on_allow_damage_timeout() -> void:
@@ -255,7 +269,6 @@ func _on_player_hitbox_area_entered(area: Area2D) -> void:
 		if health < 100:
 			health += area.heal
 			area.queue_free()
-			print(health)
 			
 func spear_attack():
 	if isAttacking and currentWeapon == 0:
@@ -264,29 +277,32 @@ func spear_attack():
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
+					print('Rightattack')
 		if Directions.LEFT:
 			var bodies = $Leftattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
+					print('Leftattack')
 		if Directions.UP:
 			var bodies = $Upattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
+					print('Upattack')
 		if Directions.DOWN:
 			var bodies = $Downattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
+					print('Downattack')
 
 func shoot():
 	if isAttacking and currentWeapon == 1:
 		var bullet = bulletPath.instantiate()
 		get_parent().add_child(bullet)
-		bullet.position = $Node2D/Marker2D.global_position
+		bullet.position = $Aim/Marker2D.global_position
 		bullet.velocity = get_global_mouse_position() - bullet.position
-		print("im shooting")
 
 
 func _on_bomb_cool_down_timeout() -> void:
