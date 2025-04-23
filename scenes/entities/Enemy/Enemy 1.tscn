@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ceskeotiviavi"]
+[gd_scene load_steps=15 format=3 uid="uid://ceskeotiviavi"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_0yvmx"]
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/other/momonga_Dungeon (1).png" id="1_k8pen"]
@@ -73,11 +73,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fssgw"]
-radius = 5.0
+radius = 4.0
 height = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fgvq0"]
 radius = 84.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgja0"]
+size = Vector2(16, 24)
 
 [node name="Enemy1" type="CharacterBody2D"]
 script = ExtResource("1_0yvmx")
@@ -89,14 +92,20 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
-rotation = -6.28319
+position = Vector2(0, 13)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fssgw")
 
 [node name="detection_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_fgvq0")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_mgja0")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_dectection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
