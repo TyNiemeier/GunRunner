@@ -29,6 +29,7 @@ var health = 100
 var take_damage
 var player_alive = true
 var isDead = false
+var canMove = true
 
 #updates facing based on the direction
 #used for animations
@@ -54,6 +55,7 @@ func _set_direction():
 					isSprinting = false
 				else:
 					isIdle = false
+
 			else:
 				isSprinting = false
 				isWalking = false
@@ -67,8 +69,6 @@ func _set_direction():
 		isWalking = false
 		isDashing = false
 		isSprinting = false
-		direction.x = 0
-		direction.y = 0
 
 
 
@@ -162,7 +162,8 @@ func _on_animated_sprite_2d_animation_finished():
 	print(sprite.animation)
 	if sprite.animation == "p1_spearAttack" or "p1_gunAttack "or "p1_gunAttackRun" + _direction_suffix():
 		isAttacking = false	
-
+	if sprite.animation == "p1_death" + _direction_suffix():
+		get_tree().change_scene_to_file("res://scenes/levels/death.tscn")
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -176,9 +177,10 @@ func _physics_process(_delta):
 		currentWeapon = 0
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
-	
-	velocity = direction * SPEED	
-
+	if canMove:
+		velocity = direction * SPEED
+	else:
+		velocity = Vector2.ZERO	
 	#Sprint
 	if Input.is_action_pressed("p1_a"):
 		SPEED = 200
@@ -190,8 +192,6 @@ func _physics_process(_delta):
 	#Dash
 	if isDashing:
 		velocity = direction * dashSpeed
-	else:
-		velocity = direction * SPEED
 
 	#Attack
 	if Input.is_action_just_pressed("p1_l1"):
@@ -205,8 +205,9 @@ func _physics_process(_delta):
 		health = 100
 		print(health)
 
-	if health < 0:
+	if health == 0:
 		isDead = true
+		canMove = false
 		
 
 	_set_direction()
