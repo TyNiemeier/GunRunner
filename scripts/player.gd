@@ -196,6 +196,8 @@ func _physics_process(_delta):
 	_set_animation()
 	move_and_slide()
 	dash()
+	_set_health_bar()
+	#_set_bomb_cooldown()
 
 
 #enemy or projectile hits player
@@ -241,3 +243,11 @@ func _on_player_hitbox_area_entered(area: Area2D) -> void:
 			health += area.heal
 			area.queue_free()
 			print(health)
+			
+func _set_health_bar():
+	$CanvasLayer/Health.value = health
+	
+func _set_bomb_cooldown():
+	$CanvasLayer/BombCoolDown = BombCoolDown.time_left 
+	
+	
