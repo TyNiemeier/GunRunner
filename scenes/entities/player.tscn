@@ -4004,7 +4004,7 @@ shape = SubResource("RectangleShape2D_nau1l")
 position = Vector2(1, 1)
 
 [node name="Marker2D" type="Marker2D" parent="Aim"]
-position = Vector2(25, 0)
+position = Vector2(10, 0)
 
 [node name="DashDuration" type="Timer" parent="."]
 wait_time = 0.4

@@ -9,7 +9,6 @@ const bomb_scene = preload("res://scenes/entities/bomb.tscn")
 @onready var dash_cool_down_timer = $DashCoolDown
 # endum Action {IDLE, WALK, SPRINT, DASH, ATTACK}
 enum Directions {UP, DOWN, LEFT, RIGHT}
-enum attack_Directions {UP, DOWN, LEFT, RIGHT}
 var facing : Directions = Directions.DOWN
 var attackfacing
 var direction: Vector2 = Vector2.ZERO
@@ -62,21 +61,6 @@ func _set_direction():
 			isSprinting = false
 			isWalking = false
 			isIdle = false
-	if isAttacking == true:
-		if isDashing == false:
-			var mouse = get_global_mouse_position()
-			if mouse.x < mouse:
-				attackfacing = attack_Directions.LEFT
-				isWalking = true
-			elif mouse.x > mouse:
-				attackfacing = attack_Directions.RIGHT
-				isWalking = true
-			elif direction.y > 0:
-				attackfacing = attack_Directions.DOWN
-				isWalking = true
-			elif direction.y < 0:
-				attackfacing = attack_Directions.UP
-				isWalking = true
 	else:
 		isWalking = false
 		isIdle = false

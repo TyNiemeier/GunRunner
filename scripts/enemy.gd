@@ -51,8 +51,8 @@ func _on_detection_area_body_exited(body):
 
 
 #enemy gets hit by playera
-func enemy_hit(take_health):
-	pass
+func take_damage(take_damage):
+	health -= take_damage
 
 #enemy dies
 func death():

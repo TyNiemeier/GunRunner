@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://ceskeotiviavi"]
+[gd_scene load_steps=16 format=3 uid="uid://ceskeotiviavi"]
 
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_0yvmx"]
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/other/momonga_Dungeon (1).png" id="1_k8pen"]
+[ext_resource type="Script" path="res://scenes/entities/Enemy/hitbox.gd" id="3_ssl21"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4skb"]
 atlas = ExtResource("1_k8pen")
@@ -80,9 +81,10 @@ height = 16.0
 radius = 84.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgja0"]
-size = Vector2(16, 24)
+size = Vector2(19, 27)
 
 [node name="Enemy1" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_0yvmx")
 speed = 60
 
@@ -102,12 +104,14 @@ shape = SubResource("CapsuleShape2D_fssgw")
 shape = SubResource("CircleShape2D_fgvq0")
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 3
+script = ExtResource("3_ssl21")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 6)
+position = Vector2(0.5, 5.5)
 shape = SubResource("RectangleShape2D_mgja0")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_dectection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
-[connection signal="area_entered" from="Hitbox" to="." method="_Hitbox_area_entered"]
-[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

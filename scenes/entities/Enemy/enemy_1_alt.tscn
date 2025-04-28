@@ -80,9 +80,10 @@ height = 16.0
 radius = 99.0051
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uu550"]
-size = Vector2(15, 23)
+size = Vector2(18, 26)
 
 [node name="Enemy1 alt" type="CharacterBody2D"]
+collision_layer = 3
 script = ExtResource("1_pt2mc")
 speed = 60
 
@@ -106,7 +107,7 @@ shape = SubResource("CircleShape2D_ensxq")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-0.5, 5.5)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_uu550")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_dectection_area_body_entered"]
