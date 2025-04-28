@@ -205,9 +205,10 @@ func _physics_process(_delta):
 		health = 100
 		print(health)
 
-	if health == 0:
+	if health <= 0:
 		isDead = true
 		canMove = false
+		
 		
 
 	_set_direction()
