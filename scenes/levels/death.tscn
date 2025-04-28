@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvagkb82tilec"]
+
+[ext_resource type="Texture2D" uid="uid://bukux7pf183be" path="res://assets/ui/Sample-InventorySlotsSet.png" id="1_67mhq"]
+
+[node name="death" type="Node2D"]
+
+[node name="Sample-inventorySlotsSet" type="Sprite2D" parent="."]
+position = Vector2(23, 38)
+texture = ExtResource("1_67mhq")
