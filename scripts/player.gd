@@ -248,6 +248,11 @@ func _set_health_bar():
 	$CanvasLayer/Health.value = health
 	
 func _set_bomb_cooldown():
-	$CanvasLayer/BombCoolDown = BombCoolDown.time_left 
+	$CanvasLayer/BombCoolDown.value = BombCoolDown.time_left
+	
+func _set_weapon_icon():
+	if currentWeapon == 0:
+		
+		
 	
 	
