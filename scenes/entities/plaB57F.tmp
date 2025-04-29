@@ -1,4 +1,4 @@
-[gd_scene load_steps=542 format=3 uid="uid://d34idi3tc1prb"]
+[gd_scene load_steps=541 format=3 uid="uid://d34idi3tc1prb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_m4slr"]
 [ext_resource type="Texture2D" uid="uid://bep1k2t6ep7cj" path="res://assets/sprites/Female player/Run/Gun/Run_Gun.png" id="2_hfkws"]
@@ -31,7 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://bn6kxndngln2k" path="res://assets/sprites/Female player/Run/Spear/Run_Spear_Right_Down.png" id="18_jvm70"]
 [ext_resource type="Texture2D" uid="uid://c5plow3vvlau3" path="res://assets/sprites/Female player/Run/Spear/Run_Spear_Right_Up.png" id="19_jlpmx"]
 [ext_resource type="PackedScene" uid="uid://b57a47v8nvabp" path="res://scenes/UI/HUD Elements.tscn" id="21_qjgj4"]
-[ext_resource type="Script" path="res://scripts/hud_elements.gd" id="32_gddsm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wi1dj"]
 atlas = ExtResource("7_m2k73")
@@ -3939,6 +3938,7 @@ height = 26.0
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-1, -1)
 script = ExtResource("1_m4slr")
+playerId = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 1)
@@ -3948,9 +3948,6 @@ animation = &"p1_gunAttackUp"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
-
-[node name="CanvasLayer" parent="Camera2D" instance=ExtResource("21_qjgj4")]
-script = ExtResource("32_gddsm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1)
@@ -3963,6 +3960,19 @@ one_shot = true
 [node name="DashCoolDown" type="Timer" parent="."]
 one_shot = true
 
+[node name="CanvasLayer" parent="." instance=ExtResource("21_qjgj4")]
+
+[node name="BombCoolDown" parent="CanvasLayer" index="1"]
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="SpearEnabled" parent="CanvasLayer" index="4"]
+visible = true
+
+[node name="GunEnabled" parent="CanvasLayer" index="5"]
+visible = true
+
 [node name="PlayerHitbox" type="Area2D" parent="."]
 
 [node name="Hitboxtimer" type="Timer" parent="PlayerHitbox"]
@@ -3974,7 +3984,6 @@ shape = SubResource("CapsuleShape2D_kptqb")
 
 [node name="allow_damage" type="Timer" parent="."]
 
-[connection signal="health_change" from="." to="Camera2D/CanvasLayer" method="_on_player_health_change"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="DashCoolDown" to="." method="_on_dash_cool_down_timeout"]
@@ -3983,3 +3992,5 @@ shape = SubResource("CapsuleShape2D_kptqb")
 [connection signal="body_exited" from="PlayerHitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="PlayerHitbox/Hitboxtimer" to="." method="_on_hitboxtimer_timeout"]
 [connection signal="timeout" from="allow_damage" to="." method="_on_allow_damage_timeout"]
+
+[editable path="CanvasLayer"]

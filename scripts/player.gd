@@ -16,6 +16,9 @@ var canDash = true
 var collision = true
 var isSprinting = false
 var currentWeapon = 0
+signal health_change
+signal bombtime_update
+signal weapon_changed
 
 
 
@@ -159,8 +162,10 @@ func _physics_process(_delta):
 
 	if Input.is_action_just_pressed("p1_x"):
 		currentWeapon += 1
+		weapon_changed.emit(currentWeapon)
 	if currentWeapon >= 2:
 		currentWeapon = 0
+		weapon_changed.emit(currentWeapon)
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
 	
@@ -184,9 +189,6 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("p1_l1"):
 		isAttacking = true
 
-
-
-
 	#health doesnt go above health
 	if health > 100:
 		health = 100
@@ -196,9 +198,6 @@ func _physics_process(_delta):
 	_set_animation()
 	move_and_slide()
 	dash()
-	_set_health_bar()
-	#_set_bomb_cooldown()
-
 
 #enemy or projectile hits player
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
@@ -226,6 +225,7 @@ func player_hit(take_damage):
 		allow_damage = false
 		$allow_damage.start()
 		print(health)
+		health_change.emit(health)
 
 #invisable / how long it takes until player is allowed to get damage
 func _on_allow_damage_timeout() -> void:
@@ -243,16 +243,3 @@ func _on_player_hitbox_area_entered(area: Area2D) -> void:
 			health += area.heal
 			area.queue_free()
 			print(health)
-			
-func _set_health_bar():
-	$CanvasLayer/Health.value = health
-	
-func _set_bomb_cooldown():
-	$CanvasLayer/BombCoolDown.value = BombCoolDown.time_left
-	
-func _set_weapon_icon():
-	if currentWeapon == 0:
-		
-		
-	
-	
