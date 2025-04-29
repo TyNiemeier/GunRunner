@@ -287,6 +287,7 @@ func shoot():
 		get_parent().add_child(bullet)
 		bullet.position = $Aim/Marker2D.global_position
 		bullet.velocity = get_global_mouse_position() - bullet.position
+		bullet.rotation = $Aim.rotation
 
 
 func _on_bomb_cool_down_timeout() -> void:

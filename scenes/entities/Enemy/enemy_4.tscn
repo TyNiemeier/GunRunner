@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bkv8yre8oo6jg"]
+[gd_scene load_steps=16 format=3 uid="uid://bkv8yre8oo6jg"]
 
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/other/momonga_Dungeon (1).png" id="1_idhy2"]
 [ext_resource type="Script" path="res://scripts/enemy_4.gd" id="1_wk4hm"]
+[ext_resource type="Script" path="res://scenes/entities/Enemy/hitbox.gd" id="3_2y0vi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgthk"]
 atlas = ExtResource("1_idhy2")
@@ -104,6 +105,7 @@ position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_cy72f")
 
 [node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("3_2y0vi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0.5, 5.5)

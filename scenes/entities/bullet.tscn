@@ -12,7 +12,7 @@ radius = 3.0
 height = 10.0
 
 [node name="bullet" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_6g8ck")
 
@@ -37,5 +37,4 @@ shape = SubResource("CapsuleShape2D_uqcoi")
 [node name="despawn" type="Timer" parent="."]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="despawn" to="." method="_on_despawn_timeout"]
