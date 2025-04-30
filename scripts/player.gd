@@ -8,7 +8,7 @@ const bomb_scene = preload("res://scenes/entities/bomb.tscn")
 @onready var dash_duration_timer = $DashDuration
 @onready var dash_cool_down_timer = $DashCoolDown
 # endum Action {IDLE, WALK, SPRINT, DASH, ATTACK}
-enum Directions {UP, DOWN, LEFT, RIGHT}
+enum Directions {UP, UPLEFT, UPRIGHT, DOWN, LEFT, RIGHT}
 var facing : Directions = Directions.DOWN
 var attackfacing
 var direction: Vector2 = Vector2.ZERO
@@ -18,6 +18,8 @@ var canDash = true
 var collision = true
 var isSprinting = false
 var currentWeapon = 0
+var current_ammo = 7
+var reloading = false
 
 
 
@@ -39,17 +41,23 @@ var spear_damage = 20
 func _set_direction():
 	if isAttacking == false:
 		if isDashing == false:
-			if direction.x < 0:
+			if direction.x < 0 and direction.y >= 0:
 				facing = Directions.LEFT
 				isWalking = true
-			elif direction.x > 0:
+			elif direction.x > 0 and direction.y >= 0:
 				facing = Directions.RIGHT
 				isWalking = true
-			elif direction.y > 0:
-				facing = Directions.DOWN
-				isWalking = true
-			elif direction.y < 0:
+			elif direction.y < 0 and direction.x == 0:
 				facing = Directions.UP
+				isWalking = true
+			elif direction.y < 0 and direction.x < 0:
+				facing = Directions.UPLEFT
+				isWalking = true
+			elif direction.y < 0 and direction.x > 0:
+				facing = Directions.UPRIGHT
+				isWalking = true
+			elif direction.y > 0 and direction.x == 0:
+				facing = Directions.DOWN
 				isWalking = true
 			if direction.x == 0 && direction.y == 0:
 				isIdle = true
@@ -76,6 +84,11 @@ func _direction_suffix():
 		return "Down"
 	elif facing == Directions.UP:
 		return "Up"	
+	elif facing == Directions.UPLEFT:
+		return "UpLeft"	
+	elif facing == Directions.UPRIGHT:
+		return "UpRight"	
+	
 
 #sets animations for sprinting idle walk dash, etc
 func _set_animation():
@@ -88,39 +101,28 @@ func _set_animation():
 		#sprinting for gun
 		else:
 			sprite.play("p1_gunRun" + _direction_suffix())
-
-
 	#changes idle animations
 	elif isIdle:
 		#idle for spear
-
 		if currentWeapon == 0:
 			sprite.play("p1_idleSpear" + _direction_suffix())
 		#idle for gun
 		else:
-
 			sprite.play("p1_idleGun" + _direction_suffix())
-	
-
-
 	elif isWalking:
 		#walking for spear
-
 		if currentWeapon == 0:
 			sprite.play("p1_spearWalk" + _direction_suffix())
 		#walking for gun
 		else:
 			sprite.play("p1_gunWalk" + _direction_suffix())
-
 	elif isDashing:
 			#dashing for spear
-
 			if currentWeapon == 0:
 				sprite.play("p1_spearDash" + _direction_suffix())
 			#dashing for gun
 			else:
 				sprite.play("p1_gunDash" + _direction_suffix())
-	
 	if isAttacking:
 			#attack for spear
 		if currentWeapon == 0:
@@ -132,7 +134,6 @@ func _set_animation():
 			else:
 				sprite.play("p1_gunAttack" + _direction_suffix())
 			
-
 #ISWALKING IS OVERIDING THE SPRINT POSSIBLY REWRITE SETTING WALKING TO TRUE
 func dash():
 	if (Input.is_action_just_pressed("dash") and canDash):
@@ -152,7 +153,7 @@ func _on_dash_cool_down_timeout():
 func _on_animated_sprite_2d_animation_finished():
 	print(sprite.animation)
 	if sprite.animation == "p1_spearAttack" or "p1_gunAttack "or "p1_gunAttackRun" + _direction_suffix():
-		isAttacking = false	
+		isAttacking = false
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -167,7 +168,6 @@ func _physics_process(_delta):
 		currentWeapon = 0
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
-	
 	velocity = direction * SPEED	
 
 	#Sprint
@@ -190,9 +190,11 @@ func _physics_process(_delta):
 		if currentWeapon == 0:
 			spear_attack()
 		if currentWeapon == 1:
-			shoot()
+			if current_ammo > 0:
+				shoot()
+			if current_ammo == 0:
+				reload()
 	$Aim.look_at((get_global_mouse_position()))
-
 
 	#health doesnt go above health
 	if health > 100:
@@ -205,7 +207,6 @@ func _physics_process(_delta):
 			bomb.global_position = self.global_position
 			drop_bomb = false
 			$BombCoolDown.start()
-
 
 	_set_direction()
 	_set_animation()
@@ -288,8 +289,18 @@ func shoot():
 		bullet.position = $Aim/Marker2D.global_position
 		bullet.velocity = get_global_mouse_position() - bullet.position
 		bullet.rotation = $Aim.rotation
+		current_ammo -= 1
 
+func reload():
+	if reloading == false:
+		reloading = true
+		$Reload.start()
+		
 
 func _on_bomb_cool_down_timeout() -> void:
 	drop_bomb = true
 	$BombCoolDown.stop()
+
+func _on_reload_timeout() -> void:
+	reloading = false
+	current_ammo = 7
