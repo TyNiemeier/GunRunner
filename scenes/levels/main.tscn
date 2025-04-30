@@ -13,29 +13,8 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="entities" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="Player" parent="entities" instance=ExtResource("1_84kh8")]
-position = Vector2(3, -11)
-
-[node name="Enemies" type="Node2D" parent="entities"]
-y_sort_enabled = true
-
-[node name="Enemy1" parent="entities/Enemies" instance=ExtResource("3_a5s2w")]
-position = Vector2(-114, 25)
-
-[node name="Enemy2" parent="entities/Enemies" instance=ExtResource("4_qaov4")]
-position = Vector2(-119, -40)
-
-[node name="Enemy3" parent="entities/Enemies" instance=ExtResource("5_x5ixv")]
-position = Vector2(136, -72)
-
-[node name="Enemy4" parent="entities/Enemies" instance=ExtResource("6_i13no")]
-position = Vector2(36, -197)
-
-[node name="Enemy1 alt" parent="entities/Enemies" instance=ExtResource("7_n0alf")]
-position = Vector2(-87, -144)
+[node name="Player" parent="." instance=ExtResource("1_84kh8")]
+position = Vector2(-1, -14)
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 
