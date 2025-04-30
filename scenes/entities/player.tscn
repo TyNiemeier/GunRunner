@@ -1,4 +1,4 @@
-[gd_scene load_steps=573 format=3 uid="uid://d34idi3tc1prb"]
+[gd_scene load_steps=589 format=3 uid="uid://d34idi3tc1prb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_m4slr"]
 [ext_resource type="Texture2D" uid="uid://bhto8fab43htd" path="res://assets/sprites/Female player/Death/Normal/death.png" id="2_fdam5"]
@@ -4283,9 +4283,8 @@ script = ExtResource("1_m4slr")
 y_sort_enabled = true
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_idleGunDown"
-offset = Vector2(0, -10)
 animation = &"p1_deathDown"
+offset = Vector2(0, -10)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)

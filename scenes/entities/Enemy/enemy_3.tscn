@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://ckruignmo2wsb"]
 
-[ext_resource type="Script" uid="uid://dek3exmr4wmfb" path="res://scripts/enemy_3.gd" id="1_7opxr"]
+[ext_resource type="Script" path="res://scripts/enemy_3.gd" id="1_7opxr"]
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/other/momonga_Dungeon (1).png" id="1_7xkjs"]
-[ext_resource type="Script" uid="uid://puqgmgt6q2ow" path="res://scenes/entities/Enemy/hitbox.gd" id="3_6wkut"]
+[ext_resource type="Script" path="res://scenes/entities/Enemy/hitbox.gd" id="3_6wkut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mk1wg"]
 atlas = ExtResource("1_7xkjs")
@@ -88,10 +88,10 @@ size = Vector2(18, 27)
 
 [node name="Enemy3" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 3
 script = ExtResource("1_7opxr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 8)
 sprite_frames = SubResource("SpriteFrames_oikmh")
 animation = &"Idle"
 autoplay = "Idle"

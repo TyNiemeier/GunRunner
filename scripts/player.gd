@@ -41,52 +41,31 @@ var canMove = true
 #updates facing based on the direction
 #used for animations
 func _set_direction():
-	if isAttacking == false:
-		if isDashing == false:
-			if direction.x < 0 and direction.y >= 0:
-				facing = Directions.LEFT
-				isWalking = true
-			elif direction.x > 0 and direction.y >= 0:
-				facing = Directions.RIGHT
-				isWalking = true
-			elif direction.y < 0 and direction.x == 0:
-				facing = Directions.UP
-				isWalking = true
-			elif direction.y < 0 and direction.x < 0:
-				facing = Directions.UPLEFT
-				isWalking = true
-			elif direction.y < 0 and direction.x > 0:
-				facing = Directions.UPRIGHT
-				isWalking = true
-			elif direction.y > 0 and direction.x == 0:
-				facing = Directions.DOWN
-				isWalking = true
-			if direction.x == 0 && direction.y == 0:
-				isIdle = true
-				isWalking = false
-				isSprinting = false
 	if isDead == false:
 		if isAttacking == false:
 			if isDashing == false:
-				if direction.x < 0:
+				if direction.x < 0 and direction.y >= 0:
 					facing = Directions.LEFT
 					isWalking = true
-				elif direction.x > 0:
+				elif direction.x > 0 and direction.y >= 0:
 					facing = Directions.RIGHT
 					isWalking = true
-				elif direction.y > 0:
-					facing = Directions.DOWN
-					isWalking = true
-				elif direction.y < 0:
+				elif direction.y < 0 and direction.x == 0:
 					facing = Directions.UP
+					isWalking = true
+				elif direction.y < 0 and direction.x < 0:
+					facing = Directions.UPLEFT
+					isWalking = true
+				elif direction.y < 0 and direction.x > 0:
+					facing = Directions.UPRIGHT
+					isWalking = true
+				elif direction.y > 0 and direction.x == 0:
+					facing = Directions.DOWN
 					isWalking = true
 				if direction.x == 0 && direction.y == 0:
 					isIdle = true
 					isWalking = false
 					isSprinting = false
-				else:
-					isIdle = false
-
 			else:
 				isSprinting = false
 				isWalking = false
