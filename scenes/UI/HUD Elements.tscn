@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://b57a47v8nvabp"]
+[gd_scene load_steps=8 format=3 uid="uid://b57a47v8nvabp"]
 
-[ext_resource type="Texture2D" uid="uid://cxd61ryypupas" path="res://assets/ui/GUI.png" id="1_wp23g"]
 [ext_resource type="Texture2D" uid="uid://d27jcrua273lm" path="res://assets/sprites/1-BOMB/2-Bomb On/1.png" id="2_8ymhc"]
 [ext_resource type="Texture2D" uid="uid://mt4sfvvg8snb" path="res://assets/ui/EmptyHealthBar.png" id="3_3t7vn"]
 [ext_resource type="Texture2D" uid="uid://bm0qi6mx8sa5w" path="res://assets/ui/FullHealthBarAlt.png" id="4_w2hwg"]
@@ -11,23 +10,11 @@
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
-[node name="BombBox" type="Sprite2D" parent="."]
-position = Vector2(87, 80)
-scale = Vector2(3.40217, 3.45652)
-texture = ExtResource("1_wp23g")
-region_enabled = true
-region_rect = Rect2(1.5, 33, 45, 45)
-
-[node name="BombSprite" type="Sprite2D" parent="BombBox"]
-position = Vector2(0.0734787, -4.62894)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_8ymhc")
-
 [node name="BombCoolDown" type="TextureProgressBar" parent="."]
-offset_left = 12.0
-offset_top = 158.0
-offset_right = 64.0
-offset_bottom = 167.0
+offset_left = 249.0
+offset_top = 1044.0
+offset_right = 301.0
+offset_bottom = 1053.0
 scale = Vector2(3, 3)
 value = 100.0
 texture_under = ExtResource("3_3t7vn")
@@ -39,7 +26,7 @@ offset_top = 17.0
 offset_right = 234.0
 offset_bottom = 26.0
 scale = Vector2(3, 3)
-value = 50.0
+value = 100.0
 texture_under = ExtResource("3_3t7vn")
 texture_progress = ExtResource("5_dtwfi")
 
@@ -59,3 +46,13 @@ visible = false
 position = Vector2(60, 1018)
 scale = Vector2(4, 4)
 texture = ExtResource("8_qomdj")
+
+[node name="BombIcon" type="Sprite2D" parent="."]
+position = Vector2(180, 1018)
+scale = Vector2(4, 4)
+texture = ExtResource("6_02bny")
+
+[node name="BombSprite" type="Sprite2D" parent="."]
+position = Vector2(178, 1000)
+scale = Vector2(1.70108, 1.72826)
+texture = ExtResource("2_8ymhc")

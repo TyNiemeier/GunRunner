@@ -16,9 +16,9 @@ var canDash = true
 var collision = true
 var isSprinting = false
 var currentWeapon = 0
-signal health_change
-signal bombtime_update
-signal weapon_changed
+signal health_change(new_value)
+signal bombtime_update(new_value)
+signal weapon_changed(currentWeapon)
 
 
 
@@ -243,3 +243,5 @@ func _on_player_hitbox_area_entered(area: Area2D) -> void:
 			health += area.heal
 			area.queue_free()
 			print(health)
+			health_change.emit(health)
+			
