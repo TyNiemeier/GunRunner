@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c27n8gk8r4m81"]
 
-[ext_resource type="Script" path="res://chicken.gd" id="1_msv8y"]
+[ext_resource type="Script" path="res://scripts/chicken.gd" id="1_msv8y"]
 [ext_resource type="Texture2D" uid="uid://cj1mv5v7d33sy" path="res://assets/sprites/other/Food.png" id="1_y6ok7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3neh5"]

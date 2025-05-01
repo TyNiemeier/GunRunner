@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c37l2ds0lxmv6"]
 
-[ext_resource type="Script" path="res://pie.gd" id="1_y5nrl"]
+[ext_resource type="Script" path="res://scripts/pie.gd" id="1_y5nrl"]
 [ext_resource type="Texture2D" uid="uid://cj1mv5v7d33sy" path="res://assets/sprites/other/Food.png" id="2_54shv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_picma"]
