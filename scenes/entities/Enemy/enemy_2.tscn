@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemy_2.gd" id="1_54j25"]
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/other/momonga_Dungeon (1).png" id="1_eqr7f"]
-[ext_resource type="Script" path="res://scenes/entities/Enemy/hitbox.gd" id="3_ov8xs"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_ov8xs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3axv"]
 atlas = ExtResource("1_eqr7f")
