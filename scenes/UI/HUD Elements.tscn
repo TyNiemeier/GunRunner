@@ -11,48 +11,48 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="BombCoolDown" type="TextureProgressBar" parent="."]
-offset_left = 249.0
-offset_top = 1044.0
-offset_right = 301.0
-offset_bottom = 1053.0
+offset_left = 173.0
+offset_top = 132.0
+offset_right = 225.0
+offset_bottom = 141.0
 scale = Vector2(3, 3)
 value = 100.0
 texture_under = ExtResource("3_3t7vn")
 texture_progress = ExtResource("4_w2hwg")
 
 [node name="Health" type="TextureProgressBar" parent="."]
-offset_left = 170.0
-offset_top = 17.0
-offset_right = 234.0
-offset_bottom = 26.0
+offset_left = 11.0
+offset_top = 132.0
+offset_right = 75.0
+offset_bottom = 141.0
 scale = Vector2(3, 3)
 value = 100.0
 texture_under = ExtResource("3_3t7vn")
 texture_progress = ExtResource("5_dtwfi")
 
 [node name="WeaponIcon" type="Sprite2D" parent="."]
-position = Vector2(60, 1018)
+position = Vector2(83, 72)
 scale = Vector2(4, 4)
 texture = ExtResource("6_02bny")
 
 [node name="SpearEnabled" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(60, 1018)
+position = Vector2(83, 72)
 scale = Vector2(4, 4)
 texture = ExtResource("7_wewve")
 
 [node name="GunEnabled" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(60, 1018)
+position = Vector2(83, 72)
 scale = Vector2(4, 4)
 texture = ExtResource("8_qomdj")
 
 [node name="BombIcon" type="Sprite2D" parent="."]
-position = Vector2(180, 1018)
+position = Vector2(246.304, 72.6521)
 scale = Vector2(4, 4)
 texture = ExtResource("6_02bny")
 
 [node name="BombSprite" type="Sprite2D" parent="."]
-position = Vector2(178, 1000)
+position = Vector2(244.652, 53.326)
 scale = Vector2(1.70108, 1.72826)
 texture = ExtResource("2_8ymhc")

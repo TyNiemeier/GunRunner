@@ -193,6 +193,7 @@ func _physics_process(_delta):
 	if health > 100:
 		health = 100
 		print(health)
+		health_change.emit(health)
 
 	_set_direction()
 	_set_animation()
