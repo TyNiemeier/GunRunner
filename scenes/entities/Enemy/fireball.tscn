@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://28aatk050v2e"]
 
 [ext_resource type="Texture2D" uid="uid://c1tsbiwv8pmwq" path="res://assets/sprites/FireballPixelart/PixelartFireBall-7.png" id="1_b50ol"]
-[ext_resource type="Script" path="res://scenes/entities/Enemy/fireball.gd" id="1_kuubm"]
+[ext_resource type="Script" uid="uid://g6vp557ilnot" path="res://scenes/entities/Enemy/fireball.gd" id="1_kuubm"]
 [ext_resource type="Texture2D" uid="uid://dape48rad1m2a" path="res://assets/sprites/FireballPixelart/PixelartFireBall-8.png" id="2_mw8ut"]
 [ext_resource type="Texture2D" uid="uid://dt0j60gjcw73p" path="res://assets/sprites/FireballPixelart/PixelartFireBall-9.png" id="3_3x660"]
 [ext_resource type="Texture2D" uid="uid://cglv7md415uah" path="res://assets/sprites/FireballPixelart/PixelartFireBall-10.png" id="3_tneak"]
@@ -39,6 +39,8 @@ radius = 5.0
 height = 14.0
 
 [node name="Fireball" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_kuubm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -48,7 +50,7 @@ autoplay = "default"
 frame_progress = 0.960617
 
 [node name="KillTimer" type="Timer" parent="."]
-wait_time = 2.0
+autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 0)
