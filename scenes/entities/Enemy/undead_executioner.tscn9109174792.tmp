@@ -260,7 +260,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cnsh6")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_opqg4")
 }, {
 "duration": 1.0,
@@ -281,7 +281,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hk5mi")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_a3asa")
 }, {
 "duration": 1.0,
@@ -298,7 +298,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attacking",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -471,7 +471,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2u1fo"]
-radius = 16.8733
+radius = 24.0
 height = 110.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mgd6"]
@@ -494,20 +494,23 @@ script = ExtResource("1_hmdhw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sqisb")
-animation = &"Skill1"
+animation = &"Attacking"
 autoplay = "Idle"
+frame = 12
+frame_progress = 1.0
 offset = Vector2(5, 0)
 script = ExtResource("8_20m8o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 11)
-scale = Vector2(1.1853, 0.945832)
+visible = false
+position = Vector2(-2, 11)
 shape = SubResource("CapsuleShape2D_2u1fo")
 
 [node name="Skill1_range" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Skill1_range"]
-position = Vector2(0, 6)
+position = Vector2(-1, 15)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0mgd6")
 
@@ -534,7 +537,6 @@ shape = SubResource("CapsuleShape2D_yvcxr")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]
-[connection signal="body_entered" from="Skill1_range" to="." method="_on_skill_1_range_body_entered"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]

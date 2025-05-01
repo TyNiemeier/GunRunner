@@ -181,7 +181,6 @@ func _on_dash_cool_down_timeout():
 	canDash = true
 
 func _on_animated_sprite_2d_animation_finished():
-	print(sprite.animation)
 	if sprite.animation == "p1_spearAttack" or "p1_gunAttack "or "p1_gunAttackRun" + _direction_suffix():
 		isAttacking = false	
 	if sprite.animation == "p1_death" + _direction_suffix():
@@ -299,25 +298,21 @@ func spear_attack():
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Rightattack')
 		if Directions.LEFT:
 			var bodies = $Leftattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Leftattack')
 		if Directions.UP:
 			var bodies = $Upattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Upattack')
 		if Directions.DOWN:
 			var bodies = $Downattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Downattack')
 
 func shoot():
 	if isAttacking and currentWeapon == 1:
