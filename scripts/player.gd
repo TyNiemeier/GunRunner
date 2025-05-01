@@ -19,7 +19,7 @@ var collision = true
 var isSprinting = false
 var currentWeapon = 0
 signal health_change(new_value)
-signal bombtime_update(new_value)
+signal bombtime_update(value)
 signal weapon_changed(currentWeapon)
 var current_ammo = 7
 var reloading = false
@@ -170,9 +170,8 @@ func _on_animated_sprite_2d_animation_finished():
 		isAttacking = false	
 	if sprite.animation == "p1_death" + _direction_suffix():
 		get_tree().change_scene_to_file("res://scenes/levels/death.tscn")
+		
 func _physics_process(_delta):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
@@ -333,3 +332,6 @@ func _on_bomb_cool_down_timeout() -> void:
 func _on_reload_timeout() -> void:
 	reloading = false
 	current_ammo = 7
+	
+func _process(delta):
+	

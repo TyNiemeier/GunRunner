@@ -10,13 +10,15 @@
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
-[node name="BombCoolDown" type="TextureProgressBar" parent="."]
+[node name="BombTimer" type="TextureProgressBar" parent="."]
 offset_left = 173.0
 offset_top = 132.0
 offset_right = 225.0
 offset_bottom = 141.0
 scale = Vector2(3, 3)
-value = 100.0
+max_value = 1.0
+step = 0.1
+value = 1.0
 texture_under = ExtResource("3_3t7vn")
 texture_progress = ExtResource("4_w2hwg")
 
