@@ -19,7 +19,7 @@ var collision = true
 var isSprinting = false
 var currentWeapon = 0
 signal health_change(new_value)
-signal bombtime_update(value)
+signal bombtime_active(bombtimer_activity)
 signal weapon_changed(currentWeapon)
 var current_ammo = 7
 var reloading = false
@@ -225,6 +225,7 @@ func _physics_process(_delta):
 			bomb.global_position = self.global_position
 			drop_bomb = false
 			$BombCoolDown.start()
+			bombtime_active.emit(0)
 
 	if health <= 0:
 		isDead = true
@@ -328,10 +329,13 @@ func reload():
 func _on_bomb_cool_down_timeout() -> void:
 	drop_bomb = true
 	$BombCoolDown.stop()
+	bombtime_active.emit(100)
 
 func _on_reload_timeout() -> void:
 	reloading = false
 	current_ammo = 7
 	
 func _process(delta):
+	weapon_changed.emit(currentWeapon)
+	health_change.emit(health)
 	

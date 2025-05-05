@@ -16,8 +16,8 @@ func _on_player_weapon_changed(currentWeapon):
 		$SpearEnabled.visible = false
 		$GunEnabled.visible = true
 
-func _on_player_bombtime_update(value):
-	if value > 0:
-		$BombTimer.value = value
-	elif value == 0:
-		$BombTimer.value = 1
+func _on_player_bombtime_active(active):
+	if active == 0:
+		$BombTimer.value = 0
+	elif active == 100:
+		$BombTimer.value = 100

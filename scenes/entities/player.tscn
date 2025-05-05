@@ -4354,7 +4354,7 @@ one_shot = true
 [node name="Reload" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="bombtime_update" from="." to="Camera2D/CanvasLayer" method="_on_player_bombtime_update"]
+[connection signal="bombtime_active" from="." to="Camera2D/CanvasLayer" method="_on_player_bombtime_active"]
 [connection signal="health_change" from="." to="Camera2D/CanvasLayer" method="_on_player_health_change"]
 [connection signal="weapon_changed" from="." to="Camera2D/CanvasLayer" method="_on_player_weapon_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
