@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://ccsad5jajs4w4"]
+[gd_scene load_steps=15 format=4 uid="uid://ccsad5jajs4w4"]
 
 [ext_resource type="Texture2D" uid="uid://bwjyj4t1h0bi1" path="res://assets/tilesets/RF_Catacombs_v1.0/decorative.png" id="1_kt3m7"]
 [ext_resource type="Texture2D" uid="uid://x744p3vjeqc1" path="res://assets/tilesets/RF_Catacombs_v1.0/mainlevbuild.png" id="2_5nh0x"]
+[ext_resource type="Script" path="res://scenes/levels/area_2d.gd" id="3_n16pu"]
+[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="4_p02uv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlsb0"]
 texture = ExtResource("1_kt3m7")
@@ -2515,11 +2517,8 @@ texture = ExtResource("2_5nh0x")
 23:1/0 = 0
 25:1/0 = 0
 26:1/0 = 0
-26:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.75, -8, 4.5, -8, 5.125, 8, -6.375, 6.5)
 27:1/0 = 0
-27:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.75, -8, 4.5, -8, 5.125, 8, -6.375, 6.5)
 28:1/0 = 0
-28:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.75, -8, 4.5, -8, 5.125, 8, -6.375, 6.5)
 29:1/0 = 0
 40:1/0 = 0
 41:1/0 = 0
@@ -3590,6 +3589,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_m6ag6")
 sources/2 = SubResource("TileSetAtlasSource_htcwy")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8e0br"]
+size = Vector2(51.75, 7.5)
+
 [node name="room 6" type="TileMapLayer"]
 tile_set = SubResource("TileSet_tnrvu")
 
@@ -3600,3 +3602,15 @@ tile_set = SubResource("TileSet_o38ec")
 [node name="Asset" type="TileMapLayer" parent="Background"]
 tile_map_data = PackedByteArray("AAAMAA4AAAAAAAQAAAAMAA8AAAAAAAUAAAANAA4AAAABAAQAAAANAA8AAAABAAUAAAAOAA4AAAACAAQAAAAOAA8AAAACAAUAAAAeAA4AAAABAAEAAAAeAA8AAAABAAIAAAAeABAAAAABAAMAAAABABUAAAABAAEAAAABABYAAAABAAIAAAABABcAAAABAAMAAAAFAAMAAAABAAEAAAAFAAQAAAABAAIAAAAFAAUAAAABAAMAAAAoAAQAAAABAAEAAAAoAAUAAAABAAIAAAAoAAYAAAABAAMAAAAvAA4AAAABAAEAAAAvAA8AAAABAAIAAAAvABAAAAABAAMAAAAPABkAAAABAAEAAAAPABoAAAABAAIAAAAPABsAAAABAAMAAAAoABkAAAABAAEAAAAoABoAAAABAAIAAAAoABsAAAABAAMAAAAaABkAAgAdAAEAAAAaABoAAgAdAAIAAAAYAAwAAAADAAQAAAAYAA0AAAADAAUAAAAYAA4AAAADAAYAAAAZAAwAAAAEAAQAAAAZAA0AAAAEAAUAAAAZAA4AAAAEAAYAAAAjAAgAAAADAAQAAAAjAAkAAAADAAUAAAAjAAoAAAADAAYAAAAkAAgAAAAEAAQAAAAkAAkAAAAEAAUAAAAkAAoAAAAEAAYAAAASAAIAAAADAAQAAAASAAMAAAADAAUAAAASAAQAAAADAAYAAAATAAIAAAAEAAQAAAATAAMAAAAEAAUAAAATAAQAAAAEAAYAAAAdAAMAAgAdAAQAAAAWABkAAgAZAAEAAAAWABoAAgAZAAIAAAAWABsAAgAZAAMAAAAWABwAAgAZAAQAAAAWAB0AAgAZAAUAAAAWAB4AAgAZAAYAAAAXABkAAgAaAAEAAAAYABkAAgAbAAEAAAAZABkAAgAcAAEAAAAaABsAAgAdAAMAAAAaABwAAgAdAAQAAAAaAB0AAgAdAAUAAAAaAB4AAgAdAAYAAAA=")
 tile_set = SubResource("TileSet_38jwo")
+
+[node name="TP_to_room7" type="Area2D" parent="."]
+script = ExtResource("3_n16pu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TP_to_room7"]
+position = Vector2(391.125, 477.75)
+shape = SubResource("RectangleShape2D_8e0br")
+
+[node name="Player" parent="TP_to_room7" instance=ExtResource("4_p02uv")]
+position = Vector2(359, 254)
+
+[connection signal="body_entered" from="TP_to_room7" to="TP_to_room7" method="_on_body_entered"]

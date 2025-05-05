@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://x744p3vjeqc1" path="res://assets/tilesets/RF_Catacombs_v1.0/mainlevbuild.png" id="1_qy076"]
 [ext_resource type="Texture2D" uid="uid://bwjyj4t1h0bi1" path="res://assets/tilesets/RF_Catacombs_v1.0/decorative.png" id="2_3k1um"]
 [ext_resource type="Texture2D" uid="uid://bri3rxx4jycb3" path="res://assets/tilesets/cave.png" id="3_3bduf"]
-[ext_resource type="Script" path="res://scenes/levels/area_2d.gd" id="3_lscgh"]
 [ext_resource type="Texture2D" uid="uid://bpp6fwh1mcvew" path="res://assets/tilesets/sewer_1.png" id="4_162yr"]
+[ext_resource type="Script" path="res://scenes/levels/tp_to_room_5.gd" id="6_34gmk"]
 [ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="6_ueu3e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k6np7"]
@@ -3168,11 +3168,11 @@ position = Vector2(245, 10)
 [node name="Player" parent="." instance=ExtResource("6_ueu3e")]
 position = Vector2(403, 126)
 
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("3_lscgh")
+[node name="Tp_to_room5" type="Area2D" parent="."]
+script = ExtResource("6_34gmk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tp_to_room5"]
 position = Vector2(456, 65)
 shape = SubResource("RectangleShape2D_4my0n")
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Tp_to_room5" to="Tp_to_room5" method="_on_body_entered"]
