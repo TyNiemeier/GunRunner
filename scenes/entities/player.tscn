@@ -1,6 +1,6 @@
 [gd_scene load_steps=655 format=3 uid="uid://d34idi3tc1prb"]
 
-[ext_resource type="Script" uid="uid://c6tay6n4tsjvx" path="res://scripts/player.gd" id="1_m4slr"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_m4slr"]
 [ext_resource type="Texture2D" uid="uid://bhto8fab43htd" path="res://assets/sprites/Female player/Death/Normal/death.png" id="2_fdam5"]
 [ext_resource type="Texture2D" uid="uid://bep1k2t6ep7cj" path="res://assets/sprites/Female player/Run/Gun/Run_Gun.png" id="2_hfkws"]
 [ext_resource type="Texture2D" uid="uid://iin0jq0b2eqk" path="res://assets/sprites/Female player/Dash - NEW/Gun/Dash_Gun_Down.png" id="2_ndk2r"]

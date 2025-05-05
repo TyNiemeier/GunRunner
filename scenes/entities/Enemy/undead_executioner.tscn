@@ -1,14 +1,14 @@
 [gd_scene load_steps=77 format=3 uid="uid://b02e7f0aescau"]
 
-[ext_resource type="Script" uid="uid://q4db2oxi6ge1" path="res://scripts/undead_executioner.gd" id="1_hmdhw"]
+[ext_resource type="Script" path="res://scripts/undead_executioner.gd" id="1_hmdhw"]
 [ext_resource type="Texture2D" uid="uid://dd8anl17p2770" path="res://assets/sprites/Undead executioner puppet/png/death.png" id="2_w2goq"]
-[ext_resource type="Script" uid="uid://e24gjm1v513d" path="res://scripts/hitbox.gd" id="2_yvcxr"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="2_yvcxr"]
 [ext_resource type="Texture2D" uid="uid://c1gpmlqcwnlsq" path="res://assets/sprites/Undead executioner puppet/png/attacking.png" id="3_m0pj6"]
 [ext_resource type="Texture2D" uid="uid://bj4fgtl0mrps0" path="res://assets/sprites/Undead executioner puppet/png/idle.png" id="4_05wls"]
 [ext_resource type="Texture2D" uid="uid://dv2ygtitxtoxg" path="res://assets/sprites/Undead executioner puppet/png/idle2.png" id="5_wo8eh"]
 [ext_resource type="Texture2D" uid="uid://dlt2nkhbp57es" path="res://assets/sprites/Undead executioner puppet/png/summon.png" id="6_4bfmi"]
 [ext_resource type="Texture2D" uid="uid://bwisuuky14oue" path="res://assets/sprites/Undead executioner puppet/png/skill1.png" id="6_pswr8"]
-[ext_resource type="Script" uid="uid://bt0bkjdw0ubdw" path="res://scenes/entities/Enemy/animated_sprite_2d.gd" id="8_20m8o"]
+[ext_resource type="Script" path="res://scenes/entities/Enemy/animated_sprite_2d.gd" id="8_20m8o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cnsh6"]
 atlas = ExtResource("3_m0pj6")

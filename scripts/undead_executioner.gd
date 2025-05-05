@@ -11,7 +11,13 @@ var take_health
 var dying = false
 var attacking = false
 var skilluse = false
+var swing = false
+var skill = false
+var summon = true
+var sprits = preload("res://scenes/entities/Enemy/summons.tscn")
+@onready var rng = RandomNumberGenerator.new()
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+
 
 func _physics_process(delta):
 	if dying == false:
@@ -69,9 +75,11 @@ func death():
 
 func _on_attack_body_entered(body: Node2D) -> void:
 	if body is Player:
-		if attacking == false:
-			attacking = true
-			sprite.play("Attacking")
+		if swing == true:
+			if attacking == false:
+				attacking = true
+				swing = false
+				sprite.play("Attacking")
 		
 
 func attack(damage):
@@ -90,12 +98,30 @@ func attack(damage):
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "Attacking":
 		attacking = false
+		nextattack()
 	if sprite.animation == "Skill1":
 		skilluse = false
-
+		nextattack()
 
 func _on_skill_1_range_body_entered(body: Node2D) -> void:
 	if body is Player:
-		if skilluse == false:
-			skilluse = true
-			sprite.play("Skill1")
+		if skill == true:
+			if skilluse == false:
+				skilluse = true
+				skill = false
+				sprite.play("Skill1")
+	
+func nextattack():
+	var num = rng.randi_range(0,5)
+	if num <= 2:
+		swing = true
+	if num > 2 and num <= 4 :
+		skill = true
+	if num == 5:
+		summon = true
+
+func Summon():
+	if summon == true:
+		var sprite = sprite.instance
+	
+	
