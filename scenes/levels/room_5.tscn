@@ -3576,7 +3576,7 @@ tile_map_data = PackedByteArray("AAALADYAAgAAAAQAAAALADcAAgAAAAUAAAAMADYAAgABAAQ
 tile_set = SubResource("TileSet_gbvkt")
 
 [node name="Player" parent="." instance=ExtResource("5_77dkp")]
-position = Vector2(915, 736)
+position = Vector2(1281, 486)
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("6_nahww")

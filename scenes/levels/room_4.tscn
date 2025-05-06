@@ -3166,7 +3166,7 @@ tile_set = SubResource("TileSet_r35cb")
 position = Vector2(245, 10)
 
 [node name="Player" parent="." instance=ExtResource("6_ueu3e")]
-position = Vector2(403, 126)
+position = Vector2(970, 279)
 
 [node name="Tp_to_room5" type="Area2D" parent="."]
 script = ExtResource("6_34gmk")
