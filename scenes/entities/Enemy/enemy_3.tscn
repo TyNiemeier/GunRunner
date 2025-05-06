@@ -1,0 +1,133 @@
+[gd_scene load_steps=17 format=3 uid="uid://ckruignmo2wsb"]
+
+[ext_resource type="Script" path="res://scripts/enemy_3.gd" id="1_7opxr"]
+[ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/other/momonga_Dungeon (1).png" id="1_7xkjs"]
+[ext_resource type="Script" path="res://scenes/entities/Enemy/hitbox.gd" id="3_6wkut"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk1wg"]
+atlas = ExtResource("1_7xkjs")
+region = Rect2(272, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrg8e"]
+atlas = ExtResource("1_7xkjs")
+region = Rect2(304, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipl8i"]
+atlas = ExtResource("1_7xkjs")
+region = Rect2(336, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi4j6"]
+atlas = ExtResource("1_7xkjs")
+region = Rect2(368, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lk6v"]
+atlas = ExtResource("1_7xkjs")
+region = Rect2(272, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nfxg"]
+atlas = ExtResource("1_7xkjs")
+region = Rect2(304, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb4yi"]
+atlas = ExtResource("1_7xkjs")
+region = Rect2(336, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y48fk"]
+atlas = ExtResource("1_7xkjs")
+region = Rect2(368, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oikmh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk1wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrg8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipl8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi4j6")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lk6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nfxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tb4yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y48fk")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cp5od"]
+radius = 2.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u4tbn"]
+radius = 115.004
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5b6s1"]
+radius = 72.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hq0l"]
+size = Vector2(18, 27)
+
+[node name="Enemy3" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 3
+script = ExtResource("1_7opxr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oikmh")
+animation = &"Idle"
+autoplay = "Idle"
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cp5od")
+
+[node name="detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_u4tbn")
+
+[node name="fireball_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fireball_range"]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_5b6s1")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Rotater" type="Node2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("3_6wkut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+y_sort_enabled = true
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_5hq0l")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_dectection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="fireball_range" to="." method="_on_fireball_range_body_entered"]
+[connection signal="body_exited" from="fireball_range" to="." method="_on_fireball_range_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

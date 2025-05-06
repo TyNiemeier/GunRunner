@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c27n8gk8r4m81"]
+
+[ext_resource type="Script" path="res://scripts/chicken.gd" id="1_msv8y"]
+[ext_resource type="Texture2D" uid="uid://cj1mv5v7d33sy" path="res://assets/sprites/other/Food.png" id="1_y6ok7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3neh5"]
+radius = 5.0
+height = 18.0
+
+[node name="Chicken" type="Area2D"]
+script = ExtResource("1_msv8y")
+heal = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_y6ok7")
+region_enabled = true
+region_rect = Rect2(32, 96, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3neh5")
