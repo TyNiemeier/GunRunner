@@ -166,7 +166,7 @@ func _set_animation():
 			
 #ISWALKING IS OVERIDING THE SPRINT POSSIBLY REWRITE SETTING WALKING TO TRUE
 func dash():
-	if (Input.is_action_just_pressed("dash") and canDash):
+	if (Input.is_action_just_pressed("p1_l2") and canDash):
 		isDashing = true
 		canDash = false
 		dash_duration_timer.start()
@@ -231,7 +231,7 @@ func _physics_process(_delta):
 	if health > 100:
 		health = 100
 
-	if Input.is_action_just_pressed("p1_bomb"):
+	if Input.is_action_just_pressed("p1_b"):
 		if drop_bomb == true:
 			var bomb = bomb_scene.instantiate()
 			get_tree().root.add_child(bomb)
