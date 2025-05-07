@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctqsyvntebefk"]
+
+[ext_resource type="Script" path="res://scenes/levels/first_teleport.gd" id="1_y0jih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8n0i5"]
+size = Vector2(64, 64)
+
+[node name="First Teleport" type="Area2D"]
+script = ExtResource("1_y0jih")
+level_to_load = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22, -22)
+shape = SubResource("RectangleShape2D_8n0i5")

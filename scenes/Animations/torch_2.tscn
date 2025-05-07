@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://kvml3n6oo8cu"]
+
+[ext_resource type="Texture2D" uid="uid://bdv353mlcyl71" path="res://assets/tilesets/RF_Catacombs_v1.0/torch_2.png" id="1_j6h33"]
+[ext_resource type="Texture2D" uid="uid://dd8h17eqclup0" path="res://assets/tilesets/RF_Catacombs_v1.0/torch_3.png" id="2_5o5so"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e3ak1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j6h33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5o5so")
+}],
+"loop": true,
+"name": &"Torch2Anim",
+"speed": 2.0
+}]
+
+[sub_resource type="ImageTexture" id="ImageTexture_elcxi"]
+
+[node name="Torch2" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_e3ak1")
+animation = &"Torch2Anim"
+autoplay = "Torch2Anim"
+frame_progress = 0.448035
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.968627, 0.384314, 1)
+texture = SubResource("ImageTexture_elcxi")
+texture_scale = 15.0
