@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://b02e7f0aescau"]
+[gd_scene load_steps=77 format=3 uid="uid://b02e7f0aescau"]
 
 [ext_resource type="Script" path="res://scripts/undead_executioner.gd" id="1_hmdhw"]
 [ext_resource type="Texture2D" uid="uid://dd8anl17p2770" path="res://assets/sprites/Undead executioner puppet/png/death.png" id="2_w2goq"]
@@ -471,12 +471,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2u1fo"]
-radius = 11.8114
-height = 44.4053
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3sgjs"]
-radius = 14.0
-height = 42.0
+radius = 16.8733
+height = 110.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mgd6"]
 radius = 48.0
@@ -493,26 +489,22 @@ radius = 40.0
 height = 128.0
 
 [node name="Executioner" type="CharacterBody2D"]
-position = Vector2(8, -1)
 script = ExtResource("1_hmdhw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-8, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sqisb")
-animation = &"Attacking"
+animation = &"Summoning"
 autoplay = "Idle"
+frame = 3
+frame_progress = 0.480355
 offset = Vector2(5, 0)
 script = ExtResource("8_20m8o")
 
-[node name="lookingrightcollision" type="CollisionShape2D" parent="."]
-position = Vector2(-16, 46)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 11)
 scale = Vector2(1.1853, 0.945832)
 shape = SubResource("CapsuleShape2D_2u1fo")
-
-[node name="lookingleftcollision" type="CollisionShape2D" parent="."]
-position = Vector2(20, 45)
-shape = SubResource("CapsuleShape2D_3sgjs")
 
 [node name="Skill1_range" type="Area2D" parent="."]
 

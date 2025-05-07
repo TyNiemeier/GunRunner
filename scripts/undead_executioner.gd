@@ -11,10 +11,10 @@ var take_health
 var dying = false
 var attacking = false
 var skilluse = false
-var swing = false
+var swing = true
 var skill = false
-var summon = true
-var sprits = preload("res://scenes/entities/Enemy/summons.tscn")
+var summon = false
+var spirits = preload("res://scenes/entities/Enemy/summons.tscn")
 @onready var rng = RandomNumberGenerator.new()
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 
@@ -31,9 +31,13 @@ func _physics_process(delta):
 					if player.position < position:
 						sprite.flip_h = true
 						$Attack.scale.x *= -1
+						$lookingrightcollision.disabled = true
+						$lookingleftcollision.disabled = false
 					if player.position > position:
 						sprite.flip_h = false
 						$Attack.scale.x *= -1
+						$lookingrightcollision.disabled = false
+						$lookingleftcollision.disabled = true
 				else:
 					velocity = Vector2.ZERO
 					sprite.play("Moving")
@@ -68,8 +72,9 @@ func death():
 		sprite.play("Death")
 		dying = true
 		$detection_area/CollisionShape2D.disabled = true
-		$CollisionShape2D.disabled = true
 		$Hitbox/CollisionShape2D.disabled = true
+		$lookingrightcollision.disabled = true
+		$lookingleftcollision.disabled = true
 		velocity = Vector2.ZERO
 
 
@@ -112,16 +117,25 @@ func _on_skill_1_range_body_entered(body: Node2D) -> void:
 				sprite.play("Skill1")
 	
 func nextattack():
-	var num = rng.randi_range(0,5)
+	var num = rng.randi_range(0,10000)
 	if num <= 2:
 		swing = true
 	if num > 2 and num <= 4 :
 		skill = true
-	if num == 5:
-		summon = true
-
+	if num >= 5:
+		Summon()
+		sprite.play("Summoning")
+	
 func Summon():
-	if summon == true:
-		var sprite = sprite.instance
+		var spirit = spirits.instantiate()
+		var spirit2 = spirits.instantiate()
+		var spirit3 = spirits.instantiate()
+		get_parent().add_child(spirit)
+		get_parent().add_child(spirit2)
+		get_parent().add_child(spirit3)
+		spirit.global_position = $Marker2D.global_position
+		spirit2.global_position = $Marker2D2.global_position
+		spirit3.global_position = $Marker2D3.global_position
+		summon = false
 	
 	
