@@ -3591,3 +3591,4 @@ tile_set = SubResource("TileSet_odstg")
 
 [node name="Player" parent="." instance=ExtResource("3_f7dh2")]
 position = Vector2(1210, 474)
+playerId = 0

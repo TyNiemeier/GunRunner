@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bwjyj4t1h0bi1" path="res://assets/tilesets/RF_Catacombs_v1.0/decorative.png" id="1_2cav7"]
 [ext_resource type="Texture2D" uid="uid://x744p3vjeqc1" path="res://assets/tilesets/RF_Catacombs_v1.0/mainlevbuild.png" id="2_6pgwx"]
 [ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="3_2hnlb"]
-[ext_resource type="Script" path="res://scenes/levels/tp_to_room_11.gd" id="4_64yt3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cqm57"]
 texture = ExtResource("1_2cav7")
@@ -2420,6 +2419,21 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8tmh8")
 sources/1 = SubResource("TileSetAtlasSource_squ7v")
 
+[sub_resource type="GDScript" id="GDScript_pi1hn"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _on_body_entered(body: Node2D):
+	if body is player:
+		get_tree().change_scene_to_file(\"res://scenes/levels/room_11.tscn\")
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pie1"]
 size = Vector2(53.375, 9)
 
@@ -2436,9 +2450,10 @@ tile_set = SubResource("TileSet_pk8lx")
 
 [node name="Player" parent="." instance=ExtResource("3_2hnlb")]
 position = Vector2(155, 579)
+playerId = 0
 
 [node name="TP_TO_ROOM11" type="Area2D" parent="."]
-script = ExtResource("4_64yt3")
+script = SubResource("GDScript_pi1hn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP_TO_ROOM11"]
 position = Vector2(727, 1031)
