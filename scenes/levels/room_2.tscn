@@ -91,3 +91,6 @@ position = Vector2(1145, -269)
 [node name="First Teleport" parent="." instance=ExtResource("10_8f5lm")]
 position = Vector2(58, 246)
 level_to_load = 3
+
+[connection signal="body_entered" from="First Teleport" to="First Teleport" method="_on_body_entered"]
+[connection signal="body_exited" from="First Teleport" to="First Teleport" method="_on_body_exited"]

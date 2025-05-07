@@ -3185,7 +3185,6 @@ position = Vector2(245, 10)
 
 [node name="Player" parent="." instance=ExtResource("6_ueu3e")]
 position = Vector2(970, 279)
-playerId = 0
 
 [node name="Tp_to_room5" type="Area2D" parent="."]
 script = SubResource("GDScript_psdyx")
