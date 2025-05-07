@@ -4768,7 +4768,7 @@ script = ExtResource("1_m4slr")
 y_sort_enabled = true
 scale = Vector2(0.999, 1)
 sprite_frames = SubResource("SpriteFrames_tjni8")
-animation = &"p1_spearAttackUpLeft"
+animation = &"p1_spearRunDown"
 offset = Vector2(0, -10)
 
 [node name="Camera2D" type="Camera2D" parent="."]
