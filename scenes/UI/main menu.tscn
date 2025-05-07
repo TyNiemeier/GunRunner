@@ -76,6 +76,31 @@ text = "GunRunner "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 953.0
+offset_top = 515.0
+offset_right = 993.0
+offset_bottom = 538.0
+scale = Vector2(0.5, 0.5)
+text = "Start"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 947.0
+offset_top = 533.0
+offset_right = 1009.0
+offset_bottom = 556.0
+scale = Vector2(0.5, 0.5)
+text = "Options"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 953.0
+offset_top = 551.0
+offset_right = 993.0
+offset_bottom = 574.0
+scale = Vector2(0.5, 0.5)
+text = "Quit"
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

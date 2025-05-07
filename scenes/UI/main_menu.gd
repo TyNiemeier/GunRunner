@@ -8,7 +8,7 @@ func _on_start_button_pressed():
 	
 func _on_options_button_pressed():
 	button_pressed = true
-	get_tree().change_scene_to_file("res://Scenes/UI/settings.tscn") 
+	get_tree().change_scene_to_file("res://Scenes/UI/options.tscn") 
 
 func _on_quit_button_pressed():
 	button_pressed = true
