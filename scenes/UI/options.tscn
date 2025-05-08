@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvrmtjtlwu01t"]
 
-[ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_ksupp"]
+[ext_resource type="Script" path="res://scenes/UI/options.gd" id="1_vtb8f"]
 [ext_resource type="Texture2D" uid="uid://bmacda4bovv34" path="res://assets/ui/TextBox.png" id="2_soj63"]
 
 [node name="options" type="Control"]
@@ -10,11 +10,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ksupp")
+script = ExtResource("1_vtb8f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(870, 492)
-scale = Vector2(1.10417, 1.21875)
+position = Vector2(963, 529)
+scale = Vector2(3, 3.312)
 texture = ExtResource("2_soj63")
 
 [node name="Label" type="Label" parent="Sprite2D"]
@@ -37,3 +37,22 @@ Interact: L2 Button(Objects), A Button(Menu)"
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(963, 539)
 zoom = Vector2(8, 8)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(-10000, -1000)
+layout_mode = 0
+offset_left = 941.0
+offset_top = 582.0
+offset_right = 1002.0
+offset_bottom = 613.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Return"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

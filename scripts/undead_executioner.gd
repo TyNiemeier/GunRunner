@@ -82,6 +82,7 @@ func death():
 		$lookingrightcollision.disabled = true
 		$lookingleftcollision.disabled = true
 		velocity = Vector2.ZERO
+		Global.score += 1000000000000
 
 
 func _on_attack_body_entered(body: Node2D) -> void:
@@ -90,7 +91,8 @@ func _on_attack_body_entered(body: Node2D) -> void:
 			if attacking == false:
 				attacking = true
 				swing = false
-				sprite.play("Attacking")
+				if not dying:
+					sprite.play("Attacking")
 		
 
 func attack(damage):
@@ -116,6 +118,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "Summoning":
 		summoning = false
 		nextattack()
+	if sprite.animation == "Death":
+		queue_free()
 
 func _on_skill_1_range_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -123,7 +127,8 @@ func _on_skill_1_range_body_entered(body: Node2D) -> void:
 			if skilluse == false:
 				skilluse = true
 				skill = false
-				sprite.play("Skill1")
+				if not dying:
+					sprite.play("Skill1")
 	
 func nextattack():
 	var num = rng.randi_range(0,5)

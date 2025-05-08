@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://scenes/Healing/apple.tscn" id="8_8fb1x"]
 [ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://scenes/Healing/chicken.tscn" id="9_2nndi"]
 [ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://scenes/Healing/pie.tscn" id="10_2h453"]
-[ext_resource type="PackedScene" uid="uid://b02e7f0aescau" path="res://scenes/entities/Enemy/undead_executioner.tscn" id="11_44i0o"]
+[ext_resource type="PackedScene" uid="uid://dxptpdiktyl5w" path="res://scenes/entities/Enemy/undead_executioner.tscn" id="11_44i0o"]
 
 [node name="Main" type="Node2D"]
 
@@ -37,6 +37,9 @@ position = Vector2(152, -51)
 
 [node name="Enemy4" parent="entieies/Enemies" instance=ExtResource("6_fhe7i")]
 position = Vector2(-86, -160)
+
+[node name="Undead Executioner" parent="entieies/Enemies" instance=ExtResource("11_44i0o")]
+position = Vector2(222, 159)
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 
@@ -77,6 +80,3 @@ position = Vector2(97, 68)
 
 [node name="Pie3" parent="." instance=ExtResource("10_2h453")]
 position = Vector2(79, 86)
-
-[node name="Undead Executioner" parent="." instance=ExtResource("11_44i0o")]
-position = Vector2(222, 159)
