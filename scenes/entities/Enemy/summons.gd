@@ -1,8 +1,10 @@
 extends CharacterBody2D
+class_name Spirit
 
 
 @export var speed = 80
 @export var health = 100
+var damage = 15
 
 var appearing = true
 var dead = false
@@ -18,12 +20,13 @@ var dying = false
 func _physics_process(delta):
 	if appearing == false:
 		if dying == false:
-			direction = player.position - position
-			direction = direction.normalized() * speed
-			velocity = direction
-			$CollisionShape2D.disabled = false
-			$Hitbox/CollisionShape2D.disabled = false
-			sprite.play("Idle")
+			if player != null:
+				direction = player.global_position - global_position
+				direction = direction.normalized() * speed
+				velocity = direction
+				$CollisionShape2D.disabled = false
+				$Hitbox/CollisionShape2D.disabled = false
+				sprite.play("Idle")
 		else:
 			death()
 	else:

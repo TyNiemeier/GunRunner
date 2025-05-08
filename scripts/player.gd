@@ -256,6 +256,14 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 		enemy_inattack_range = true
 		take_damage = body.damage
 		$PlayerHitbox/Hitboxtimer.start()
+	if body is Spirit:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
+	if body is Boss:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
 	if body is Projectile:
 		if isDashing == false:
 			enemy_inattack_range = true

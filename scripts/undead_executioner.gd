@@ -1,7 +1,9 @@
 extends CharacterBody2D
+class_name Boss
 
 @export var speed = 50
-@export var health = 1
+@export var health = 300
+var damage = 10
 var dead = false
 var player_in_area = false
 var player
@@ -13,7 +15,7 @@ var attacking = false
 var skilluse = false
 var swing = true
 var skill = false
-var summon = false
+var summoning = false
 var spirits = preload("res://scenes/entities/Enemy/summons.tscn")
 @onready var rng = RandomNumberGenerator.new()
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
@@ -23,24 +25,28 @@ func _physics_process(delta):
 	if dying == false:
 		if skilluse == false:
 			if attacking == false:
-				if player_in_area == true:
-					direction = player.position - position
-					direction = direction.normalized() * speed
-					velocity = direction
-					sprite.play("Idle")
-					if player.position < position:
-						sprite.flip_h = true
-						$Attack.scale.x *= -1
-						$lookingrightcollision.disabled = true
-						$lookingleftcollision.disabled = false
-					if player.position > position:
-						sprite.flip_h = false
-						$Attack.scale.x *= -1
-						$lookingrightcollision.disabled = false
-						$lookingleftcollision.disabled = true
+				if summoning == false:
+					if player_in_area == true:
+						direction = player.position - position
+						direction = direction.normalized() * speed
+						velocity = direction
+						sprite.play("Idle")
+						if player.position < position:
+							sprite.flip_h = true
+							$Attack.scale.x *= -1
+							$lookingrightcollision.disabled = true
+							$lookingleftcollision.disabled = false
+						if player.position > position:
+							sprite.flip_h = false
+							$Attack.scale.x *= -1
+							$lookingrightcollision.disabled = false
+							$lookingleftcollision.disabled = true
+					else:
+						velocity = Vector2.ZERO
+						sprite.play("Moving")
 				else:
 					velocity = Vector2.ZERO
-					sprite.play("Moving")
+					sprite.play("Summoning")
 			else:
 				velocity = Vector2.ZERO
 		else:
@@ -107,6 +113,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "Skill1":
 		skilluse = false
 		nextattack()
+	if sprite.animation == "Summoning":
+		summoning = false
+		nextattack()
 
 func _on_skill_1_range_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -117,25 +126,12 @@ func _on_skill_1_range_body_entered(body: Node2D) -> void:
 				sprite.play("Skill1")
 	
 func nextattack():
-	var num = rng.randi_range(0,10000)
+	var num = rng.randi_range(0,5)
 	if num <= 2:
 		swing = true
 	if num > 2 and num <= 4 :
 		skill = true
 	if num >= 5:
-		Summon()
-		sprite.play("Summoning")
-	
-func Summon():
-		var spirit = spirits.instantiate()
-		var spirit2 = spirits.instantiate()
-		var spirit3 = spirits.instantiate()
-		get_parent().add_child(spirit)
-		get_parent().add_child(spirit2)
-		get_parent().add_child(spirit3)
-		spirit.global_position = $Marker2D.global_position
-		spirit2.global_position = $Marker2D2.global_position
-		spirit3.global_position = $Marker2D3.global_position
-		summon = false
+		summoning = true
 	
 	

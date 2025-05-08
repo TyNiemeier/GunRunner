@@ -1,10 +1,10 @@
 [gd_scene load_steps=26 format=3 uid="uid://caad7jef56lsq"]
 
 [ext_resource type="Texture2D" uid="uid://djfn3cw4ro0us" path="res://assets/sprites/Undead executioner puppet/png/summonDeath.png" id="1_3e1y5"]
-[ext_resource type="Script" path="res://scenes/entities/Enemy/summons.gd" id="1_xld7f"]
+[ext_resource type="Script" uid="uid://b1dtx8a4dyvqr" path="res://scenes/entities/Enemy/summons.gd" id="1_xld7f"]
 [ext_resource type="Texture2D" uid="uid://cngll6bn21oos" path="res://assets/sprites/Undead executioner puppet/png/summonIdle.png" id="2_tfsco"]
 [ext_resource type="Texture2D" uid="uid://ctsxobop52ib3" path="res://assets/sprites/Undead executioner puppet/png/summonAppear.png" id="3_ekyx3"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_x6dn0"]
+[ext_resource type="Script" uid="uid://e24gjm1v513d" path="res://scripts/hitbox.gd" id="5_x6dn0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dbuf"]
 atlas = ExtResource("1_3e1y5")
@@ -140,23 +140,24 @@ animations = [{
 size = Vector2(10, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4i8ht"]
-radius = 469.24
+radius = 1483.87
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exqb0"]
 size = Vector2(12, 22)
 
 [node name="Summons" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 0
+collision_layer = 3
 script = ExtResource("1_xld7f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -3)
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_pvyms")
 animation = &"Idle"
 frame_progress = 0.201999
+offset = Vector2(0, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_r4bv2")
 
 [node name="detection_area" type="Area2D" parent="."]
@@ -165,6 +166,8 @@ shape = SubResource("RectangleShape2D_r4bv2")
 shape = SubResource("CircleShape2D_4i8ht")
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -10)
+collision_layer = 3
 script = ExtResource("5_x6dn0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
