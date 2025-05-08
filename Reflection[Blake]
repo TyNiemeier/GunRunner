@@ -3,7 +3,7 @@
 ## 🗓️ Sprint 1
 
 ### What I did
--
+- i made the 5 enemies that share the same base code and make them have animations
 
 ### Difficulties
 -
@@ -19,7 +19,7 @@
 ## 🗓️ Sprint 2
 
 ### What I did
--
+- i made the enemy attack the player and the player register that damage and take damage.
 
 ### Difficulties
 -
@@ -34,7 +34,7 @@
 ## 🗓️ Sprint 3
 
 ### What I did
--
+- added health pickups that heals the player when walk over.
 
 ### Difficulties
 -
@@ -48,6 +48,9 @@
 
 ## 🗓️ Sprint 4
 
+### What I did
+- the player can attack the enemy and the enemy takes damage
+
 ### Difficulties
 -
 
@@ -60,11 +63,14 @@
 
 ## 🗓️ Sprint 5
 
+### What I did
+- made a final boss that has 3 attacks (2 x swring, a spirit spikes or something, and summons spirits that attacks player)
+
 ### Difficulties
 -
 
 ### Surprises
--
+- loved making this enemy and how somewhat complex he is
 
 ### Lessons Learned
 -
