@@ -181,7 +181,6 @@ func _on_dash_cool_down_timeout():
 	canDash = true
 
 func _on_animated_sprite_2d_animation_finished():
-	print(sprite.animation)
 	if sprite.animation == "p1_spearAttack" or "p1_gunAttack "or "p1_gunAttackRun" + _direction_suffix():
 		isAttacking = false	
 	if sprite.animation == "p1_death" + _direction_suffix():
@@ -257,6 +256,14 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 		enemy_inattack_range = true
 		take_damage = body.damage
 		$PlayerHitbox/Hitboxtimer.start()
+	if body is Spirit:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
+	if body is Boss:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
 	if body is Projectile:
 		if isDashing == false:
 			enemy_inattack_range = true
@@ -299,25 +306,21 @@ func spear_attack():
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Rightattack')
 		if Directions.LEFT:
 			var bodies = $Leftattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Leftattack')
 		if Directions.UP:
 			var bodies = $Upattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Upattack')
 		if Directions.DOWN:
 			var bodies = $Downattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Downattack')
 
 func shoot():
 	if isAttacking and currentWeapon == 1:

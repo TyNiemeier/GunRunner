@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://br2v7w45amchx"]
+[gd_scene load_steps=12 format=3 uid="uid://br2v7w45amchx"]
 
 [ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="1_84kh8"]
 [ext_resource type="Texture2D" uid="uid://35uun4op55wb" path="res://assets/tilesets/RF_Catacombs_v1.0/spike_3.png" id="2_42tnd"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://scenes/Healing/apple.tscn" id="8_8fb1x"]
 [ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://scenes/Healing/chicken.tscn" id="9_2nndi"]
 [ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://scenes/Healing/pie.tscn" id="10_2h453"]
+[ext_resource type="PackedScene" uid="uid://b02e7f0aescau" path="res://scenes/entities/Enemy/undead_executioner.tscn" id="11_44i0o"]
 
 [node name="Main" type="Node2D"]
 
@@ -18,7 +19,6 @@ y_sort_enabled = true
 
 [node name="Player" parent="entieies" instance=ExtResource("1_84kh8")]
 position = Vector2(-1, -14)
-playerId = null
 
 [node name="Enemies" type="Node2D" parent="entieies"]
 y_sort_enabled = true
@@ -77,3 +77,6 @@ position = Vector2(97, 68)
 
 [node name="Pie3" parent="." instance=ExtResource("10_2h453")]
 position = Vector2(79, 86)
+
+[node name="Undead Executioner" parent="." instance=ExtResource("11_44i0o")]
+position = Vector2(222, 159)
