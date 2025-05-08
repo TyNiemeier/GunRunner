@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://blwpwml11u3m3"]
+[gd_scene load_steps=15 format=4 uid="uid://blwpwml11u3m3"]
 
 [ext_resource type="Texture2D" uid="uid://x744p3vjeqc1" path="res://assets/tilesets/RF_Catacombs_v1.0/mainlevbuild.png" id="1_m3oxv"]
 [ext_resource type="Texture2D" uid="uid://bwjyj4t1h0bi1" path="res://assets/tilesets/RF_Catacombs_v1.0/decorative.png" id="1_nb8jf"]
@@ -7,9 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="5_nx52h"]
 [ext_resource type="PackedScene" uid="uid://kvml3n6oo8cu" path="res://scenes/Animations/torch_2.tscn" id="5_u4fd0"]
 [ext_resource type="PackedScene" uid="uid://ctqsyvntebefk" path="res://scenes/levels/first_teleport.tscn" id="6_ltin5"]
-[ext_resource type="PackedScene" uid="uid://ceskeotiviavi" path="res://scenes/entities/Enemy/Enemy 1.tscn" id="8_s4psv"]
-[ext_resource type="PackedScene" uid="uid://dtj6cnwn1j2ij" path="res://scenes/entities/Enemy/enemy_2.tscn" id="9_4vtyg"]
-[ext_resource type="PackedScene" uid="uid://bkv8yre8oo6jg" path="res://scenes/entities/Enemy/enemy_4.tscn" id="10_5vg21"]
+[ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="8_fjo1r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lis6s"]
 texture = ExtResource("1_nb8jf")
@@ -2057,14 +2055,14 @@ position = Vector2(797, 53)
 [node name="Player" parent="." instance=ExtResource("5_nx52h")]
 position = Vector2(110, 121)
 
-[node name="Enemy1" parent="." instance=ExtResource("8_s4psv")]
-position = Vector2(867, 174)
+[node name="Enemy3" parent="." instance=ExtResource("8_fjo1r")]
+position = Vector2(369, 129)
 
-[node name="Enemy2" parent="." instance=ExtResource("9_4vtyg")]
-position = Vector2(873, 92)
+[node name="Enemy4" parent="." instance=ExtResource("8_fjo1r")]
+position = Vector2(516, 138)
 
-[node name="Enemy4" parent="." instance=ExtResource("10_5vg21")]
-position = Vector2(764, 25)
+[node name="Enemy5" parent="." instance=ExtResource("8_fjo1r")]
+position = Vector2(668, 138)
 
 [connection signal="body_entered" from="First Teleport" to="First Teleport" method="_on_body_entered"]
 [connection signal="body_exited" from="First Teleport" to="First Teleport" method="_on_body_exited"]
