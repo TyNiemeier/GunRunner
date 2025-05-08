@@ -45,37 +45,50 @@ var canMove = true
 #used for animations
 func _set_direction():
 	if isDead == false:
-		if isAttacking == false:
-			if isDashing == false:
-				if direction.x < 0 and direction.y >= 0:
-					facing = Directions.LEFT
-					isWalking = true
-				elif direction.x > 0 and direction.y >= 0:
-					facing = Directions.RIGHT
-					isWalking = true
-				elif direction.y < 0 and direction.x == 0:
-					facing = Directions.UP
-					isWalking = true
-				elif direction.y < 0 and direction.x < 0:
-					facing = Directions.UPLEFT
-					isWalking = true
-				elif direction.y < 0 and direction.x > 0:
-					facing = Directions.UPRIGHT
-					isWalking = true
-				elif direction.y > 0 and direction.x == 0:
-					facing = Directions.DOWN
-					isWalking = true
-				if direction.x == 0 && direction.y == 0:
-					isIdle = true
-					isWalking = false
+		if reloading == false:
+			if isAttacking == false:
+				if isDashing == false:
+					if direction.x < 0 and direction.y >= 0:
+						facing = Directions.LEFT
+						isWalking = true
+						isIdle = false
+					elif direction.x > 0 and direction.y >= 0:
+						facing = Directions.RIGHT
+						isWalking = true
+						isIdle = false
+					elif direction.y < 0 and direction.x == 0:
+						facing = Directions.UP
+						isWalking = true
+						isIdle = false
+					elif direction.y < 0 and direction.x < 0:
+						facing = Directions.UPLEFT
+						isWalking = true
+						isIdle = false
+					elif direction.y < 0 and direction.x > 0:
+						facing = Directions.UPRIGHT
+						isWalking = true
+						isIdle = false
+					elif direction.y > 0 and direction.x == 0:
+						facing = Directions.DOWN
+						isWalking = true
+						isIdle = false
+					if direction.x == 0 && direction.y == 0:
+						isIdle = true
+						isWalking = false
+						isSprinting = false
+				else:
 					isSprinting = false
+					isWalking = false
+					isIdle = false
 			else:
-				isSprinting = false
 				isWalking = false
 				isIdle = false
 		else:
-			isWalking = false
+			isAttacking = false
 			isIdle = false
+			isWalking = false
+			isDashing = false
+			isSprinting = false
 	else:
 		isAttacking = false
 		isIdle = false
@@ -147,6 +160,12 @@ func _set_animation():
 
 	if isDead:
 		sprite.play("p1_death" + _direction_suffix())
+
+
+	if reloading:
+			#attack for spear
+		if currentWeapon == 1:
+			sprite.play("p1_reloading" + _direction_suffix())
 			
 #ISWALKING IS OVERIDING THE SPRINT POSSIBLY REWRITE SETTING WALKING TO TRUE
 func dash():
@@ -165,7 +184,6 @@ func _on_dash_cool_down_timeout():
 	canDash = true
 
 func _on_animated_sprite_2d_animation_finished():
-	print(sprite.animation)
 	if sprite.animation == "p1_spearAttack" or "p1_gunAttack "or "p1_gunAttackRun" + _direction_suffix():
 		isAttacking = false	
 	if sprite.animation == "p1_death" + _direction_suffix():
@@ -244,6 +262,14 @@ func _on_player_hitbox_body_entered(body: Node2D) -> void:
 		enemy_inattack_range = true
 		take_damage = body.damage
 		$PlayerHitbox/Hitboxtimer.start()
+	if body is Spirit:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
+	if body is Boss:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
 	if body is Projectile:
 		if isDashing == false:
 			enemy_inattack_range = true
@@ -291,25 +317,21 @@ func spear_attack():
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Rightattack')
 		if Directions.LEFT:
 			var bodies = $Leftattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Leftattack')
 		if Directions.UP:
 			var bodies = $Upattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Upattack')
 		if Directions.DOWN:
 			var bodies = $Downattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Downattack')
 
 func shoot():
 	if isAttacking and currentWeapon == 1:
@@ -321,6 +343,7 @@ func shoot():
 		current_ammo -= 1
 
 func reload():
+	#if Input.is_action_just_pressed("p1_b"):
 	if reloading == false:
 		reloading = true
 		$Reload.start()
