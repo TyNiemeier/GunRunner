@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 300
-var damage = 10
+var damage = 20
 
 func _physics_process(delta: float) -> void:
 	move_and_collide((velocity.normalized() * delta * speed))

@@ -18,6 +18,9 @@ var canDash = true
 var collision = true
 var isSprinting = false
 var currentWeapon = 0
+signal health_change(new_value)
+signal bombtime_active(bombtimer_activity)
+signal weapon_changed(currentWeapon)
 var current_ammo = 7
 var reloading = false
 
@@ -181,22 +184,22 @@ func _on_dash_cool_down_timeout():
 	canDash = true
 
 func _on_animated_sprite_2d_animation_finished():
-	print(sprite.animation)
 	if sprite.animation == "p1_spearAttack" or "p1_gunAttack "or "p1_gunAttackRun" + _direction_suffix():
 		isAttacking = false	
 	if sprite.animation == "p1_death" + _direction_suffix():
 		get_tree().change_scene_to_file("res://scenes/levels/death.tscn")
+		
 func _physics_process(_delta):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
 	if Input.is_action_just_pressed("p1_x"):
 		currentWeapon += 1
+		weapon_changed.emit(currentWeapon)
 	if currentWeapon >= 2:
 		currentWeapon = 0
+		weapon_changed.emit(currentWeapon)
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
 	if canMove:
@@ -230,6 +233,8 @@ func _physics_process(_delta):
 	#health doesnt go above health
 	if health > 100:
 		health = 100
+		print(health)
+		health_change.emit(health)
 
 	if Input.is_action_just_pressed("p1_bomb"):
 		if drop_bomb == true:
@@ -238,6 +243,7 @@ func _physics_process(_delta):
 			bomb.global_position = self.global_position
 			drop_bomb = false
 			$BombCoolDown.start()
+			bombtime_active.emit(0)
 
 	if health <= 0:
 		isDead = true
@@ -250,10 +256,17 @@ func _physics_process(_delta):
 	move_and_slide()
 	dash()
 
-
 #enemy or projectile hits player
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
+	if body is Spirit:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
+	if body is Boss:
 		enemy_inattack_range = true
 		take_damage = body.damage
 		$PlayerHitbox/Hitboxtimer.start()
@@ -275,6 +288,8 @@ func player_hit(take_damage):
 		health -= take_damage
 		allow_damage = false
 		$allow_damage.start()
+		print(health)
+		health_change.emit(health)
 
 #invisable / how long it takes until player is allowed to get damage
 func _on_allow_damage_timeout() -> void:
@@ -291,6 +306,9 @@ func _on_player_hitbox_area_entered(area: Area2D) -> void:
 		if health < 100:
 			health += area.heal
 			area.queue_free()
+			print(health)
+			health_change.emit(health)
+			
 			
 func spear_attack():
 	if isAttacking and currentWeapon == 0:
@@ -299,25 +317,21 @@ func spear_attack():
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Rightattack')
 		if Directions.LEFT:
 			var bodies = $Leftattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Leftattack')
 		if Directions.UP:
 			var bodies = $Upattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Upattack')
 		if Directions.DOWN:
 			var bodies = $Downattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Downattack')
 
 func shoot():
 	if isAttacking and currentWeapon == 1:
@@ -338,7 +352,13 @@ func reload():
 func _on_bomb_cool_down_timeout() -> void:
 	drop_bomb = true
 	$BombCoolDown.stop()
+	bombtime_active.emit(100)
 
 func _on_reload_timeout() -> void:
 	reloading = false
 	current_ammo = 7
+	
+func _process(delta):
+	weapon_changed.emit(currentWeapon)
+	health_change.emit(health)
+	
