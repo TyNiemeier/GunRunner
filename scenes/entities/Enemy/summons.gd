@@ -54,6 +54,7 @@ func death():
 		$CollisionShape2D.disabled = true
 		$Hitbox/CollisionShape2D.disabled = true
 		velocity = Vector2.ZERO
+		Global.score += 400
 
 func appear():
 	velocity = Vector2.ZERO

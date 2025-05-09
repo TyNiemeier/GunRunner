@@ -1,10 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://caad7jef56lsq"]
+[gd_scene load_steps=26 format=3 uid="uid://caqj1qggrikv2"]
 
 [ext_resource type="Texture2D" uid="uid://djfn3cw4ro0us" path="res://assets/sprites/Undead executioner puppet/png/summonDeath.png" id="1_3e1y5"]
-[ext_resource type="Script" uid="uid://b1dtx8a4dyvqr" path="res://scenes/entities/Enemy/summons.gd" id="1_xld7f"]
+[ext_resource type="Script" path="res://scenes/entities/Enemy/summons.gd" id="1_xld7f"]
 [ext_resource type="Texture2D" uid="uid://cngll6bn21oos" path="res://assets/sprites/Undead executioner puppet/png/summonIdle.png" id="2_tfsco"]
 [ext_resource type="Texture2D" uid="uid://ctsxobop52ib3" path="res://assets/sprites/Undead executioner puppet/png/summonAppear.png" id="3_ekyx3"]
-[ext_resource type="Script" uid="uid://e24gjm1v513d" path="res://scripts/hitbox.gd" id="5_x6dn0"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_x6dn0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1dbuf"]
 atlas = ExtResource("1_3e1y5")
