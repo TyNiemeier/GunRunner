@@ -6,13 +6,13 @@
 - i made the 5 enemies that share the same base code and make them have animations
 
 ### Difficulties
--
+- wasnt to difficulte to make the enemies, their base code, and set their animations
 
 ### Surprises
--
+- thought it be little harder
 
 ### Lessons Learned
--
+- i learned more about classes
 
 
 
@@ -22,13 +22,13 @@
 - i made the enemy attack the player and the player register that damage and take damage.
 
 ### Difficulties
--
+- for awhile it was hard for me to make the player taking damage
 
 ### Surprises
--
+- loved making the dead wizard shooting fireballs
 
 ### Lessons Learned
--
+- learned on how to make a enemy shoot projectiles
 
 
 ## 🗓️ Sprint 3
@@ -37,13 +37,13 @@
 - added health pickups that heals the player when walk over.
 
 ### Difficulties
--
+- no difficulties / easyies feature to make
 
 ### Surprises
--
+- how simple he health pickups is
 
 ### Lessons Learned
--
+- learned about ordering the sprites
 
 
 ## 🗓️ Sprint 4
@@ -52,13 +52,13 @@
 - the player can attack the enemy and the enemy takes damage
 
 ### Difficulties
--
+- trying to figue out how make the bullet damage player
 
 ### Surprises
--
+- it was cool to see how on how somewhat simple/complex it was
 
 ### Lessons Learned
--
+- using over_lapping makes it easier for attacks
 
 
 ## 🗓️ Sprint 5
@@ -67,10 +67,10 @@
 - made a final boss that has 3 attacks (2 x swring, a spirit spikes or something, and summons spirits that attacks player)
 
 ### Difficulties
--
+- was a bit difficulte make the boss switch between attacks
 
 ### Surprises
 - loved making this enemy and how somewhat complex he is
 
 ### Lessons Learned
--
+- how to spawn enemies and do the reflection after each sprint
