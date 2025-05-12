@@ -317,22 +317,49 @@ func spear_attack():
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Boss:
+					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Spirit:
+					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
 		if Directions.LEFT:
 			var bodies = $Leftattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Boss:
+					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Spirit:
+					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
 		if Directions.UP:
 			var bodies = $Upattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Boss:
+					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Spirit:
+					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
 		if Directions.DOWN:
 			var bodies = $Downattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Boss:
+					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Spirit:
+					body.health -= spear_damage
+					Damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
 func shoot():
 	if isAttacking and currentWeapon == 1:
 		var bullet = bulletPath.instantiate()

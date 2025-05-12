@@ -298,7 +298,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attacking",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -447,7 +447,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Skill1",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -500,7 +500,9 @@ script = ExtResource("1_hmdhw")
 position = Vector2(-8, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sqisb")
-animation = &"Summoning"
+animation = &"Skill1"
+frame = 11
+frame_progress = 1.0
 offset = Vector2(5, 0)
 script = ExtResource("8_20m8o")
 
@@ -549,6 +551,8 @@ position = Vector2(-55, -20)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
 position = Vector2(60, -45)
+
+[node name="damage_numbers" type="Node2D" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]

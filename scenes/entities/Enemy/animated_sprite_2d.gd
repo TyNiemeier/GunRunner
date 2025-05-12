@@ -6,10 +6,10 @@ var spirits = preload("res://scenes/entities/Enemy/summons.tscn")
 func _on_frame_changed() -> void:
 	if animation == "Attacking":
 		if frame == 2 or frame == 9:
-			get_parent().attack(15)
+			get_parent().attack(20)
 	if animation == "Skill1":
 		if frame == 6:
-			get_parent().attack(20)
+			get_parent().attack(15)
 	if animation == "Summoning":
 		if frame == 2:
 			var spirit = spirits.instantiate()

@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://ckruignmo2wsb"]
 
-[ext_resource type="Script" path="res://scripts/enemy_3.gd" id="1_7opxr"]
+[ext_resource type="Script" uid="uid://dek3exmr4wmfb" path="res://scripts/enemy_3.gd" id="1_7opxr"]
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/other/momonga_Dungeon (1).png" id="1_7xkjs"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_6wkut"]
+[ext_resource type="Script" uid="uid://e24gjm1v513d" path="res://scripts/hitbox.gd" id="3_6wkut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mk1wg"]
 atlas = ExtResource("1_7xkjs")
@@ -125,6 +125,8 @@ script = ExtResource("3_6wkut")
 y_sort_enabled = true
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_5hq0l")
+
+[node name="Damagenumber" type="Node2D" parent="."]
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_dectection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

@@ -3,7 +3,7 @@ class_name Enemy
 
 @export var speed = 50
 @export var health = 100
-
+@onready var damage_numbers = $Damagenumber
 
 var dead = false
 var player_in_area = false
@@ -53,6 +53,7 @@ func _on_detection_area_body_exited(body):
 #enemy gets hit by playera
 func take_damage(take_damage):
 	health -= take_damage
+	Damagenumbers.display_number(take_damage, damage_numbers.global_position)
 
 #enemy dies
 func death():
