@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Damagenumbers="*res://damagenumbers.gd"
-Global="*res://Global.gd"
+Global="*res://scripts/Global.gd"
+damagenumbers="*res://scripts/damagenumbers.gd"
 
 [display]
 

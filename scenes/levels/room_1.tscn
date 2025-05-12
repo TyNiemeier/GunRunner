@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://blwpwml11u3m3"]
+[gd_scene load_steps=15 format=4 uid="uid://bfqadv3rtnjt5"]
 
 [ext_resource type="Texture2D" uid="uid://x744p3vjeqc1" path="res://assets/tilesets/RF_Catacombs_v1.0/mainlevbuild.png" id="1_m3oxv"]
 [ext_resource type="Texture2D" uid="uid://bwjyj4t1h0bi1" path="res://assets/tilesets/RF_Catacombs_v1.0/decorative.png" id="1_nb8jf"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bjh4t4mc4d2fd" path="res://scenes/Animations/torch_1.tscn" id="4_u0wca"]
 [ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="5_nx52h"]
 [ext_resource type="PackedScene" uid="uid://kvml3n6oo8cu" path="res://scenes/Animations/torch_2.tscn" id="5_u4fd0"]
-[ext_resource type="PackedScene" uid="uid://ctqsyvntebefk" path="res://scenes/levels/first_teleport.tscn" id="6_ltin5"]
+[ext_resource type="PackedScene" path="res://scenes/levels/first_teleport.tscn" id="6_ltin5"]
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="8_fjo1r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lis6s"]

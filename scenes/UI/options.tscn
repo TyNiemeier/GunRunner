@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvrmtjtlwu01t"]
 
-[ext_resource type="Script" path="res://options.gd" id="1_vtb8f"]
+[ext_resource type="Script" path="res://scripts/options.gd" id="1_vtb8f"]
 [ext_resource type="Texture2D" uid="uid://bmacda4bovv34" path="res://assets/ui/TextBox.png" id="2_soj63"]
 
 [node name="options" type="Control"]
