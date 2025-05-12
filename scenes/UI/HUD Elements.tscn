@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://blxmy5yn6diwf" path="res://assets/ui/FullHealthBar.png" id="5_dtwfi"]
 [ext_resource type="Texture2D" uid="uid://pe2sutyivmcq" path="res://assets/ui/SelectionBox.png" id="6_02bny"]
 [ext_resource type="Texture2D" uid="uid://df7ocm73ls7n7" path="res://assets/ui/SpearUsedIcon.png" id="7_wewve"]
-[ext_resource type="Script" path="res://scenes/UI/score.gd" id="8_3em2o"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="8_3em2o"]
 [ext_resource type="Texture2D" uid="uid://dbre5auwspd8q" path="res://assets/ui/GunUsedIcon.png" id="8_qomdj"]
 
 [node name="CanvasLayer" type="CanvasLayer"]

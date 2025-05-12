@@ -106,17 +106,17 @@ func _direction_suffix():
 	elif facing == Directions.DOWN:
 		return "Down"
 	elif facing == Directions.UP:
-		return "Up"	
+		return "Up"
 	elif facing == Directions.UPLEFT:
-		return "UpLeft"	
+		return "UpLeft"
 	elif facing == Directions.UPRIGHT:
-		return "UpRight"	
-	
+		return "UpRight"
+
 
 #sets animations for sprinting idle walk dash, etc
 func _set_animation():
 
-	#changes sprinting 
+	#changes sprinting
 	if isSprinting && isAttacking == false:
 		#sprinting for spear
 		if currentWeapon == 0:
@@ -166,10 +166,10 @@ func _set_animation():
 			#attack for spear
 		if currentWeapon == 1:
 			sprite.play("p1_reloading" + _direction_suffix())
-			
+
 #ISWALKING IS OVERIDING THE SPRINT POSSIBLY REWRITE SETTING WALKING TO TRUE
 func dash():
-	if (Input.is_action_just_pressed("dash") and canDash):
+	if (Input.is_action_just_pressed("p1_b") and canDash):
 		isDashing = true
 		canDash = false
 		dash_duration_timer.start()
@@ -185,16 +185,16 @@ func _on_dash_cool_down_timeout():
 
 func _on_animated_sprite_2d_animation_finished():
 	if sprite.animation == "p1_spearAttack" or "p1_gunAttack "or "p1_gunAttackRun" + _direction_suffix():
-		isAttacking = false	
+		isAttacking = false
 	if sprite.animation == "p1_death" + _direction_suffix():
 		get_tree().change_scene_to_file("res://scenes/levels/death.tscn")
-		
+
 func _physics_process(_delta):
 
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
-	if Input.is_action_just_pressed("p1_x"):
+	if Input.is_action_just_pressed("p1_l1"):
 		currentWeapon += 1
 		weapon_changed.emit(currentWeapon)
 	if currentWeapon >= 2:
@@ -205,7 +205,7 @@ func _physics_process(_delta):
 	if canMove:
 		velocity = direction * SPEED
 	else:
-		velocity = Vector2.ZERO	
+		velocity = Vector2.ZERO
 	#Sprint
 	if Input.is_action_pressed("p1_a"):
 		SPEED = 200
@@ -219,7 +219,7 @@ func _physics_process(_delta):
 		velocity = direction * dashSpeed
 
 	#Attack
-	if Input.is_action_just_pressed("p1_l1"):
+	if Input.is_action_just_pressed("p1_l2"):
 		isAttacking = true
 		if currentWeapon == 0:
 			spear_attack()
@@ -236,7 +236,7 @@ func _physics_process(_delta):
 		print(health)
 		health_change.emit(health)
 
-	if Input.is_action_just_pressed("p1_bomb"):
+	if Input.is_action_just_pressed("p1_x"):
 		if drop_bomb == true:
 			var bomb = bomb_scene.instantiate()
 			get_tree().root.add_child(bomb)
@@ -248,8 +248,8 @@ func _physics_process(_delta):
 	if health <= 0:
 		isDead = true
 		canMove = false
-		
-		
+
+
 
 	_set_direction()
 	_set_animation()
@@ -308,8 +308,8 @@ func _on_player_hitbox_area_entered(area: Area2D) -> void:
 			area.queue_free()
 			print(health)
 			health_change.emit(health)
-			
-			
+
+
 func spear_attack():
 	if isAttacking and currentWeapon == 0:
 		if Directions.RIGHT:
@@ -347,7 +347,7 @@ func reload():
 	if reloading == false:
 		reloading = true
 		$Reload.start()
-		
+
 
 func _on_bomb_cool_down_timeout() -> void:
 	drop_bomb = true
@@ -357,8 +357,7 @@ func _on_bomb_cool_down_timeout() -> void:
 func _on_reload_timeout() -> void:
 	reloading = false
 	current_ammo = 7
-	
+
 func _process(delta):
 	weapon_changed.emit(currentWeapon)
 	health_change.emit(health)
-	
