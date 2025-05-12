@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://ccsad5jajs4w4"]
+[gd_scene load_steps=11 format=4 uid="uid://ccsad5jajs4w4"]
 
 [ext_resource type="TileSet" uid="uid://dq8ekaq6q1x3c" path="res://scenes/levels/Baseline Set.tres" id="1_37lml"]
 [ext_resource type="PackedScene" uid="uid://ceskeotiviavi" path="res://scenes/entities/Enemy/Enemy 1.tscn" id="3_n3rxl"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="5_j2b72"]
 [ext_resource type="PackedScene" uid="uid://bkv8yre8oo6jg" path="res://scenes/entities/Enemy/enemy_4.tscn" id="6_5e4df"]
 [ext_resource type="PackedScene" uid="uid://dom5swjs163vo" path="res://scenes/levels/Teleport Doorway.tscn" id="7_uq050"]
+[ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://scenes/Healing/chicken.tscn" id="8_uv4sn"]
+[ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://scenes/Healing/pie.tscn" id="9_je261"]
+[ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://scenes/Healing/apple.tscn" id="10_ylixf"]
 
 [node name="room 6" type="Node2D"]
 
@@ -44,7 +47,7 @@ position = Vector2(336, 98)
 position = Vector2(103, 311)
 
 [node name="Enemy7" parent="." instance=ExtResource("6_5e4df")]
-position = Vector2(264, 359)
+position = Vector2(307, 417)
 
 [node name="Enemy8" parent="." instance=ExtResource("6_5e4df")]
 position = Vector2(636, 140)
@@ -56,7 +59,7 @@ position = Vector2(542, 93)
 position = Vector2(599, 341)
 
 [node name="Enemy11" parent="." instance=ExtResource("5_j2b72")]
-position = Vector2(464, 426)
+position = Vector2(479, 415)
 
 [node name="Enemy12" parent="." instance=ExtResource("5_j2b72")]
 position = Vector2(732, 272)
@@ -75,4 +78,28 @@ position = Vector2(711, 414)
 
 [node name="First Teleport" parent="." instance=ExtResource("7_uq050")]
 position = Vector2(361, 535)
-level_to_load = 7
+level_to_load = 20
+
+[node name="Chicken" parent="." instance=ExtResource("8_uv4sn")]
+position = Vector2(227, 314)
+
+[node name="Pie" parent="." instance=ExtResource("9_je261")]
+position = Vector2(458, 130)
+
+[node name="Chicken2" parent="." instance=ExtResource("8_uv4sn")]
+position = Vector2(304, 169)
+
+[node name="Pie2" parent="." instance=ExtResource("9_je261")]
+position = Vector2(546, 304)
+
+[node name="Chicken3" parent="." instance=ExtResource("8_uv4sn")]
+position = Vector2(785, 321)
+
+[node name="Pie3" parent="." instance=ExtResource("9_je261")]
+position = Vector2(764, 163)
+
+[node name="Apple" parent="." instance=ExtResource("10_ylixf")]
+position = Vector2(62, 233)
+
+[connection signal="body_entered" from="First Teleport" to="First Teleport" method="_on_body_entered"]
+[connection signal="body_exited" from="First Teleport" to="First Teleport" method="_on_body_exited"]

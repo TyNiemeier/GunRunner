@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://kkmyxhxftj4k"]
+[gd_scene load_steps=12 format=4 uid="uid://kkmyxhxftj4k"]
 
 [ext_resource type="TileSet" uid="uid://dq8ekaq6q1x3c" path="res://scenes/levels/Baseline Set.tres" id="1_48myy"]
 [ext_resource type="PackedScene" uid="uid://bl8a23lg4qh1g" path="res://scenes/levels/Stair_Teleport.tscn" id="2_ndsih"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="6_lpkba"]
 [ext_resource type="PackedScene" uid="uid://dtj6cnwn1j2ij" path="res://scenes/entities/Enemy/enemy_2.tscn" id="7_nxkwu"]
 [ext_resource type="PackedScene" uid="uid://codiy2tw25pnh" path="res://scenes/entities/Enemy/enemy_1_alt.tscn" id="8_6nvuj"]
+[ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://scenes/Healing/chicken.tscn" id="9_v2bbk"]
+[ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://scenes/Healing/apple.tscn" id="10_bsmpd"]
+[ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://scenes/Healing/pie.tscn" id="11_0dewy"]
 
 [node name="room 5" type="Node2D"]
 
@@ -107,6 +110,45 @@ position = Vector2(879, 233)
 
 [node name="Enemy25" parent="." instance=ExtResource("4_bwlby")]
 position = Vector2(1371, 221)
+
+[node name="Chicken" parent="." instance=ExtResource("9_v2bbk")]
+position = Vector2(94, 757)
+
+[node name="Apple" parent="." instance=ExtResource("10_bsmpd")]
+position = Vector2(509, 955)
+
+[node name="Pie" parent="." instance=ExtResource("11_0dewy")]
+position = Vector2(721, 472)
+
+[node name="Chicken2" parent="." instance=ExtResource("9_v2bbk")]
+position = Vector2(902, 656)
+
+[node name="Pie2" parent="." instance=ExtResource("11_0dewy")]
+position = Vector2(1237, 121)
+
+[node name="Apple2" parent="." instance=ExtResource("10_bsmpd")]
+position = Vector2(782, 285)
+
+[node name="Apple3" parent="." instance=ExtResource("10_bsmpd")]
+position = Vector2(587, 670)
+
+[node name="Pie3" parent="." instance=ExtResource("11_0dewy")]
+position = Vector2(1744, 777)
+
+[node name="Chicken3" parent="." instance=ExtResource("9_v2bbk")]
+position = Vector2(1454, 768)
+
+[node name="Apple4" parent="." instance=ExtResource("10_bsmpd")]
+position = Vector2(1762, 961)
+
+[node name="Apple5" parent="." instance=ExtResource("10_bsmpd")]
+position = Vector2(1773, 412)
+
+[node name="Apple6" parent="." instance=ExtResource("10_bsmpd")]
+position = Vector2(1161, 559)
+
+[node name="Apple7" parent="." instance=ExtResource("10_bsmpd")]
+position = Vector2(358, 201)
 
 [connection signal="body_entered" from="First Teleport" to="First Teleport" method="_on_body_entered"]
 [connection signal="body_exited" from="First Teleport" to="First Teleport" method="_on_body_exited"]
