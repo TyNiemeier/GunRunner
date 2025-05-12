@@ -59,3 +59,4 @@ func take_damage(take_damage):
 func death():
 	if health <= 0:
 		queue_free()
+		Global.score += 10
