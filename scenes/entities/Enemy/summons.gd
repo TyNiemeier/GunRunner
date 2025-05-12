@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Spirit
 
-
+@onready var damage_numbers = $Damagenumber
 @export var speed = 80
 @export var health = 100
 var damage = 15

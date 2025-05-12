@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Boss
 
 @export var speed = 50
-@export var health = 300
+@export var health = 1000
 var damage = 10
 var dead = false
 var player_in_area = false
@@ -19,6 +19,7 @@ var summoning = false
 var spirits = preload("res://scenes/entities/Enemy/summons.tscn")
 @onready var rng = RandomNumberGenerator.new()
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var damage_numbers = $damage_numbers
 
 
 func _physics_process(delta):
@@ -72,6 +73,7 @@ func _on_detection_area_body_exited(body):
 #enemy gets hit by playera
 func take_damage(take_damage):
 	health -= take_damage
+	Damagenumbers.display_number(take_damage, damage_numbers.global_position)
 
 func death():
 	if dying == false:

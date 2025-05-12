@@ -115,5 +115,7 @@ y_sort_enabled = true
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_uu550")
 
+[node name="Damagenumber" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="detection_area" to="." method="_on_dectection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
