@@ -3464,7 +3464,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_636lb"]
-radius = 7.0
+radius = 4.0
 height = 22.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kj4on"]
@@ -3485,7 +3485,6 @@ size = Vector2(21.5, 27)
 [node name="Player_2" type="CharacterBody2D"]
 position = Vector2(0, -1)
 script = ExtResource("1_lpie1")
-playerId = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -8)

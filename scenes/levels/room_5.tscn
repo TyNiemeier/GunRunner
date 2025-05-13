@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=4 uid="uid://kkmyxhxftj4k"]
+[gd_scene load_steps=13 format=4 uid="uid://kkmyxhxftj4k"]
 
 [ext_resource type="TileSet" uid="uid://dq8ekaq6q1x3c" path="res://scenes/levels/Baseline Set.tres" id="1_48myy"]
 [ext_resource type="PackedScene" uid="uid://bl8a23lg4qh1g" path="res://scenes/levels/Stair_Teleport.tscn" id="2_ndsih"]
 [ext_resource type="PackedScene" uid="uid://ceskeotiviavi" path="res://scenes/entities/Enemy/Enemy 1.tscn" id="4_bwlby"]
 [ext_resource type="PackedScene" uid="uid://bkv8yre8oo6jg" path="res://scenes/entities/Enemy/enemy_4.tscn" id="5_6ysyi"]
-[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="5_77dkp"]
+[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player_1.tscn" id="5_77dkp"]
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="6_lpkba"]
 [ext_resource type="PackedScene" uid="uid://dtj6cnwn1j2ij" path="res://scenes/entities/Enemy/enemy_2.tscn" id="7_nxkwu"]
 [ext_resource type="PackedScene" uid="uid://codiy2tw25pnh" path="res://scenes/entities/Enemy/enemy_1_alt.tscn" id="8_6nvuj"]
 [ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://scenes/Healing/chicken.tscn" id="9_v2bbk"]
 [ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://scenes/Healing/apple.tscn" id="10_bsmpd"]
 [ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://scenes/Healing/pie.tscn" id="11_0dewy"]
+[ext_resource type="PackedScene" uid="uid://bmy6o6amyufaq" path="res://scenes/entities/player_2.tscn" id="12_ejeu1"]
 
 [node name="room 5" type="Node2D"]
 
@@ -149,6 +150,9 @@ position = Vector2(1161, 559)
 
 [node name="Apple7" parent="." instance=ExtResource("10_bsmpd")]
 position = Vector2(358, 201)
+
+[node name="Player_2" parent="." instance=ExtResource("12_ejeu1")]
+position = Vector2(163, 958)
 
 [connection signal="body_entered" from="First Teleport" to="First Teleport" method="_on_body_entered"]
 [connection signal="body_exited" from="First Teleport" to="First Teleport" method="_on_body_exited"]
