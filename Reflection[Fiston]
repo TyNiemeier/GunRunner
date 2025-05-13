@@ -1,0 +1,73 @@
+# Reflection - [Fiston]
+
+## 🗓️ Sprint 1
+
+### What I did
+- I started by putting the assets in godot. then I created a room where i moved the assets in the tile layer.
+
+### Difficulties
+- at first my couldnt see my assets in my tile layers.
+
+### Surprises
+- it became easier when I started watching youtube videos
+
+### Lessons Learned
+- that youutube will have some videos on that thing you need help with.
+
+
+
+## 🗓️ Sprint 2
+
+### What I did
+- I started adding tilelayers and tilemap on the scene. which allowed me to add builds and stuff. worked on adding nodes and area2d.
+
+
+### Difficulties
+- I didnt really went through any diffuculties. I would say the only difficult part was trying to make the map look like a good game map
+
+### Surprises
+- something that surpised me was how good it turned out to be.
+
+### Lessons Learned
+- I learned some mistake I made that were easier than I thought.
+
+
+## 🗓️ Sprint 3
+
+### What I did
+- I started adding collsions in the tilelayers which can allow a player to not go through the map
+
+### Difficulties
+- I would say the only difficult part was it took some time to add collision
+
+### Surprises
+- everything went well and the player didnt go through the tilelayers
+
+### Lessons Learned
+-I learned that check everything before doing it
+
+
+## 🗓️ Sprint 4
+### what I did
+- I added a player on the tilemap to check if everything is going good.
+### Difficulties
+- it kept kicking me out of godot app which was kinda of frustrated.
+
+### Surprises
+- something that suprised was when it stopped kicking me out of the app
+
+### Lessons Learned
+-I learned that clear your unwanted files
+
+
+## 🗓️ Sprint 5
+## what I did
+- I uploaded everything on the main scene so my teammates can review the things i did
+### Difficulties
+- there were some conflict merging to main but other than that everything worked
+
+### Surprises
+- nothing suprised me
+
+### Lessons Learned
+- have good teammates

@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyhxfb3rtr2fl"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_g4a2t"]
+[ext_resource type="Texture2D" uid="uid://dowh6w68rerxi" path="res://assets/ui/Button.png" id="2_v7tds"]
+[ext_resource type="Texture2D" uid="uid://rko0kw1qui8q" path="res://assets/ui/Main Menu Backing.png" id="2_y0n5t"]
+[ext_resource type="Texture2D" uid="uid://bwlc88d8c0uha" path="res://assets/ui/Button2.png" id="3_b5alh"]
+[ext_resource type="Texture2D" uid="uid://b54e0wua1xmw3" path="res://assets/ui/Button3.png" id="4_luady"]
+[ext_resource type="FontFile" uid="uid://b8yqmp72vhp7f" path="res://assets/ui/Wooden font v1/Cinzel-VariableFont_wght.ttf" id="6_c7mav"]
+
+[sub_resource type="FontVariation" id="FontVariation_qg5hs"]
+base_font = ExtResource("6_c7mav")
+variation_embolden = 0.5
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g4a2t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(963, 530)
+scale = Vector2(6, 6)
+texture = ExtResource("2_y0n5t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1915.0
+offset_top = -1066.0
+offset_right = -1915.0
+offset_bottom = -1066.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+alignment = 1
+
+[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_v7tds")
+texture_pressed = ExtResource("3_b5alh")
+texture_disabled = ExtResource("4_luady")
+stretch_mode = 3
+
+[node name="OptionsButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_v7tds")
+texture_pressed = ExtResource("3_b5alh")
+texture_disabled = ExtResource("4_luady")
+stretch_mode = 3
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_v7tds")
+texture_pressed = ExtResource("3_b5alh")
+texture_disabled = ExtResource("4_luady")
+stretch_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(963, 530)
+scale = Vector2(19.802, 6)
+zoom = Vector2(5, 2.8)
+
+[node name="Title" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 849.0
+offset_top = 406.0
+offset_right = 1148.0
+offset_bottom = 467.0
+scale = Vector2(0.8, 0.8)
+theme_override_fonts/font = SubResource("FontVariation_qg5hs")
+theme_override_font_sizes/font_size = 45
+text = "GunRunner "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Label" parent="."]
+layout_mode = 0
+offset_left = 942.0
+offset_top = 479.0
+offset_right = 1038.0
+offset_bottom = 536.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 41
+text = "Start"
+
+[node name="Start2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 897.0
+offset_top = 636.0
+offset_right = 1156.0
+offset_bottom = 672.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 26
+text = "Press Start to Begin..."
+
+[node name="Options" type="Label" parent="."]
+layout_mode = 0
+offset_left = 937.0
+offset_top = 540.0
+offset_right = 1051.0
+offset_bottom = 582.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="Quit" type="Label" parent="."]
+layout_mode = 0
+offset_left = 942.0
+offset_top = 587.0
+offset_right = 1032.0
+offset_bottom = 646.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 43
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

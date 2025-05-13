@@ -1,4 +1,4 @@
-[gd_scene load_steps=655 format=3 uid="uid://d34idi3tc1prb"]
+[gd_scene load_steps=657 format=3 uid="uid://d34idi3tc1prb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_m4slr"]
 [ext_resource type="Texture2D" uid="uid://bhto8fab43htd" path="res://assets/sprites/Female player/Death/Normal/death.png" id="2_fdam5"]
@@ -35,8 +35,10 @@
 [ext_resource type="Texture2D" uid="uid://iqgqe10fdjsv" path="res://assets/sprites/Female player/Dash - NEW/Spear/Dash_Spear_Up.png" id="18_0w1wb"]
 [ext_resource type="Texture2D" uid="uid://bn6kxndngln2k" path="res://assets/sprites/Female player/Run/Spear/Run_Spear_Right_Down.png" id="18_jvm70"]
 [ext_resource type="Texture2D" uid="uid://c5plow3vvlau3" path="res://assets/sprites/Female player/Run/Spear/Run_Spear_Right_Up.png" id="19_jlpmx"]
+[ext_resource type="PackedScene" uid="uid://b57a47v8nvabp" path="res://scenes/UI/HUD Elements.tscn" id="21_qjgj4"]
 [ext_resource type="Texture2D" uid="uid://b7ovx6076w2lb" path="res://assets/sprites/Female player/Reloading/Reloading_Down.png" id="25_2ngen"]
 [ext_resource type="Texture2D" uid="uid://c0kninib2xehe" path="res://assets/sprites/Female player/Reloading/Reloading.png" id="26_e5cgj"]
+[ext_resource type="Script" path="res://scripts/hud_elements.gd" id="32_gddsm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5b86p"]
 atlas = ExtResource("2_fdam5")
@@ -4774,6 +4776,9 @@ offset = Vector2(0, -10)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 
+[node name="CanvasLayer" parent="Camera2D" instance=ExtResource("21_qjgj4")]
+script = ExtResource("32_gddsm")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
 position = Vector2(0, -9)
@@ -4829,10 +4834,14 @@ one_shot = true
 [node name="allow_damage" type="Timer" parent="."]
 
 [node name="BombCoolDown" type="Timer" parent="."]
+one_shot = true
 
 [node name="Reload" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="bombtime_active" from="." to="Camera2D/CanvasLayer" method="_on_player_bombtime_active"]
+[connection signal="health_change" from="." to="Camera2D/CanvasLayer" method="_on_player_health_change"]
+[connection signal="weapon_changed" from="." to="Camera2D/CanvasLayer" method="_on_player_weapon_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]

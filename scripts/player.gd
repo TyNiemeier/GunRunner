@@ -18,6 +18,9 @@ var canDash = true
 var collision = true
 var isSprinting = false
 var currentWeapon = 0
+signal health_change(new_value)
+signal bombtime_active(bombtimer_activity)
+signal weapon_changed(currentWeapon)
 var current_ammo = 7
 var reloading = false
 
@@ -103,17 +106,17 @@ func _direction_suffix():
 	elif facing == Directions.DOWN:
 		return "Down"
 	elif facing == Directions.UP:
-		return "Up"	
+		return "Up"
 	elif facing == Directions.UPLEFT:
-		return "UpLeft"	
+		return "UpLeft"
 	elif facing == Directions.UPRIGHT:
-		return "UpRight"	
-	
+		return "UpRight"
+
 
 #sets animations for sprinting idle walk dash, etc
 func _set_animation():
 
-	#changes sprinting 
+	#changes sprinting
 	if isSprinting && isAttacking == false:
 		#sprinting for spear
 		if currentWeapon == 0:
@@ -163,10 +166,10 @@ func _set_animation():
 			#attack for spear
 		if currentWeapon == 1:
 			sprite.play("p1_reloading" + _direction_suffix())
-			
+
 #ISWALKING IS OVERIDING THE SPRINT POSSIBLY REWRITE SETTING WALKING TO TRUE
 func dash():
-	if (Input.is_action_just_pressed("p1_l2") and canDash):
+	if (Input.is_action_just_pressed("p1_b") and canDash):
 		isDashing = true
 		canDash = false
 		dash_duration_timer.start()
@@ -181,28 +184,28 @@ func _on_dash_cool_down_timeout():
 	canDash = true
 
 func _on_animated_sprite_2d_animation_finished():
-	print(sprite.animation)
 	if sprite.animation == "p1_spearAttack" or "p1_gunAttack "or "p1_gunAttackRun" + _direction_suffix():
-		isAttacking = false	
+		isAttacking = false
 	if sprite.animation == "p1_death" + _direction_suffix():
 		get_tree().change_scene_to_file("res://scenes/levels/death.tscn")
+
 func _physics_process(_delta):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
-	if Input.is_action_just_pressed("p1_x"):
+	if Input.is_action_just_pressed("p1_l1"):
 		currentWeapon += 1
+		weapon_changed.emit(currentWeapon)
 	if currentWeapon >= 2:
 		currentWeapon = 0
+		weapon_changed.emit(currentWeapon)
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
 	#Movement
 	if canMove:
 		velocity = direction * SPEED
 	else:
-		velocity = Vector2.ZERO	
+		velocity = Vector2.ZERO
 	#Sprint
 	if Input.is_action_pressed("p1_a"):
 		SPEED = 200
@@ -216,7 +219,7 @@ func _physics_process(_delta):
 		velocity = direction * dashSpeed
 
 	#Attack
-	if Input.is_action_just_pressed("p1_l1"):
+	if Input.is_action_just_pressed("p1_l2"):
 		isAttacking = true
 		if currentWeapon == 0:
 			spear_attack()
@@ -230,30 +233,40 @@ func _physics_process(_delta):
 	#health doesnt go above health
 	if health > 100:
 		health = 100
+		print(health)
+		health_change.emit(health)
 
-	if Input.is_action_just_pressed("p1_b"):
+	if Input.is_action_just_pressed("p1_x"):
 		if drop_bomb == true:
 			var bomb = bomb_scene.instantiate()
 			get_tree().root.add_child(bomb)
 			bomb.global_position = self.global_position
 			drop_bomb = false
 			$BombCoolDown.start()
+			bombtime_active.emit(0)
 
 	if health <= 0:
 		isDead = true
 		canMove = false
-		
-		
+
+
 
 	_set_direction()
 	_set_animation()
 	move_and_slide()
 	dash()
 
-
 #enemy or projectile hits player
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
+	if body is Spirit:
+		enemy_inattack_range = true
+		take_damage = body.damage
+		$PlayerHitbox/Hitboxtimer.start()
+	if body is Boss:
 		enemy_inattack_range = true
 		take_damage = body.damage
 		$PlayerHitbox/Hitboxtimer.start()
@@ -275,6 +288,8 @@ func player_hit(take_damage):
 		health -= take_damage
 		allow_damage = false
 		$allow_damage.start()
+		print(health)
+		health_change.emit(health)
 
 #invisable / how long it takes until player is allowed to get damage
 func _on_allow_damage_timeout() -> void:
@@ -291,7 +306,10 @@ func _on_player_hitbox_area_entered(area: Area2D) -> void:
 		if health < 100:
 			health += area.heal
 			area.queue_free()
-			
+			print(health)
+			health_change.emit(health)
+
+
 func spear_attack():
 	if isAttacking and currentWeapon == 0:
 		if Directions.RIGHT:
@@ -299,26 +317,49 @@ func spear_attack():
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Rightattack')
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Boss:
+					body.health -= spear_damage
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Spirit:
+					body.health -= spear_damage
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
 		if Directions.LEFT:
 			var bodies = $Leftattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Leftattack')
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Boss:
+					body.health -= spear_damage
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Spirit:
+					body.health -= spear_damage
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
 		if Directions.UP:
 			var bodies = $Upattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Upattack')
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Boss:
+					body.health -= spear_damage
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Spirit:
+					body.health -= spear_damage
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
 		if Directions.DOWN:
 			var bodies = $Downattack.get_overlapping_bodies()
 			for body in bodies:
 				if body is Enemy:
 					body.health -= spear_damage
-					print('Downattack')
-
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Boss:
+					body.health -= spear_damage
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
+				if body is Spirit:
+					body.health -= spear_damage
+					damagenumbers.display_number(spear_damage, body.damage_numbers.global_position)
 func shoot():
 	if isAttacking and currentWeapon == 1:
 		var bullet = bulletPath.instantiate()
@@ -333,12 +374,17 @@ func reload():
 	if reloading == false:
 		reloading = true
 		$Reload.start()
-		
+
 
 func _on_bomb_cool_down_timeout() -> void:
 	drop_bomb = true
 	$BombCoolDown.stop()
+	bombtime_active.emit(100)
 
 func _on_reload_timeout() -> void:
 	reloading = false
 	current_ammo = 7
+
+func _process(delta):
+	weapon_changed.emit(currentWeapon)
+	health_change.emit(health)

@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://b57a47v8nvabp"]
+
+[ext_resource type="Texture2D" uid="uid://d27jcrua273lm" path="res://assets/sprites/1-BOMB/2-Bomb On/1.png" id="2_8ymhc"]
+[ext_resource type="Texture2D" uid="uid://mt4sfvvg8snb" path="res://assets/ui/EmptyHealthBar.png" id="3_3t7vn"]
+[ext_resource type="Texture2D" uid="uid://bm0qi6mx8sa5w" path="res://assets/ui/FullHealthBarAlt.png" id="4_w2hwg"]
+[ext_resource type="Texture2D" uid="uid://blxmy5yn6diwf" path="res://assets/ui/FullHealthBar.png" id="5_dtwfi"]
+[ext_resource type="Texture2D" uid="uid://pe2sutyivmcq" path="res://assets/ui/SelectionBox.png" id="6_02bny"]
+[ext_resource type="Texture2D" uid="uid://df7ocm73ls7n7" path="res://assets/ui/SpearUsedIcon.png" id="7_wewve"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="8_3em2o"]
+[ext_resource type="Texture2D" uid="uid://dbre5auwspd8q" path="res://assets/ui/GunUsedIcon.png" id="8_qomdj"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="BombTimer" type="TextureProgressBar" parent="."]
+offset_left = 173.0
+offset_top = 132.0
+offset_right = 225.0
+offset_bottom = 141.0
+scale = Vector2(3, 3)
+value = 100.0
+texture_under = ExtResource("3_3t7vn")
+texture_progress = ExtResource("4_w2hwg")
+
+[node name="Health" type="TextureProgressBar" parent="."]
+offset_left = 11.0
+offset_top = 132.0
+offset_right = 75.0
+offset_bottom = 141.0
+scale = Vector2(3, 3)
+value = 100.0
+texture_under = ExtResource("3_3t7vn")
+texture_progress = ExtResource("5_dtwfi")
+
+[node name="WeaponIcon" type="Sprite2D" parent="."]
+position = Vector2(83, 72)
+scale = Vector2(4, 4)
+texture = ExtResource("6_02bny")
+
+[node name="SpearEnabled" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(83, 72)
+scale = Vector2(4, 4)
+texture = ExtResource("7_wewve")
+
+[node name="GunEnabled" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(83, 72)
+scale = Vector2(4, 4)
+texture = ExtResource("8_qomdj")
+
+[node name="BombIcon" type="Sprite2D" parent="."]
+position = Vector2(246.304, 72.6521)
+scale = Vector2(4, 4)
+texture = ExtResource("6_02bny")
+
+[node name="BombSprite" type="Sprite2D" parent="."]
+position = Vector2(244.652, 53.326)
+scale = Vector2(1.70108, 1.72826)
+texture = ExtResource("2_8ymhc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Score" type="Label" parent="."]
+offset_left = 1559.0
+offset_top = 44.0
+offset_right = 1860.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 39
+text = "dfgdfgdfgdfgdfg"
+script = ExtResource("8_3em2o")
