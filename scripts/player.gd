@@ -18,6 +18,7 @@ var canDash = true
 var collision = true
 var isSprinting = false
 var currentWeapon = 0
+var bullet_speed = 5
 signal health_change(new_value)
 signal bombtime_active(bombtimer_activity)
 signal weapon_changed(currentWeapon)
@@ -228,7 +229,7 @@ func _physics_process(_delta):
 				shoot()
 			if current_ammo == 0:
 				reload()
-	$Aim.look_at((get_global_mouse_position()))
+	$Aim.rotation = velocity.angle()
 
 	#health doesnt go above health
 	if health > 100:
@@ -365,7 +366,7 @@ func shoot():
 		var bullet = bulletPath.instantiate()
 		get_parent().add_child(bullet)
 		bullet.position = $Aim/Marker2D.global_position
-		bullet.velocity = get_global_mouse_position() - bullet.position
+		bullet.velocity = velocity * bullet_speed
 		bullet.rotation = $Aim.rotation
 		current_ammo -= 1
 
