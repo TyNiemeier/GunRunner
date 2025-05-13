@@ -19,7 +19,6 @@ y_sort_enabled = true
 
 [node name="Player" parent="entieies" instance=ExtResource("1_84kh8")]
 position = Vector2(-1, -14)
-playerId = 0
 
 [node name="Enemies" type="Node2D" parent="entieies"]
 y_sort_enabled = true
