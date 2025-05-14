@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://c0qvkw3gwd7mv"]
+[gd_scene load_steps=10 format=4 uid="uid://c0qvkw3gwd7mv"]
 
 [ext_resource type="TileSet" uid="uid://dq8ekaq6q1x3c" path="res://scenes/levels/Baseline Set.tres" id="1_coxqu"]
-[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="2_tyuyx"]
+[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player_1.tscn" id="2_tyuyx"]
 [ext_resource type="PackedScene" uid="uid://dxptpdiktyl5w" path="res://scenes/entities/Enemy/undead_executioner.tscn" id="3_x2wjf"]
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="4_f8yq0"]
 [ext_resource type="PackedScene" uid="uid://bkv8yre8oo6jg" path="res://scenes/entities/Enemy/enemy_4.tscn" id="5_ybsra"]
 [ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://scenes/Healing/apple.tscn" id="6_jrjj0"]
 [ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://scenes/Healing/chicken.tscn" id="7_1wxi0"]
 [ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://scenes/Healing/pie.tscn" id="8_xx7n2"]
+[ext_resource type="PackedScene" uid="uid://bmy6o6amyufaq" path="res://scenes/entities/player_2.tscn" id="9_kkhql"]
 
 [node name="Bossroom" type="Node2D"]
 
@@ -157,3 +158,6 @@ position = Vector2(761, -349)
 
 [node name="Apple5" parent="." instance=ExtResource("6_jrjj0")]
 position = Vector2(597, -359)
+
+[node name="Player_2" parent="." instance=ExtResource("9_kkhql")]
+position = Vector2(-91, 990)
