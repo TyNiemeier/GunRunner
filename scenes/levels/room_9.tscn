@@ -1,27 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://c073fg3072pwe"]
+[gd_scene load_steps=11 format=4 uid="uid://c073fg3072pwe"]
 
 [ext_resource type="Texture2D" uid="uid://bwjyj4t1h0bi1" path="res://assets/tilesets/RF_Catacombs_v1.0/decorative.png" id="1_bdvxl"]
 [ext_resource type="Texture2D" uid="uid://x744p3vjeqc1" path="res://assets/tilesets/RF_Catacombs_v1.0/mainlevbuild.png" id="2_dlrxn"]
 [ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="4_ncr5x"]
-
-[sub_resource type="GDScript" id="GDScript_wlgul"]
-script/source = "extends Area2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
-		get_tree().change_scene_to_file(\"res://scenes/levels/room_10.tscn\")
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_60fvr"]
 size = Vector2(48, 5)
@@ -2433,7 +2414,6 @@ sources/1 = SubResource("TileSetAtlasSource_v5c2j")
 
 [node name="DoorTeleport" type="Area2D" parent="."]
 z_index = 1
-script = SubResource("GDScript_wlgul")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorTeleport"]
 position = Vector2(728, 57.5)
@@ -2449,6 +2429,5 @@ tile_set = SubResource("TileSet_8dxlu")
 
 [node name="Player" parent="." instance=ExtResource("4_ncr5x")]
 position = Vector2(615, 519)
-playerId = 0
 
 [connection signal="body_entered" from="DoorTeleport" to="DoorTeleport" method="_on_body_entered"]
