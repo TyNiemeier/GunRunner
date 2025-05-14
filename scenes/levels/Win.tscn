@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://bl6yfaq0l8lwj"]
+[gd_scene load_steps=4 format=4 uid="uid://bl6yfaq0l8lwj"]
 
 [ext_resource type="Script" path="res://scripts/win.gd" id="1_lxhy5"]
 [ext_resource type="TileSet" uid="uid://dq8ekaq6q1x3c" path="res://scenes/levels/Baseline Set.tres" id="2_mx150"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="3_sp2gr"]
 
 [node name="Win" type="Node2D"]
 script = ExtResource("1_lxhy5")
@@ -45,3 +46,13 @@ offset_bottom = 341.0
 scale = Vector2(0.3, 0.3)
 theme_override_font_sizes/font_size = 26
 text = "ESC for main menu"
+
+[node name="Score" type="Label" parent="."]
+offset_left = 663.0
+offset_top = 188.0
+offset_right = 964.0
+offset_bottom = 242.0
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 39
+text = "dfgdfgdfgdfgdfg"
+script = ExtResource("3_sp2gr")
