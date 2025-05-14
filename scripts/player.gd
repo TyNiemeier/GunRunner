@@ -24,6 +24,7 @@ signal bombtime_active(bombtimer_activity)
 signal weapon_changed(currentWeapon)
 var current_ammo = 7
 var reloading = false
+var previous_velocity = Vector2.ZERO
 
 
 
@@ -202,6 +203,9 @@ func _physics_process(_delta):
 		currentWeapon = 0
 		weapon_changed.emit(currentWeapon)
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
+	
+	if direction == Vector2.ZERO and velocity != Vector2.ZERO:
+		previous_velocity = velocity
 	#Movement
 	if canMove:
 		velocity = direction * SPEED
@@ -366,7 +370,10 @@ func shoot():
 		var bullet = bulletPath.instantiate()
 		get_parent().add_child(bullet)
 		bullet.position = $Aim/Marker2D.global_position
-		bullet.velocity = velocity * bullet_speed
+		var bullet_direction = velocity
+		if bullet_direction == Vector2.ZERO:
+			bullet_direction = previous_velocity.normalized()
+		bullet.velocity = bullet_direction * bullet_speed
 		bullet.rotation = $Aim.rotation
 		current_ammo -= 1
 
