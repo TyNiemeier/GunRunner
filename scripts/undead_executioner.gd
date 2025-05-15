@@ -122,6 +122,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		nextattack()
 	if sprite.animation == "Death":
 		queue_free()
+		get_tree().change_scene_to_file("res://scenes/levels/win.tscn")
 
 func _on_skill_1_range_body_entered(body: Node2D) -> void:
 	if body is Player:
