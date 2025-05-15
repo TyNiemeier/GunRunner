@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=4 uid="uid://bfqadv3rtnjt5"]
+[gd_scene load_steps=16 format=4 uid="uid://bfqadv3rtnjt5"]
 
 [ext_resource type="Texture2D" uid="uid://x744p3vjeqc1" path="res://assets/tilesets/RF_Catacombs_v1.0/mainlevbuild.png" id="1_m3oxv"]
 [ext_resource type="Texture2D" uid="uid://bwjyj4t1h0bi1" path="res://assets/tilesets/RF_Catacombs_v1.0/decorative.png" id="1_nb8jf"]
 [ext_resource type="Texture2D" uid="uid://b2v8brl5e6nd2" path="res://TestScene/assets/RA_Ground_Tiles.png" id="3_8hjps"]
 [ext_resource type="PackedScene" uid="uid://bjh4t4mc4d2fd" path="res://scenes/Animations/torch_1.tscn" id="4_u0wca"]
-[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="5_nx52h"]
+[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player_1.tscn" id="5_nx52h"]
 [ext_resource type="PackedScene" uid="uid://kvml3n6oo8cu" path="res://scenes/Animations/torch_2.tscn" id="5_u4fd0"]
 [ext_resource type="PackedScene" uid="uid://ctqsyvntebefk" path="res://scenes/levels/first_teleport.tscn" id="6_ltin5"]
+[ext_resource type="PackedScene" uid="uid://bmy6o6amyufaq" path="res://scenes/entities/player_2.tscn" id="8_5axnl"]
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="8_fjo1r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lis6s"]
@@ -2054,6 +2055,9 @@ position = Vector2(797, 53)
 
 [node name="Player" parent="." instance=ExtResource("5_nx52h")]
 position = Vector2(110, 121)
+
+[node name="Player_2" parent="." instance=ExtResource("8_5axnl")]
+position = Vector2(107, 162)
 
 [node name="Enemy3" parent="." instance=ExtResource("8_fjo1r")]
 position = Vector2(369, 129)

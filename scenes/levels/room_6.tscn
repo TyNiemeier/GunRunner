@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=4 uid="uid://ccsad5jajs4w4"]
+[gd_scene load_steps=12 format=4 uid="uid://ccsad5jajs4w4"]
 
 [ext_resource type="TileSet" uid="uid://dq8ekaq6q1x3c" path="res://scenes/levels/Baseline Set.tres" id="1_37lml"]
 [ext_resource type="PackedScene" uid="uid://ceskeotiviavi" path="res://scenes/entities/Enemy/Enemy 1.tscn" id="3_n3rxl"]
 [ext_resource type="PackedScene" uid="uid://dtj6cnwn1j2ij" path="res://scenes/entities/Enemy/enemy_2.tscn" id="4_jcvq3"]
-[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="4_p02uv"]
+[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player_1.tscn" id="4_p02uv"]
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="5_j2b72"]
 [ext_resource type="PackedScene" uid="uid://bkv8yre8oo6jg" path="res://scenes/entities/Enemy/enemy_4.tscn" id="6_5e4df"]
 [ext_resource type="PackedScene" uid="uid://dom5swjs163vo" path="res://scenes/levels/Teleport Doorway.tscn" id="7_uq050"]
 [ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://scenes/Healing/chicken.tscn" id="8_uv4sn"]
 [ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://scenes/Healing/pie.tscn" id="9_je261"]
 [ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://scenes/Healing/apple.tscn" id="10_ylixf"]
+[ext_resource type="PackedScene" uid="uid://bmy6o6amyufaq" path="res://scenes/entities/player_2.tscn" id="11_3hfgq"]
 
 [node name="room 6" type="Node2D"]
 
@@ -100,6 +101,9 @@ position = Vector2(764, 163)
 
 [node name="Apple" parent="." instance=ExtResource("10_ylixf")]
 position = Vector2(62, 233)
+
+[node name="Player_2" parent="." instance=ExtResource("11_3hfgq")]
+position = Vector2(90, 63)
 
 [connection signal="body_entered" from="First Teleport" to="First Teleport" method="_on_body_entered"]
 [connection signal="body_exited" from="First Teleport" to="First Teleport" method="_on_body_exited"]

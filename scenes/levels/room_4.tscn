@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=4 uid="uid://d1oqqsh1ncj7s"]
+[gd_scene load_steps=13 format=4 uid="uid://d1oqqsh1ncj7s"]
 
 [ext_resource type="TileSet" uid="uid://dq8ekaq6q1x3c" path="res://scenes/levels/Baseline Set.tres" id="1_s1kim"]
 [ext_resource type="PackedScene" uid="uid://bl8a23lg4qh1g" path="res://scenes/levels/Stair_Teleport.tscn" id="2_sp8q0"]
 [ext_resource type="PackedScene" uid="uid://bkv8yre8oo6jg" path="res://scenes/entities/Enemy/enemy_4.tscn" id="4_0vjoq"]
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="5_20uby"]
 [ext_resource type="PackedScene" uid="uid://dtj6cnwn1j2ij" path="res://scenes/entities/Enemy/enemy_2.tscn" id="6_e4sfi"]
-[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="6_ueu3e"]
+[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player_1.tscn" id="6_ueu3e"]
 [ext_resource type="PackedScene" uid="uid://ceskeotiviavi" path="res://scenes/entities/Enemy/Enemy 1.tscn" id="7_1xxof"]
 [ext_resource type="PackedScene" uid="uid://codiy2tw25pnh" path="res://scenes/entities/Enemy/enemy_1_alt.tscn" id="8_434q8"]
 [ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://scenes/Healing/chicken.tscn" id="9_8gayr"]
 [ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://scenes/Healing/pie.tscn" id="10_g1t2e"]
 [ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://scenes/Healing/apple.tscn" id="11_lhsy1"]
+[ext_resource type="PackedScene" uid="uid://bmy6o6amyufaq" path="res://scenes/entities/player_2.tscn" id="12_f2cuc"]
 
 [node name="room 4" type="Node2D"]
 
@@ -194,6 +195,9 @@ position = Vector2(1091, 524)
 
 [node name="Chicken5" parent="." instance=ExtResource("9_8gayr")]
 position = Vector2(1429, 333)
+
+[node name="Player_2" parent="." instance=ExtResource("12_f2cuc")]
+position = Vector2(53, 144)
 
 [connection signal="body_entered" from="Stairway of doom" to="Stairway of doom" method="_on_body_entered"]
 [connection signal="body_exited" from="Stairway of doom" to="Stairway of doom" method="_on_body_exited"]
