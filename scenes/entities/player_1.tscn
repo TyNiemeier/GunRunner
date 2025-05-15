@@ -4868,7 +4868,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_um5pu"]
-radius = 7.0
+radius = 4.0
 height = 22.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3sokb"]
@@ -4915,7 +4915,7 @@ collision_mask = 3
 wait_time = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(0.5, -9)
+position = Vector2(1, -9)
 shape = SubResource("RectangleShape2D_3sokb")
 
 [node name="Upattack" type="Area2D" parent="."]

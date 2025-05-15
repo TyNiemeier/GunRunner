@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://puwe02owysci"]
+[gd_scene load_steps=13 format=4 uid="uid://puwe02owysci"]
 
 [ext_resource type="TileSet" uid="uid://dq8ekaq6q1x3c" path="res://scenes/levels/Baseline Set.tres" id="1_n8vtp"]
 [ext_resource type="PackedScene" uid="uid://c6gqav7lla0vt" path="res://scenes/levels/Teleport.tscn" id="3_u64nt"]
 [ext_resource type="PackedScene" uid="uid://bl8a23lg4qh1g" path="res://scenes/levels/Stair_Teleport.tscn" id="4_bq8f2"]
-[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="5_87wml"]
+[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player_1.tscn" id="5_87wml"]
 [ext_resource type="PackedScene" uid="uid://ceskeotiviavi" path="res://scenes/entities/Enemy/Enemy 1.tscn" id="5_irdbu"]
 [ext_resource type="PackedScene" uid="uid://ckruignmo2wsb" path="res://scenes/entities/Enemy/enemy_3.tscn" id="6_0ebiw"]
 [ext_resource type="PackedScene" uid="uid://dtj6cnwn1j2ij" path="res://scenes/entities/Enemy/enemy_2.tscn" id="7_m2etv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c27n8gk8r4m81" path="res://scenes/Healing/chicken.tscn" id="9_7bk04"]
 [ext_resource type="PackedScene" uid="uid://c37l2ds0lxmv6" path="res://scenes/Healing/pie.tscn" id="10_y1xk0"]
 [ext_resource type="PackedScene" uid="uid://dbchuhf3gstxn" path="res://scenes/Healing/apple.tscn" id="11_vavek"]
+[ext_resource type="PackedScene" uid="uid://bmy6o6amyufaq" path="res://scenes/entities/player_2.tscn" id="12_p6g7f"]
 
 [node name="Room 3" type="Node2D"]
 
@@ -116,6 +117,9 @@ position = Vector2(771, 160)
 
 [node name="Pie4" parent="." instance=ExtResource("10_y1xk0")]
 position = Vector2(991, 129)
+
+[node name="Player_2" parent="." instance=ExtResource("12_p6g7f")]
+position = Vector2(50, 116)
 
 [connection signal="body_entered" from="Teleport Hole" to="Teleport Hole" method="_on_body_entered"]
 [connection signal="body_exited" from="Teleport Hole" to="Teleport Hole" method="_on_body_exited"]
