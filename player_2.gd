@@ -169,7 +169,8 @@ func _physics_process(_delta):
 		currentWeapon = 0
 	direction = Input.get_vector("p2_left", "p2_right", "p2_up", "p2_down")
 	#Movement
-
+	if direction == Vector2.ZERO and velocity != Vector2.ZERO:
+		previous_velocity = velocity
 	if canMove:
 		velocity = direction * SPEED
 	else:
@@ -198,7 +199,7 @@ func _physics_process(_delta):
 				shoot()
 			if current_ammo == 0:
 				reload()
-	$Aim.look_at((get_global_mouse_position()))
+	$Aim.rotation = velocity.angle()
 
 
 
@@ -333,7 +334,10 @@ func shoot():
 		var bullet = bulletPath.instantiate()
 		get_parent().add_child(bullet)
 		bullet.position = $Aim/Marker2D.global_position
-		bullet.velocity = get_global_mouse_position() - bullet.position
+		var bullet_direction = velocity
+		if bullet_direction == Vector2.ZERO:
+			bullet_direction = previous_velocity.normalized()
+		bullet.velocity = bullet_direction * bullet_speed
 		bullet.rotation = $Aim.rotation
 		current_ammo -= 1
 
