@@ -18,11 +18,13 @@ var canDash = true
 var collision = true
 var isSprinting = false
 var currentWeapon = 0
+var bullet_speed = 5
 signal health_change(new_value)
 signal bombtime_active(bombtimer_activity)
 signal weapon_changed(currentWeapon)
 var current_ammo = 7
 var reloading = false
+var previous_velocity = Vector2.ZERO
 
 
 
@@ -201,6 +203,9 @@ func _physics_process(_delta):
 		currentWeapon = 0
 		weapon_changed.emit(currentWeapon)
 	direction = Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
+	
+	if direction == Vector2.ZERO and velocity != Vector2.ZERO:
+		previous_velocity = velocity
 	#Movement
 	if canMove:
 		velocity = direction * SPEED
@@ -228,7 +233,7 @@ func _physics_process(_delta):
 				shoot()
 			if current_ammo == 0:
 				reload()
-	$Aim.look_at((get_global_mouse_position()))
+	$Aim.rotation = velocity.angle()
 
 	#health doesnt go above health
 	if health > 100:
@@ -365,7 +370,10 @@ func shoot():
 		var bullet = bulletPath.instantiate()
 		get_parent().add_child(bullet)
 		bullet.position = $Aim/Marker2D.global_position
-		bullet.velocity = get_global_mouse_position() - bullet.position
+		var bullet_direction = velocity
+		if bullet_direction == Vector2.ZERO:
+			bullet_direction = previous_velocity.normalized()
+		bullet.velocity = bullet_direction * bullet_speed
 		bullet.rotation = $Aim.rotation
 		current_ammo -= 1
 

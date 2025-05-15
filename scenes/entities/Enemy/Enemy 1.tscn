@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://ceskeotiviavi"]
 
-[ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_0yvmx"]
+[ext_resource type="Script" uid="uid://bqidb0l4781e5" path="res://scripts/enemy_1.gd" id="1_0yvmx"]
 [ext_resource type="Texture2D" uid="uid://xacf5j3ib84i" path="res://assets/sprites/other/momonga_Dungeon (1).png" id="1_k8pen"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_ssl21"]
+[ext_resource type="Script" uid="uid://e24gjm1v513d" path="res://scripts/hitbox.gd" id="3_ssl21"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4skb"]
 atlas = ExtResource("1_k8pen")
