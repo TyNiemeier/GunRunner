@@ -5,8 +5,11 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("p1_start"):
 		button_pressed = true
 		get_tree().change_scene_to_file("res://scenes/levels/room_1.tscn")
+		
+func _on_start_button_pressed():
+	button_pressed = true
+	get_tree().change_scene_to_file("res://scenes/levels/room_1.tscn")
 
-	
 func _on_options_button_pressed():
 	button_pressed = true
 	get_tree().change_scene_to_file("res://Scenes/UI/options.tscn")

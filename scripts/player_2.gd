@@ -254,9 +254,9 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 		$PlayerHitbox/Hitboxtimer.stop()
 
 #player takes damage
-func player_hit(take_damage):
+func player_hit(receive_damage):
 	if enemy_inattack_range and allow_damage:
-		health -= take_damage
+		health -= receive_damage
 		allow_damage = false
 		$allow_damage.start()
 		health_change.emit(health)
@@ -356,6 +356,6 @@ func _on_reload_timeout() -> void:
 	reloading = false
 	current_ammo = 7
 
-func _process(delta):
+func _process(_delta):
 	weapon_changed.emit(currentWeapon)
 	health_change.emit(health)

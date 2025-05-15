@@ -97,7 +97,7 @@ func _on_attack_body_entered(body: Node2D) -> void:
 					sprite.play("Attacking")
 		
 
-func attack(attack_damage):
+func attack(_attack_damage):
 	if attacking == true:
 		var bodies = $Attack.get_overlapping_bodies()
 		for body in bodies:
