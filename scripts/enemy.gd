@@ -51,7 +51,7 @@ func _on_detection_area_body_exited(body):
 
 
 #enemy gets hit by playera
-func take_damage(take_damage):
+func recieve_damage(take_damage):
 	health -= take_damage
 	damagenumbers.display_number(take_damage, damage_numbers.global_position)
 

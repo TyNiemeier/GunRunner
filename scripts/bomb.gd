@@ -6,7 +6,7 @@ var blowup = false
 var bomb_damage = 100
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if blowup == true:
 		sprite.play("Explosion")
 
@@ -26,6 +26,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		queue_free()
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if blowup == true:
 		pass

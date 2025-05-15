@@ -1,7 +1,7 @@
 extends Control
 var button_pressed = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("p1_start"):
 		button_pressed = true
 		get_tree().change_scene_to_file("res://scenes/levels/room_1.tscn")

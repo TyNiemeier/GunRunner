@@ -71,7 +71,7 @@ func _on_detection_area_body_exited(body):
 
 
 #enemy gets hit by playera
-func take_damage(take_damage):
+func recieve_damage(take_damage):
 	health -= take_damage
 	damagenumbers.display_number(take_damage, damage_numbers.global_position)
 
@@ -97,7 +97,7 @@ func _on_attack_body_entered(body: Node2D) -> void:
 					sprite.play("Attacking")
 		
 
-func attack(damage):
+func attack(attack_damage):
 	if attacking == true:
 		var bodies = $Attack.get_overlapping_bodies()
 		for body in bodies:

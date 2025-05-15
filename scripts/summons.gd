@@ -43,7 +43,7 @@ func _physics_process(delta):
 		
 
 #enemy gets hit by playera
-func take_damage(take_damage):
+func recieve_damage(take_damage):
 	health -= take_damage
 
 func death():
