@@ -29,6 +29,9 @@ tile_set = ExtResource("1_37lml")
 [node name="Player" parent="." instance=ExtResource("4_p02uv")]
 position = Vector2(55, 69)
 
+[node name="Player_2" parent="." instance=ExtResource("11_3hfgq")]
+position = Vector2(90, 63)
+
 [node name="Enemy1" parent="." instance=ExtResource("3_n3rxl")]
 position = Vector2(94, 181)
 
@@ -101,9 +104,6 @@ position = Vector2(764, 163)
 
 [node name="Apple" parent="." instance=ExtResource("10_ylixf")]
 position = Vector2(62, 233)
-
-[node name="Player_2" parent="." instance=ExtResource("11_3hfgq")]
-position = Vector2(90, 63)
 
 [connection signal="body_entered" from="First Teleport" to="First Teleport" method="_on_body_entered"]
 [connection signal="body_exited" from="First Teleport" to="First Teleport" method="_on_body_exited"]

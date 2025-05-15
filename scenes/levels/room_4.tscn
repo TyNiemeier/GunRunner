@@ -34,6 +34,9 @@ level_to_load = 5
 [node name="Player" parent="." instance=ExtResource("6_ueu3e")]
 position = Vector2(49, 106)
 
+[node name="Player_2" parent="." instance=ExtResource("12_f2cuc")]
+position = Vector2(53, 144)
+
 [node name="Enemy4" parent="." instance=ExtResource("4_0vjoq")]
 position = Vector2(1343, 93)
 
@@ -195,9 +198,6 @@ position = Vector2(1091, 524)
 
 [node name="Chicken5" parent="." instance=ExtResource("9_8gayr")]
 position = Vector2(1429, 333)
-
-[node name="Player_2" parent="." instance=ExtResource("12_f2cuc")]
-position = Vector2(53, 144)
 
 [connection signal="body_entered" from="Stairway of doom" to="Stairway of doom" method="_on_body_entered"]
 [connection signal="body_exited" from="Stairway of doom" to="Stairway of doom" method="_on_body_exited"]

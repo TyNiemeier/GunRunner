@@ -34,6 +34,9 @@ level_to_load = 6
 [node name="Player" parent="." instance=ExtResource("5_77dkp")]
 position = Vector2(122, 959)
 
+[node name="Player_2" parent="." instance=ExtResource("12_ejeu1")]
+position = Vector2(163, 958)
+
 [node name="Enemy1" parent="." instance=ExtResource("4_bwlby")]
 position = Vector2(169, 224)
 
@@ -150,9 +153,6 @@ position = Vector2(1161, 559)
 
 [node name="Apple7" parent="." instance=ExtResource("10_bsmpd")]
 position = Vector2(358, 201)
-
-[node name="Player_2" parent="." instance=ExtResource("12_ejeu1")]
-position = Vector2(163, 958)
 
 [connection signal="body_entered" from="First Teleport" to="First Teleport" method="_on_body_entered"]
 [connection signal="body_exited" from="First Teleport" to="First Teleport" method="_on_body_exited"]

@@ -30,6 +30,9 @@ tile_set = ExtResource("1_rcfr5")
 [node name="Player" parent="." instance=ExtResource("7_rg5y7")]
 position = Vector2(74, -169)
 
+[node name="Player_2" parent="." instance=ExtResource("12_26gv5")]
+position = Vector2(76, -207)
+
 [node name="Doors" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAA9AAAAAQATAAEAAAA9AAEAAQATAAIAAAA9AAIAAQATAAMAAAA9AAMAAQATAAQAAAA9AAQAAQATAAUAAAA9AAUAAQATAAYAAAA9AAYAAQATAAcAAAA9AAcAAQATAAgAAAA9AAgAAQATAAkAAAA9AAkAAQATAAoAAAA9AAoAAQATAAsAAAA+AAAAAQAUAAEAAAA+AAUAAQAUAAYAAAA/AAAAAQAVAAEAAAA/AAUAAQAVAAYAAABAAAAAAQAWAAEAAABAAAUAAQAWAAYAAABBAAAAAQAXAAEAAABBAAEAAQAXAAIAAABBAAIAAQAXAAMAAABBAAMAAQAXAAQAAABBAAQAAQAXAAUAAABBAAUAAQAXAAYAAABBAAYAAQAXAAcAAABBAAcAAQAXAAgAAABBAAgAAQAXAAkAAABBAAkAAQAXAAoAAABBAAoAAQAXAAsAAAA=")
 tile_set = ExtResource("1_rcfr5")
@@ -199,9 +202,6 @@ position = Vector2(448, 295)
 
 [node name="Chicken9" parent="." instance=ExtResource("4_ldoj3")]
 position = Vector2(417, 516)
-
-[node name="Player_2" parent="." instance=ExtResource("12_26gv5")]
-position = Vector2(76, -207)
 
 [connection signal="body_entered" from="First Teleport" to="First Teleport" method="_on_body_entered"]
 [connection signal="body_exited" from="First Teleport" to="First Teleport" method="_on_body_exited"]
