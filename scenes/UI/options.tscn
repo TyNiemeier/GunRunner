@@ -29,10 +29,10 @@ text = "Controls -
 Walk: Joystick
 Run: A Button
 Dash: B Button
-Drop Bomb: R2 Button
-Interact: L2 Button
-Weapon Swap: X Button
-Interact: L2 Button(Objects), A Button(Menu)"
+Drop Bomb: X Button
+Weapon Swap: L1 Button
+Attack: L2 Button
+Start: Start Button"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(963, 539)
