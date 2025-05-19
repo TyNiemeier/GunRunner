@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bwjyj4t1h0bi1" path="res://assets/tilesets/RF_Catacombs_v1.0/decorative.png" id="1_2cav7"]
 [ext_resource type="Texture2D" uid="uid://x744p3vjeqc1" path="res://assets/tilesets/RF_Catacombs_v1.0/mainlevbuild.png" id="2_6pgwx"]
-[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player.tscn" id="3_2hnlb"]
+[ext_resource type="PackedScene" uid="uid://d34idi3tc1prb" path="res://scenes/entities/player_1.tscn" id="3_2hnlb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cqm57"]
 texture = ExtResource("1_2cav7")
